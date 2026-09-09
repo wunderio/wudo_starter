@@ -10,6 +10,7 @@ custom module, and project recipes in one repository. The project uses
 - `web/themes/custom/wudo/` contains the custom theme and its component source.
 - `web/modules/custom/wudo_theme_extension/` contains custom Drupal behavior and API endpoints.
 - `recipes/` contains project recipes that can be applied with Drush.
+- `config/sync/` contains exported Drupal configuration tracked in Git.
 - `vendor/` and frontend dependencies are generated locally and are not committed.
 
 Contributed extensions are managed by Composer. Custom extensions and recipes
@@ -25,19 +26,38 @@ npm run build
 cd ../../../..
 ```
 
-## Apply the Wudo site recipe
+## Install the site and apply configuration
 
 After configuring a Drupal database and `web/sites/default/settings.php`, run
-the recipe from the project root:
+the site installation and recipe from the project root:
 
 ```bash
+vendor/bin/drush site:install standard --root=web
 vendor/bin/drush recipe recipes/wudo_site
+vendor/bin/drush config:import --source=config/sync
 vendor/bin/drush cr
 ```
 
-The recipe installs the custom module, installs the custom theme, and sets it
-as the default front-end theme. It does not replace the Drupal installation
-step or database configuration.
+The `wudo_site` recipe installs the custom module, installs the custom theme,
+and sets it as the default front-end theme. Configuration in `config/sync/`
+is handled separately by Drupal's configuration management system. Recipes
+bootstrap the site; configuration sync is used for subsequent deployment.
+
+Before the first import, set this in the environment's local
+`web/sites/default/settings.php`:
+
+```php
+$settings['config_sync_directory'] = '../config/sync';
+```
+
+In the included DDEV setup, this value is already set in the local
+`web/sites/default/settings.ddev.php` file.
+
+Export configuration after making intentional changes:
+
+```bash
+vendor/bin/drush config:export --destination=config/sync
+```
 
 ## Settings and secrets
 
@@ -57,6 +77,7 @@ ddev start
 ddev composer install
 ddev drush site:install standard --root=web
 ddev drush recipe recipes/wudo_site --root=web
+ddev drush config:import --source=config/sync --root=web
 ```
 
 ## Theme development

@@ -23,6 +23,7 @@
         "drupal/core-recommended": "^11.4",
         "drupal/default_content": "^2.0@beta",
         "drupal/gin": "^5.0",
+        "drupal/gin_toolbar": "^3.0",
         "drupal/paragraphs": "^1.23",
         "drupal/paragraphs_features": "^2.2",
         "drupal/pathauto": "^1.15",

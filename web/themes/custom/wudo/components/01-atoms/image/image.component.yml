@@ -8,6 +8,7 @@ props:
   type: object
   properties:
     image:
+      type: object
       title: Image
       examples:
         - src: 'https://placehold.co/600x400.png'

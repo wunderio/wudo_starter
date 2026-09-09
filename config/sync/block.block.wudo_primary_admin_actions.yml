@@ -1,0 +1,20 @@
+uuid: bc486a79-9d39-4792-9c6b-0aec20f4ce02
+langcode: en-gb
+status: true
+dependencies:
+  theme:
+    - wudo
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: wudo_primary_admin_actions
+theme: wudo
+region: header_top
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

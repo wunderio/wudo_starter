@@ -1,0 +1,22 @@
+uuid: b5ef19fb-dd74-468b-94c2-5b30bbfdc875
+langcode: en-gb
+status: true
+dependencies:
+  theme:
+    - wudo
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: wudo_primary_local_tasks
+theme: wudo
+region: header_top
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }
