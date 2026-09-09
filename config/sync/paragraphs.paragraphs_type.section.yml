@@ -1,0 +1,14 @@
+uuid: 808b6734-6031-4d39-9490-f91512562af2
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - wudo_theme_extension
+id: section
+label: Section
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins:
+  style_settings:
+    enabled: true

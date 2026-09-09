@@ -92,3 +92,21 @@ npm run storybook
 
 Build production assets with `npm run build`. Do not commit `node_modules/` or
 `dist/`; both are recreated from the theme package files.
+
+### Twig template suggestions
+
+Enable Drupal's local theme development mode to show Twig template filenames
+and suggestions as HTML comments in the page source:
+
+```bash
+ddev drush theme:dev on
+ddev drush cr
+```
+
+Open the page source in the browser and look for comments such as
+`THEME DEBUG` and `THEME HOOK SUGGESTIONS`. Disable it before production:
+
+```bash
+ddev drush theme:dev off
+ddev drush cr
+```
