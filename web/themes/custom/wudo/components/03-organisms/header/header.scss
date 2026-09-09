@@ -4,16 +4,35 @@
 .site-header {
   $root: &;
 
+  --header-bg: var(--color-neutral-10, #f5f5f5);
+
+  [data-theme="dark"] & {
+    --header-bg: var(--color-neutral-90, #333333);
+  }
+
+  background-color: var(--header-bg);
+
+  &__utils {
+    padding-block: var(--space-sm, 0.5rem);
+    .region {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--space-lg);
+    }
+
+  }
+
   &__main {
     &--content {
       position: relative; // for dropdown
-      padding-block: var(--space-lg);
+      padding-block: var(--space-md);
       display: flex;
       flex-flow: row wrap;
       align-items: center;
       justify-content: space-between;
       gap: var(--space-lg);
-      border-bottom: 1px solid var(--color-gray-200, #e5e5e5);
 
       .contextual-region {
         position: static; // for dropdown

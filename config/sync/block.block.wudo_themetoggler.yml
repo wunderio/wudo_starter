@@ -1,0 +1,23 @@
+uuid: a37900d5-8f21-4e54-a551-5148a42d2d89
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - wudo_theme_extension
+  theme:
+    - wudo
+id: wudo_themetoggler
+theme: wudo
+region: header_top
+weight: -6
+provider: null
+plugin: wudo_theme_toggler
+settings:
+  id: wudo_theme_toggler
+  label: 'Theme toggler'
+  label_display: '0'
+  provider: wudo_theme_extension
+  light_label: Light
+  dark_label: Dark
+  auto_label: Auto
+visibility: {  }

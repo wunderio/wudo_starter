@@ -52,8 +52,8 @@
   --space-7xl: 16rem; /* 256px */
   --space-8xl: 32rem; /* 512px */
   /* Font families */
-  --font-family-headings-default: "Inter", sans-serif;
-  --font-family-body-default: "Inter", sans-serif;
+  --font-family-headings-default: 'Inter', sans-serif;
+  --font-family-body-default: 'Inter', sans-serif;
   /* Font size */
   --font-size-2xl: 3rem; /* 48px */
   --font-size-xl: 2rem; /* 32px */
@@ -96,6 +96,7 @@
 }
 
 body {
+  margin: 0;
   font-family: var(--font-family-body-default);
   font-size: 1rem;
   line-height: 1.5;
@@ -422,6 +423,7 @@ div[data-drupal-messages] {
 }
 
 .page-wrapper {
+  width: 100%;
   max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 var(--page-indention);

@@ -4,6 +4,11 @@ Custom Drupal module providing admin UI enhancements and JSON API endpoints for 
 
 ## Features
 
+### Theme toggler block
+Provides a configurable `Theme toggler` block that renders the Wudo theme
+switcher component. Place it from `/admin/structure/block` after enabling the
+module.
+
 ### Paragraphs Behavior: Style & Layout Settings
 Adds a collapsible **Styles** panel to each paragraph in the editor, powered by the `style_settings` Paragraphs Behavior plugin. Editors can set per-paragraph background color, padding, and layout directly in the edit form without switching tabs.
 
