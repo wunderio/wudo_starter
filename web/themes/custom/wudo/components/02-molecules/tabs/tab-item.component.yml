@@ -1,0 +1,16 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Tab Item
+status: stable
+group: Molecules
+
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Tab Title
+      $ref: 'json-schema-definitions://canvas.module/text'
+slots:
+  content:
+    title: Tab Content

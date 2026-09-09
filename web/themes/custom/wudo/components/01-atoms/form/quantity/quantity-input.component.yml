@@ -1,0 +1,27 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Quantity Input
+status: stable
+group: Atoms
+
+props:
+  type: object
+  properties:
+    value:
+      type: integer
+      title: Current quantity
+      default: 1
+    min:
+      type: integer
+      title: Minimum quantity
+      default: 1
+    max:
+      type: integer
+      title: Maximum quantity (stock)
+    step:
+      type: integer
+      title: Step
+      default: 1
+    name:
+      type: string
+      title: Field name

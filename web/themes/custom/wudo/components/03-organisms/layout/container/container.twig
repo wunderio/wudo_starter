@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ * Container component.
+ *
+ * Variables:
+ * - content: [string] Inner content HTML.
+ * - background_url: [string] Background URL. @todo
+ * - design: [string] Design: none, light, green, blue, dark-blue, lavender, blue-stripe
+ * - spacing: [string] Spacing: none, small, large, x-large, xx-large.
+ * - gap: [string] Gap: none, small, medium, large.
+ * - constrain: [boolean] Constrain: true, false.
+ * - side_padding: [boolean] Edge to edge: true, false.
+ * - image: [string] Url to image.
+ * - attributes: [string] Additional attributes.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{% set design_class = 'container--design-%s'|format(design|default('none')) %}
+{% set spacing_class = 'container--spacing-%s'|format(spacing|default('none')) %}
+{% set gap_class = 'container--gap-%s'|format(gap|default('none')) %}
+{% set has_gap_class = gap ? 'container--gap' : '' %}
+
+{% set constrain_class = constrain ? 'container--constrain' : '' %}
+{% set has_image_class = image and image.src ? 'container--has-image' : '' %}
+{% set side_padding_class = side_padding ? 'container--has-side-padding' : '' %}
+{% set modifier_class = '%s %s %s %s %s %s %s %s %s'|format(design_class, constrain_class, spacing_class, has_gap_class, gap_class, has_image_class, side_padding_class, drop_shadow_class, modifier_class|default('')) %}
+
+{% set design_slot_class = 'container__inner--design-slot-%s'|format(design_slot|default('none')) %}
+{% set modifier_inner_class = '%s %s'|format(design_slot_class, modifier_inner_class|default('')) %}
+
+{% set background_url = '' %}
+
+<div
+  class="container {{ modifier_class -}}"
+  {% if attributes is not empty %}{{- attributes|raw -}}{% endif %}
+  {% if background_url is not empty %}style="background-image: url('{{- background_url|raw -}}')"{% endif %}
+>
+  <div class="container__inner {{ modifier_inner_class -}}">
+    {% block content %}
+      {{ content|raw }}
+    {% endblock %}
+  </div>
+  {% if image and image.src %}
+    <div class="container__image">
+      <img src="{{ image.src }}" alt="{{ image.alt }}" />
+    </div>
+  {% endif %}
+</div>

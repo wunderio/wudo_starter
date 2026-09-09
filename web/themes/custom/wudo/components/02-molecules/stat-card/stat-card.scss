@@ -1,0 +1,49 @@
+/**
+ * @file stat-card.scss
+ * @description A simple statistic card component.
+ */
+
+.stat-card {
+  --stat-bg: var(--color-neutral-10, #f5f5f5);
+  --stat-color-accent: var(--color-neutral-80, #424242);
+  --stat-color-text: var(--color-neutral-80, #424242);
+  --stat-color-label: var(--color-neutral-70, #616161);
+
+  [data-theme="dark"] & {
+    --stat-bg: var(--color-neutral-80, #424242);
+    --stat-color-text: var(--color-neutral-20, #e5e5e5);
+    --stat-color-label: var(--color-neutral-10, #f5f5f5);
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: var(--stat-bg);
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &__value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--stat-color-text);
+  }
+
+  &__label {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--stat-color-label);
+    line-height: 1.4;
+    max-width: 20ch;
+  }
+}
+
+.stat-card:hover {
+  //
+}
+
+/* Web Component tags */
+wudo-count-up {
+  font-variant-numeric: tabular-nums;
+}

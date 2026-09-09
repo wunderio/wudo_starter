@@ -1,0 +1,121 @@
+//
+// Menu component.
+//
+
+@use "../../../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
+@use "../../../00-base/00-defaults/_03-mixins.scss" as *;
+
+.menu {
+  $root: &;
+
+  --navigation-spacing: var(--space-lg, 1rem);
+  --border-size: 1px;
+  --dropdown-background: var(--color-gray-10, #f5f5f5);
+  --dropdown-padding: var(--space-lg, 1rem);
+
+  [data-theme="dark"] & {
+    --dropdown-background: var(--color-neutral-90, #333333);
+  }
+
+  padding: 0;
+
+  // L0
+  &--level-0 {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+
+    @include breakpoint.mobile {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  // L1
+  &--level-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__item--has-children {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr auto;
+    column-gap: .5rem;
+
+    & > .link {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    & > [data-flyout-open-trigger] {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    & > [data-menu-flyout] {
+      grid-row: 2;
+      grid-column: 1 / -1;
+    }
+  }
+
+  [data-flyout-open-trigger] {
+    padding: 0;
+    font-size: 1rem;
+
+    .icon {
+      stroke: currentColor;
+      stroke-width: 1px;
+      transition: .2s;
+      transform: rotate(-90deg);
+
+      @include breakpoint.mobile {
+        transform: none;
+      }
+    }
+
+    &[aria-expanded="true"] {
+
+      .icon {
+        transform: rotate(0deg);
+      }
+
+      @include breakpoint.mobile {
+        .icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+// Submenu flyout panel
+[data-menu-flyout] {
+
+  [data-flyout-panel] {
+    @include overlay-hidden;
+
+    width: 100%;
+    padding: var(--dropdown-padding);
+    //overflow: hidden;
+
+    @include breakpoint.mobile {
+      background-color: var(--dropdown-background);
+    }
+  }
+
+  &[data-flyout-expanded] {
+    > [data-flyout-panel] {
+      @include overlay-visible;
+
+      @include breakpoint.mobile {
+        position: absolute;
+        top: calc(100% - 2px);
+        left: 0;
+        height: auto;
+        z-index: 100;
+      }
+    }
+  }
+}

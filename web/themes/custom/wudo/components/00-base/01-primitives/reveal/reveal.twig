@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Wudo Reveal component template.
+ *
+ * Provides a wrapper that animates its content when it enters the viewport.
+ *
+ * Available variables:
+ * - effect: (string) fade-up, fade-down, fade-left, fade-right, zoom-in.
+ * - delay: (string) CSS time value, e.g., '200ms'.
+ * - duration: (string) CSS time value, e.g., '1s'.
+ * - threshold: (float) 0 to 1, how much of the element is visible before trigger.
+ * - content: (renderable) The content to be revealed.
+ * - attributes: (Attribute) Drupal Attribute object.
+ */
+#}
+
+{% set reveal_classes = [
+  'wudo-reveal-wrapper',
+] %}
+
+<wudo-reveal
+  {{ attributes.addClass(reveal_classes) }}
+  data-effect="{{ effect|default('fade-up') }}"
+  {% if delay %} style="--reveal-delay: {{ delay }};" {% endif %}
+  {% if duration %} style="--reveal-duration: {{ duration }};" {% endif %}
+  {% if threshold %} data-threshold="{{ threshold }}" {% endif %}
+>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</wudo-reveal>

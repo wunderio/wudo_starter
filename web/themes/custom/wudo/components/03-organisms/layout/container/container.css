@@ -1,0 +1,118 @@
+.container {
+  --container-link-color: #222;
+  --container-paragraph-color: #222;
+}
+.container--design-light {
+  background-color: #f5f5f5;
+}
+.container--design-dark {
+  --container-link-color: #f5f5f5;
+  --container-paragraph-color: #f5f5f5;
+  background-color: #454545;
+  color: #f5f5f5;
+}
+.container--has-side-padding {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.container__inner {
+  padding: 16px 24px;
+}
+.container--constrain .container__inner {
+  max-width: 1608px;
+  margin: auto;
+}
+.container--gap .container__inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.container--gap-small .container__inner {
+  gap: 16px;
+}
+.container--gap-medium .container__inner {
+  gap: 32px;
+}
+.container--gap-large .container__inner {
+  gap: 40px;
+}
+.container__inner--design-slot-outline {
+  border: 2px solid #454545;
+  background-color: white;
+  border-radius: 10px;
+}
+.container__inner--design-slot-shadow {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border-radius: 10px;
+}
+.container--spacing-large {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+@media (min-width: 70rem) {
+  .container--spacing-large {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+.container--spacing-x-large {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+@media (min-width: 70rem) {
+  .container--spacing-x-large {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+@media (min-width: 70rem) {
+  .container--spacing-x-large {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+.container--spacing-xx-large {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+@media (min-width: 70rem) {
+  .container--spacing-xx-large {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+@media (min-width: 70rem) {
+  .container--spacing-xx-large {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+}
+@media (min-width: 70rem) {
+  .container--has-image {
+    position: relative;
+    padding-right: 30%;
+  }
+}
+.container__image {
+  display: none;
+}
+@media (min-width: 70rem) {
+  .container__image {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 25%;
+    object-fit: cover;
+    object-position: left;
+    width: 30%;
+  }
+}
+.container__image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: left;
+}

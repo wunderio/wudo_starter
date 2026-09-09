@@ -1,0 +1,99 @@
+.menu {
+  --navigation-spacing: var(--space-lg, 1rem);
+  --border-size: 1px;
+  --dropdown-background: var(--color-gray-10, #f5f5f5);
+  --dropdown-padding: var(--space-lg, 1rem);
+}
+[data-theme=dark] .menu {
+  --dropdown-background: var(--color-neutral-90, #333333);
+}
+.menu {
+  padding: 0;
+}
+.menu--level-0 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+@media (min-width: 768px) {
+  .menu--level-0 {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.menu--level-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.menu__item--has-children {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr auto;
+  column-gap: 0.5rem;
+}
+.menu__item--has-children > .link {
+  grid-row: 1;
+  grid-column: 1;
+}
+.menu__item--has-children > [data-flyout-open-trigger] {
+  grid-row: 1;
+  grid-column: 2;
+}
+.menu__item--has-children > [data-menu-flyout] {
+  grid-row: 2;
+  grid-column: 1/-1;
+}
+.menu [data-flyout-open-trigger] {
+  padding: 0;
+  font-size: 1rem;
+}
+.menu [data-flyout-open-trigger] .icon {
+  stroke: currentColor;
+  stroke-width: 1px;
+  transition: 0.2s;
+  transform: rotate(-90deg);
+}
+@media (min-width: 768px) {
+  .menu [data-flyout-open-trigger] .icon {
+    transform: none;
+  }
+}
+.menu [data-flyout-open-trigger][aria-expanded=true] .icon {
+  transform: rotate(0deg);
+}
+@media (min-width: 768px) {
+  .menu [data-flyout-open-trigger][aria-expanded=true] .icon {
+    transform: rotate(180deg);
+  }
+}
+
+[data-menu-flyout] [data-flyout-panel] {
+  position: absolute;
+  inset: 0 auto auto 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  padding: var(--dropdown-padding);
+}
+@media (min-width: 768px) {
+  [data-menu-flyout] [data-flyout-panel] {
+    background-color: var(--dropdown-background);
+  }
+}
+[data-menu-flyout][data-flyout-expanded] > [data-flyout-panel] {
+  position: revert;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (min-width: 768px) {
+  [data-menu-flyout][data-flyout-expanded] > [data-flyout-panel] {
+    position: absolute;
+    top: calc(100% - 2px);
+    left: 0;
+    height: auto;
+    z-index: 100;
+  }
+}

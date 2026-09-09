@@ -1,0 +1,81 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Container
+status: experimental
+group: Base
+
+props:
+  type: object
+  properties:
+    design:
+      type: string
+      title: Design container
+      description: 'Design: none, light, dark.'
+      enum:
+        - none
+        - light
+        - dark
+      default: none
+      examples:
+        - none
+
+    design_slot:
+      type: string
+      title: Design inner
+      description: 'Design inner: none, outline, shadow'
+      enum:
+        - none
+        - outline
+        - shadow
+      default: none
+      examples:
+        - none
+
+    spacing:
+      type: string
+      title: Top and bottom spacing
+      description: 'Spacing: none, small, large, x-large, xx-large.'
+      enum:
+        - none
+        - small
+        - large
+        - x-large
+        - xx-large
+      default: large
+      examples:
+        - large
+
+    constrain:
+      type: boolean
+      title: To constrain with a container class, or edge-to-edge.
+      examples:
+      - true
+
+    side_padding:
+      type: boolean
+      title: Padding on sides
+      default: false
+      examples:
+        - false
+
+    # Don't put examples as this is used with and without images.
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Image
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'
+
+slots:
+
+  content:
+    type: string
+    title: Content
+    description: Content slot.
+    #examples:
+    #  - '<strong>sample html content</strong>'

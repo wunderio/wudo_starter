@@ -1,0 +1,71 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Heading
+
+status: stable
+
+group: Atoms
+
+props:
+
+  type: object
+
+  properties:
+
+    content:
+      type: string
+      title: Content
+      description: Heading content.
+      examples:
+        - Sample heading
+
+    level:
+      type: integer
+      title: Level
+      description: 'Semantic level: 1, 2, 3, 4, 5, 6.'
+      default: 2
+      examples:
+        - 2
+
+    font:
+      type: string
+      title: Style
+      description: 'Font style: heading, heading-2.'
+      default: 'heading'
+      enum:
+        - 'heading'
+        - 'heading-2'
+      examples:
+        - 'heading'
+
+    align:
+      type: string
+      title: Align
+      description: 'Heading alignment: left, right, center.'
+      default: left
+      enum:
+        - left
+        - right
+        - center
+      examples:
+        - left
+
+    margin:
+      type: string
+      title: Margin
+      description: 'Margin: none, small, medium, large.'
+      default: none
+      enum:
+        - none
+        - small
+        - medium
+        - large
+      examples:
+        - none
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'

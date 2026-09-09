@@ -1,0 +1,22 @@
+name: Carousel
+description: A universal layout organism for sliding content items.
+status: experimental
+group: Organisms
+
+props:
+  type: object
+  properties:
+    loop:
+      type: boolean
+      title: Infinite loop
+      default: true
+    items_per_view:
+      type: integer
+      title: Items per view
+      default: 1
+      enum: [ 1, 2, 3, 4 ]
+
+slots:
+  items:
+    title: Carousel Items
+    description: "The slides of the carousel (e.g., images, cards, or custom content)."

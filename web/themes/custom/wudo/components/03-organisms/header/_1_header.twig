@@ -1,0 +1,87 @@
+{#
+/**
+ * Responsive header menu using a drawer portal.
+ *
+ * The navigation menu is rendered once and dynamically moved between
+ * the desktop header and the mobile drawer via JavaScript.
+ * This prevents duplicate markup and ensures correct focus handling.
+ */
+#}
+
+{% set utils %}
+  {% block utilities %}{% endblock %}
+{% endset %}
+
+{% set branding %}
+  {% block branding %}{% endblock %}
+{% endset %}
+
+{% set nav %}
+  {% block navigation %}{% endblock %}
+{% endset %}
+
+{% set utils_output = utils|render|trim %}
+{% set branding_output = branding|render|trim %}
+{% set nav_output = nav|render|trim %}
+
+<header {{ attributes.addClass('site-header') }}>
+  {% if utils_output is not empty %}
+    <div class="site-header__utils">
+      <div class="page-wrapper">
+        {{ utils_output|raw }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if branding_output is not empty or nav_output is not empty %}
+    <div class="site-header__main">
+      <div class="page-wrapper">
+        <div class="site-header__main--content" data-mobile-menu>
+          {% if branding_output is not empty %}
+            <div class="site-header__branding">
+              {{ branding_output|raw }}
+            </div>
+          {% endif %}
+
+          {% if nav_output is not empty %}
+            <div class="site-header__menu-toggle">
+              {% set button_attributes = create_attribute({
+                'class': 'drawer-menu-toggle-button u-mobile-only',
+                'data-menu-drawer-trigger': '',
+                'aria-expanded': 'false',
+                'onclick': "document.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'mobile-menu-drawer', trigger: this } }))"
+              }) %}
+
+              {{ include('wudo:button', {
+                text: 'Menu',
+                icon: 'menu',
+                size: 'large',
+                icon_only: true,
+                icon_size: 'large',
+                attributes: button_attributes,
+              }, with_context = false) }}
+            </div>
+            <div class="site-header__menu" data-desktop-menu-wrapper>
+              <div data-desktop-menu>
+                {{ nav_output|raw }}
+              </div>
+            </div>
+
+            {{ include('wudo:drawer', {
+              id: 'mobile-menu-drawer',
+              position: 'right',
+              size: '500px',
+              title: 'Menu',
+              portal: {
+                source: '[data-desktop-menu]',
+                wrapper: '[data-desktop-menu-wrapper]',
+                slot: 'mobile-menu-slot'
+              },
+              content: '<div id="mobile-menu-slot"></div>'
+            }, with_context = false) }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</header>

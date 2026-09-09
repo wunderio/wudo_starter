@@ -1,0 +1,117 @@
+.toast-wrapper {
+  --toast-bg: var(--color-white, #ffffff);
+  --toast-accent: #ccc;
+  --toast-color: var(--color-text-primary, #222222);
+  --progress-bg: var(--color-neutral-30, #bdbdbd);
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+}
+.toast-wrapper[data-position=top-right] {
+  top: 2rem;
+  right: 2rem;
+}
+.toast-wrapper[data-position=top-left] {
+  top: 2rem;
+  left: 2rem;
+}
+.toast-wrapper[data-position=bottom-right] {
+  bottom: 2rem;
+  right: 2rem;
+}
+.toast-wrapper .toast-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.toast-wrapper .toast-item {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 450px;
+  padding: 1rem 0.5rem 1rem 1rem;
+  color: var(--toast-color);
+  background: var(--toast-bg);
+  border-left: 5px solid var(--toast-accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  animation: toast-in 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+.toast-wrapper .toast-item.is-hiding {
+  animation: toast-out 0.3s ease forwards !important;
+  animation-play-state: running !important;
+  pointer-events: none;
+}
+.toast-wrapper .toast-item__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--progress-bg);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 2;
+}
+.toast-wrapper .toast-item.is-active .toast-item__progress {
+  animation: toast-progress linear forwards;
+  animation-duration: var(--toast-lifetime, 5000ms);
+}
+.toast-wrapper .toast-item--status {
+  --toast-bg: var(--color-semantic-success-10, #e8fcf1);
+  --toast-accent: var(--color-semantic-success-60, #00632b);
+  --toast-color: var(--color-semantic-success-60, #00632b);
+  --progress-bg: var(--color-semantic-success-40, #419e6a);
+}
+.toast-wrapper .toast-item--warning {
+  --toast-bg: var(--color-semantic-warning-10, #f8ede6);
+  --toast-accent: var(--color-semantic-warning-60, #bc4b00);
+  --toast-color: var(--color-semantic-warning-60, #bc4b00);
+  --progress-bg: var(--color-semantic-warning-40, #ef9117);
+}
+.toast-wrapper .toast-item--error {
+  --toast-bg: var(--color-semantic-error-10, #ffebf0);
+  --toast-accent: var(--color-semantic-error-60, #b01212);
+  --toast-color: var(--color-semantic-error-60, #b01212);
+  --progress-bg: var(--color-semantic-error-40, #d83232);
+}
+.toast-wrapper .toast-item:hover:not(.is-hiding) {
+  animation-play-state: paused;
+}
+.toast-wrapper .toast-item:hover:not(.is-hiding) .toast-item__progress {
+  animation-play-state: paused;
+}
+.toast-wrapper .toast-item .button {
+  background-color: transparent;
+  color: currentColor;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes toast-out {
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@keyframes toast-progress {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}

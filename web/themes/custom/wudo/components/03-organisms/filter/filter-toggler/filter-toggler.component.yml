@@ -1,0 +1,34 @@
+name: Filter Toggler
+description: "Trigger button for the filter drawer with an integrated active filter counter."
+version: 1.0.0
+status: experimental
+group: Organisms
+
+props:
+  type: object
+  properties:
+    target_id:
+      type: string
+      title: Target Drawer ID
+      default: "filter-control-center"
+    button_label:
+      type: string
+      title: Button Text
+      default: "Filters"
+    icon_type:
+      type: string
+      title: Icon Name
+      default: "filter"
+    badge_style:
+      type: string
+      title: Badge Color Style
+      enum: ["blue", "red", "gray", "white"]
+      default: "blue"
+    modifier_class:
+      type: string
+      title: Modifier class
+      default: ""
+
+libraryOverrides:
+  js:
+    filter-toggler.js: { attributes: { type: module } }

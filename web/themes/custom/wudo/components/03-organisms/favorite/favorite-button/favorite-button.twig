@@ -1,0 +1,33 @@
+{#
+Properties:
+- content_id: (mandatory) node ID or other content identifier
+- drawer_id: (optional) target drawer/list ID (defaults to 'favorite-drawer')
+- label: (mandatory) button label
+- modifier_class: (optional) additional CSS class for the button
+#}
+
+{% set drawer_id = drawer_id|default('favorite-drawer') %}
+{% set label_add = 'Add to favorites'|t %}
+{% set label_remove = 'Remove from favorites'|t %}
+{% set icon_type = icon_type|default('heart') %}
+{% set icon_size = icon_size|default('large') %}
+
+<wudo-favorite-button
+  content-id="{{ content_id }}"
+  drawer-id="{{ drawer_id }}"
+  label="{{ label }}"
+  label-add="{{ label_add }}"
+  label-remove="{{ label_remove }}"
+>
+  {% block favorite_button_content %}
+    {{ include('wudo:button', {
+      type: type|default('secondary'),
+      icon: icon_type,
+      icon_size: icon_size,
+      icon_only: true,
+      text: label_add,
+      modifier_class: modifier_class|default('watchlist'),
+      attributes: create_attribute().addClass('wudo-fav-inner-button'),
+    }, with_context = false) }}
+  {% endblock %}
+</wudo-favorite-button>

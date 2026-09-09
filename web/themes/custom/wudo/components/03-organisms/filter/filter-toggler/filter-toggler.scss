@@ -1,0 +1,11 @@
+wudo-filter-trigger {
+  padding: 1rem 0;
+
+  .badge {
+    display: none;
+
+    &.has-filters {
+      display: inline-flex;
+    }
+  }
+}

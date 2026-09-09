@@ -1,0 +1,19 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Toast Messages
+status: stable
+group: Molecules
+version: 1.0.0
+
+props:
+  type: object
+  properties:
+    position:
+      type: string
+      title: Position
+      enum: [top-right, top-left, bottom-right, bottom-left]
+      default: top-right
+    duration:
+      type: integer
+      title: Auto-hide duration (ms)
+      default: 5000

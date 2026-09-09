@@ -1,0 +1,95 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Grid auto-fit
+
+status: experimental
+
+group: Base
+
+props:
+
+  type: object
+
+  properties:
+
+    vertical:
+      type: string
+      title: Align items
+      description: 'Vertical alignment: top, center, bottom.'
+      enum:
+        - top
+        - center
+        - bottom
+        - stretch
+      default: top
+      examples:
+        - top
+
+    horizontal:
+      type: string
+      title: Justify items
+      description: 'Horizontal alignment: left, center, right, space-between. Note: space-between only works with col: none.'
+      enum:
+        - left
+        - center
+        - right
+        - stretch
+        - space-between
+      default: left
+      examples:
+        - left
+
+    direction:
+      type: string
+      title: Direction of items
+      description: 'Place items: Across the page, Down the page.'
+      enum:
+        - across
+        - down
+      default: across
+      examples:
+        - across
+
+    gap:
+      type: string
+      title: Gap between items
+      description: 'The space between columns or content.'
+      enum:
+        - none
+        - small
+        - medium
+        - large
+      default: medium
+      examples:
+        - medium
+
+    wrap:
+      type: string
+      title: Wrap
+      description: 'When using col: none, this will allow components to wrap.'
+      enum:
+        - wrap
+        - nowrap
+      examples:
+        - wrap
+
+    auto_fit:
+      type: boolean
+      title: Make grid auto fit.
+      default: false
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'
+
+slots:
+
+  content:
+    title: Content
+    description: Flexible content slot.
+    # @fixme if no examples, component does not show up.
+    examples:
+      - Slot

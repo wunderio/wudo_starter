@@ -1,0 +1,20 @@
+# Main theme library.
+global:
+  css:
+    theme:
+      dist/style.css: {}
+      assets/fonts/fonts.css: { weight: -20 }
+  js:
+    js/color-scheme.js: { minified: false }
+
+print:
+  css:
+    theme:
+      dist/print.css: { media: print }
+
+focus-trap:
+  js:
+    components/00-base/01-primitives/focus-trap/focus-trap.js: { minified: false }
+  dependencies:
+    - core/drupal
+

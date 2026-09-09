@@ -1,0 +1,15 @@
+
+{% set createdDate = node.getCreatedTime|format_date('short') %}
+
+{% embed 'wudo:article-card' with {
+  card_meta: createdDate,
+  title: label,
+  title_url: url,
+  summary: content.body,
+} %}
+
+  {% block image %}
+    {{ content.field_image }}
+  {% endblock %}
+
+{% endembed %}

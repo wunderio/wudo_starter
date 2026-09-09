@@ -1,0 +1,136 @@
+/**
+ * @file carousel.scss
+ * @category Organisms
+ * @component Carousel
+ * @description Layout and animation styles for the SDC Carousel.
+ *
+ * @section Variables
+ * --items: Number of visible slides.
+ * --carousel-accent: Primary branding color for controls.
+ * --carousel-track-bg : Background color of the navigation bar (the oval track).
+ * --carousel-btn-bg   : Background color for the Next/Prev arrow buttons.
+ * --carousel-dot-size : Diameter of the pagination indicators (requires units, e.g., px, rem).
+ */
+
+.carousel {
+  $root: &;
+
+  --carousel-accent: var(--color-neutral-80, #424242);
+  --carousel-track-bg: var(--color-neutral-10, #f5f5f5);
+  --carousel-btn-bg: var(--color-white, #ffffff);
+  --carousel-dot-size: 12px;
+  --items: 1;
+
+  [data-theme="dark"] & {
+    --carousel-accent: var(--color-neutral-10, #f5f5f5);
+    --carousel-track-bg: var(--color-neutral-90, #333333);
+    --carousel-btn-bg: var(--color-neutral-90, #333333);
+  }
+
+  display: block;
+  position: relative;
+
+  @media (min-width: 50rem) {
+    --items: var(--dc-items, 3);
+  }
+
+  &__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    border-radius: 5px;
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+  }
+
+  &__track {
+    display: flex;
+
+    & > *,
+    #{$root}__slide {
+      flex: 0 0 calc(100% / var(--items));
+      scroll-snap-align: start;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      box-shadow: unset;
+    }
+  }
+
+  &__slide {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  &__btn {
+    appearance: none;
+    background: var(--carousel-btn-bg);
+    border: 1px solid var(--carousel-track-bg);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--carousel-accent);
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      transform: scale(1.1);
+      border-color: var(--carousel-accent);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    svg {
+      stroke-width: 2.5;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--carousel-track-bg);
+    padding: 8px;
+    border-radius: 20px;
+  }
+
+  &__dot {
+    appearance: none;
+    padding: 0;
+    width: var(--carousel-dot-size);
+    height: var(--carousel-dot-size);
+    background: var(--carousel-accent);
+    opacity: 0.2;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.is-active {
+      opacity: 1;
+      transform: scale(1.4);
+    }
+  }
+}

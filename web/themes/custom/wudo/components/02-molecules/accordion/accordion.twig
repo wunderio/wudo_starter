@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Accordion organism template.
+ *
+ * Available props:
+ * - title: (string) The visible header text for the summary.
+ * - content: (string/renderable) The main body content.
+ * - name: (string, optional) Group name for exclusive accordion behavior (only one open at once).
+ * - expanded: (boolean, optional) Whether the accordion is open by default.
+ *
+ * Available slots:
+ * - content: Overrides the content property for complex layouts.
+ */
+#}
+<details
+  class="accordion"
+  {{ name is defined ? 'name="' ~ name ~ '"' }}
+  {{ expanded ? 'open' : '' }}
+>
+
+  <summary class="accordion__summary">
+    {{ title }}
+    {% include 'wudo:icon' with {
+      symbol: 'chevron-down',
+      size: 'regular'
+    } %}
+  </summary>
+  <div class="accordion__content">
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+</details>

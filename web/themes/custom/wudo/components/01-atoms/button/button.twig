@@ -1,0 +1,88 @@
+{#
+/**
+ * @file
+ * Button component.
+ *
+ * Variables:
+ * - type: [string] Button type: primary, secondary, tertiary.
+ * - size: [string] Button size: large, regular, small.
+ * - icon: [string] Icon name.
+ * - icon_only: [boolean] show only icon.
+ * - icon_placement: [string] Icon position: before, after.
+ * - icon_size: [string] Icon size: large, regular, small.
+ * - text: [string] Button text.
+ * - url: [string] URL for the link button.
+ * - is_new_window: [boolean] Open in a new window or not.
+ * - is_external: [boolean] If link is external or not. TODO: finish implementation
+ * - is_disabled: [boolean] Disabled or not.
+ * - attributes: [string] Additional attributes.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{%
+  set classes = [
+  'button',
+  type is defined ? 'button--' ~ type : '',
+  size is defined ? 'button--' ~ size : '',
+  icon_only ? 'button--icon-only' : '',
+  is_external ? 'link--external' : '',
+  badge_content is not empty ? 'button--with-badge' : '',
+]
+%}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% do attributes.addClass(classes) %}
+{% if is_disabled %}
+  {% do attributes.setAttribute('disabled', 'disabled') %}
+{% endif %}
+
+{% set content_markup %}
+  {% if icon %}
+    {% set icon_markup %}
+      {{ include('wudo:icon', {
+        symbol: icon,
+        size: icon_size|default('regular'),
+        modifier_class: 'button__icon',
+      }, with_context = false) }}
+    {% endset %}
+
+    {% set text_markup %}
+      {% if icon_only %}
+        <span class="visually-hidden">{{ text }}</span>
+      {% else %}
+        {{ text }}
+      {% endif %}
+    {% endset %}
+
+    {% if icon_placement == 'before' %}
+      {{- icon_markup -}}{{- text_markup -}}
+    {% else %}
+      {{- text_markup -}}{{- icon_markup -}}
+    {% endif %}
+
+  {% else %}
+    {{- text -}}
+  {% endif %}
+  {% if badge_content is not empty %}
+    {% block badge %}
+      {{ include('wudo:badge', {
+        content: badge_content|raw,
+        type: badge_type|default('text'),
+        position: badge_position|default('corner'),
+        style: badge_style|default('red'),
+        modifier_class: 'button__badge',
+      }, with_context = false) }}
+    {% endblock %}
+  {% endif %}
+{% endset %}
+
+{% if url is defined %}
+  <a href="{{ url }}" {{ attributes }} {{ is_new_window ? 'target="_blank"' : '' }}>
+    {{ content_markup }}
+  </a>
+{% else %}
+  <button type="{{ type|default('button') }}"{{ attributes }}>
+    {{ content_markup }}
+  </button>
+{% endif %}

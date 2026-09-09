@@ -1,0 +1,25 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Tabs
+status: experimental
+group: Molecules
+
+props:
+  type: object
+  properties:
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes
+      examples:
+        - 'custom-class'
+
+slots:
+  tab_content:
+    title: Tab Items
+    description: Add 'Tab Item' components here.
+
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once

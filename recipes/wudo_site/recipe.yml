@@ -1,0 +1,12 @@
+name: 'Wudo site'
+description: 'Installs the Wudo custom module and theme for a new Drupal site.'
+type: 'Site'
+install:
+  - wudo_theme_extension
+  - wudo
+config:
+  strict: false
+  actions:
+    system.theme:
+      simpleConfigUpdate:
+        default: wudo

@@ -1,0 +1,66 @@
+{% set utils %}
+  {% block utilities %}{% endblock %}
+{% endset %}
+
+{% set branding %}
+  {% block branding %}{% endblock %}
+{% endset %}
+
+{% set nav %}
+  {% block navigation %}{% endblock %}
+{% endset %}
+
+{% set utils_output = utils|render|trim %}
+{% set branding_output = branding|render|trim %}
+{% set nav_output = nav|render|trim %}
+
+<header {{ attributes.addClass('site-header') }}>
+  {% if utils_output is not empty %}
+    <div class="site-header__utils">
+      <div class="page-wrapper">
+        {{ utils_output|raw }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if branding_output is not empty or nav_output is not empty %}
+    {% set header_content %}
+      <div class="site-header__main">
+        <div class="page-wrapper">
+          <div class="site-header__main--content" data-mobile-menu>
+            {% if branding_output is not empty %}
+              <div class="site-header__branding">
+                {{ branding_output|raw }}
+              </div>
+            {% endif %}
+
+            {% if nav_output is not empty %}
+              <div class="site-header__menu-toggle">
+                {{ include('wudo:menu-toggle', {
+                  label: 'Open menu',
+                }, with_context = false) }}
+              </div>
+              <div class="site-header__menu" data-menu>
+                {{ nav_output|raw }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endset %}
+
+    {# Sticky header #}
+    {% if is_sticky %}
+      {% embed 'wudo:sticky-header' with {
+        threshold: sticky_threshold|default(150),
+      } %}
+        {% block content %}
+          {{ header_content }}
+        {% endblock %}
+      {% endembed %}
+    {% else %}
+      {{ header_content }}
+    {% endif %}
+
+  {% endif %}
+</header>

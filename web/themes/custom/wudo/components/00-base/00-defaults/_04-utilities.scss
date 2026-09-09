@@ -1,0 +1,17 @@
+@use "02-breakpoints" as *;
+
+.u-mobile-only {
+  display: block;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.u-desktop-only {
+  display: none;
+
+  @include mobile {
+    display: block;
+  }
+}

@@ -1,0 +1,66 @@
+/**
+ * @file accordion.scss
+ * @component Accordion (Molecule)
+ * @description Native <details> and <summary> based accordion with smooth
+ * animations using the modern ::details-content specification.
+ *
+ * @section Local Tokens
+ * --details-border-color    : Border surrounding the entire component.
+ * --summary-bg-color        : Background color of the summary (header) area.
+ * --accordion-transition    : Speed and easing for icons and expansion.
+ */
+details {
+  --details-border-color: var(--color-neutral-20, #e5e5e5);
+  --details-border-radius: var(--radius-sm, 3px);
+  --summary-bg-color: var(--color-neutral-10, #f5f5f5);
+  --accordion-transition: 0.3s ease;
+}
+[data-theme=dark] details {
+  --details-border-color: var(--color-neutral-90, #222);
+  --summary-bg-color: var(--color-neutral-90, #222);
+}
+details {
+  margin-bottom: var(--space-lg);
+  border: 1px solid var(--details-border-color);
+  border-radius: var(--details-border-radius);
+  overflow: hidden;
+}
+details summary {
+  padding: var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--summary-bg-color);
+  border-radius: var(--details-border-radius) var(--details-border-radius) 0 0;
+  list-style: none;
+  margin: 0;
+  /* Hide default browser markers */
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary::-moz-list-bullet {
+  display: none;
+}
+details summary .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform var(--accordion-transition);
+}
+details[open] summary .icon {
+  transform: rotate(180deg);
+}
+details .accordion__content {
+  padding: var(--space-sm);
+}
+details .accordion__content > .paragraph:last-child {
+  margin-bottom: 0;
+}
+details::details-content {
+  block-size: 0;
+  transition: block-size var(--accordion-transition), content-visibility 0.5s allow-discrete;
+}
+details[open]::details-content {
+  block-size: auto;
+}

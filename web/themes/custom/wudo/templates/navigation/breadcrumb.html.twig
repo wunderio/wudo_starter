@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if breadcrumb %}
+  {{ include('wudo:breadcrumbs', {
+    items: breadcrumb,
+    separator: '/'
+  }) }}
+{% endif %}

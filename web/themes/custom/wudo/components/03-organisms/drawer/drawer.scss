@@ -1,0 +1,121 @@
+/**
+ * @file drawer.scss
+ * @component Drawer
+ * @category Organisms
+ * @description A versatile off-canvas container that slides in from various positions
+ * or fades into the center. Used for mobile menus, filters, or modal dialogs.
+ *
+ * @section Variables
+ * --duration : Transition speed for all animations (visibility, opacity, transform).
+ * --bg       : The background color of the inner container, theme-aware.
+ *
+ * @section Attributes and Modifiers
+ * [open]          - Toggles visibility and triggers entry animations.
+ * .drawer--left   - Slides the drawer in from the left edge.
+ * .drawer--right  - Slides the drawer in from the right edge.
+ * .drawer--center - Fades/scales the drawer as a centered modal.
+ */
+
+.drawer {
+  $root: &;
+
+  --duration: 0.3s;
+  --bg: var(--color-surface, #fff);
+
+  [data-theme="dark"] & {
+    --bg: var(--color-neutral-80, #222);
+  }
+
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  visibility: hidden;
+  transition: visibility var(--duration);
+
+  &[open] {
+    visibility: visible;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity var(--duration);
+
+    #{$root}[open] & {
+      opacity: 1;
+    }
+  }
+
+  &__inner {
+    position: absolute;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--duration) ease-in-out, opacity var(--duration);
+    max-width: var(--drawer-max-width, 60rem);
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+    #{$root}--right & {
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    #{$root}--left & {
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    #{$root}--center & {
+      top: 50%;
+      left: 50%;
+      height: auto;
+      max-height: 90vh;
+      transform: translate(-50%, -40%) scale(0.95);
+      border-radius: 8px;
+      opacity: 0;
+    }
+
+    #{$root}[open]#{$root}--right &,
+    #{$root}[open]#{$root}--left & {
+      transform: translateX(0);
+    }
+
+    #{$root}[open]#{$root}--center & {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  &__header {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__body {
+    padding: 1rem;
+    overflow-y: auto;
+    flex-grow: 1;
+  }
+
+  &__footer {
+    padding: 1rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1em;
+    font-weight: 600;
+  }
+
+  &__close {
+    padding: 0;
+  }
+}

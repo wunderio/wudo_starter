@@ -1,0 +1,85 @@
+@use "../../../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
+
+.grid {
+  $root: &;
+
+  --gap: 40px;
+
+  &--gap-none {
+    --gap: 0;
+  }
+
+  &--gap-small {
+    --gap: 16px;
+  }
+
+  &--gap-medium {
+    --gap: 32px;
+  }
+
+  &--gap-large {
+    --gap: 64px;
+  }
+
+  &--vertical-top {
+    //
+  }
+
+  &--vertical-center {
+    //
+  }
+
+  &--vertical-bottom {
+   //
+  }
+
+  &--wrap-wrap {
+    //
+  }
+
+  &--wrap-nowrap {
+    //
+  }
+
+  &--horizontal-left {
+    justify-content: start;
+  }
+
+  &--horizontal-center {
+    justify-content: center;
+  }
+
+  &--horizontal-right {
+    justify-content: end;
+  }
+
+  &--horizontal-space-between {
+    justify-content: space-between;
+  }
+
+  &--direction-across {
+    //
+  }
+
+  &--direction-down {
+    //
+  }
+
+  &--last-to-end > :last-child {
+    margin-inline-start: auto;
+  }
+
+  div:empty {
+    display: none;
+  }
+}
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(30ch, 100%), 1fr));
+  gap: clamp(1rem, 2vw, var(--default-gap));
+
+  @include breakpoint.mobile {
+    grid-template-columns: repeat(auto-fit, minmax(min(32ch, 100%), auto));
+  }
+}

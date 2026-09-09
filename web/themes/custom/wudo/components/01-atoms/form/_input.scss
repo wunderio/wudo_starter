@@ -1,0 +1,24 @@
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='search'],
+.form-text,
+textarea {
+  width: 100%;
+  padding-block: var(--padding-block);
+  padding-inline: var(--padding-inline);
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs, 3px);
+}
+
+input[type='tel'].form-tel {
+  width: 100%;
+}
+
+::-webkit-input-placeholder, /* Chrome/Opera/Safari */
+::-moz-placeholder, /* Firefox 19+ */
+:-ms-input-placeholder, /* IE 10+ */
+:-moz-placeholder /* Firefox 18- */ {
+  color: var(--placeholder-color);
+}

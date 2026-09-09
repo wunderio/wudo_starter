@@ -1,0 +1,43 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Reveal
+status: experimental
+group: Utilities
+
+props:
+  type: object
+  properties:
+    effect:
+      type: string
+      title: Effect
+      enum:
+        - fade-up
+        - fade-down
+        - fade-left
+        - fade-right
+        - zoom-in
+      default: fade-up
+      examples:
+        - 'fade-up'
+
+    delay:
+      type: string
+      title: Delay
+      description: "CSS time value (e.g. 200ms, 0.5s)"
+      default: '0s'
+      examples:
+        - '200ms'
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'
+
+slots:
+  content:
+    type: string
+    title: Content
+    description: Content slot.
+

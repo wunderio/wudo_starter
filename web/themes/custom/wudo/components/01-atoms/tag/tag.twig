@@ -1,0 +1,7 @@
+{# sdc_example/components/tag/tag.twig #}
+{% set base_class = 'tag' %}
+{% set type_class = base_class ~ '--' ~ type|default('default') %}
+
+<span data-wudo-type="tag" class="{{ type_class }}">
+  {{ text }}
+</span>

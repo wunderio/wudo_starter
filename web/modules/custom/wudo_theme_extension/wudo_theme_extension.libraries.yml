@@ -1,0 +1,9 @@
+paragraph_behavior:
+  css:
+    component:
+      css/paragraph-behavior.css: {}
+  js:
+    js/paragraph-behavior.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

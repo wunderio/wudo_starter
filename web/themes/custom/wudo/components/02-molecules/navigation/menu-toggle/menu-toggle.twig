@@ -1,0 +1,19 @@
+<button class="mobile-menu-toggle" data-menu-toggle aria-expanded="false">
+  <span class="visually-hidden">
+   {{ label }}
+  </span>
+
+  {# Burger icon #}
+  {{ include('wudo:icon', {
+    symbol: 'menu',
+    size: 'large',
+    modifier_class: 'icon-menu',
+  }, with_context = false) }}
+
+  {# Close icon #}
+  {{ include('wudo:icon', {
+    symbol: 'close',
+    size: 'large',
+    modifier_class: 'icon-close',
+  }, with_context = false) }}
+</button>

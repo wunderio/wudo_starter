@@ -1,0 +1,17 @@
+wudo-favorite-button {
+  --wudo-fav-btn-bg: var(--color-neutral-10);
+  --wudo-fav-btn-color: #f43f5e;
+  --wudo-fav-btn-active-bg: #f43f5e;
+  --wudo-fav-btn-active-color: var(--color-neutral-10);
+
+  button {
+    background-color: var(--wudo-fav-btn-bg);
+  }
+
+  &[active] {
+    button {
+      background-color: var(--wudo-fav-btn-active-bg);
+      color: var(--wudo-fav-btn-active-color);
+    }
+  }
+}

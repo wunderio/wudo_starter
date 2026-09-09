@@ -1,0 +1,70 @@
+// attribute-list.scss
+
+.attribute-list {
+  --attr-gap-x: 1.5rem;
+  --attr-gap-y: 0.75rem;
+  --attr-border-color: var(--color-neutral-20, #e5e5e5);
+  --attr-highlight-bg: var(--color-neutral-10, #f5f5f5);
+
+  margin: 1.5rem 0;
+
+  &__title {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--attr-border-color);
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    margin: 0;
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    gap: var(--attr-gap-x);
+    padding: var(--attr-gap-y);
+    border-bottom: 1px solid var(--attr-border-color);
+    align-items: baseline;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &--highlight {
+      background-color: var(--attr-highlight-bg);
+      font-weight: 500;
+    }
+  }
+
+  &__label {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+
+    &-text {
+      display: block;
+    }
+  }
+
+  &__value {
+    margin: 0;
+    color: #1e293b;
+    font-weight: 600;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .attribute-list__item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .attribute-list__value {
+    text-align: left;
+    padding-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,34 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Countdown
+status: experimental
+group: Molecules
+
+props:
+  type: object
+  properties:
+    end_date:
+      type: string
+      title: End Date
+      description: "Format: YYYY-MM-DD HH:MM:SS"
+      examples:
+        - '2026-12-31 23:59:59'
+
+    expired_text:
+      type: string
+      title: Expiration Message
+      description: "Text shown when the timer reaches zero."
+      examples:
+        - 'The event has started!'
+        - 'Sale is over.'
+
+    title:
+      type: string
+      title: Main Title
+      examples:
+        - 'Let it go!'
+
+    subtitle:
+      type: string
+      title: Subtitle
+      examples:
+        - 'subtitle text here'

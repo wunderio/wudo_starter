@@ -1,0 +1,71 @@
+/**
+ * @component back-to-top
+ */
+back-to-top {
+
+  --bg: var(--color-white, #fff);
+  --progress-color: var(--color-neutral-90, #333333);
+
+  [data-theme="dark"] & {
+    --bg: var(--color-neutral-90, #333333);
+    --progress-color: var(--color-neutral-70, #616161);
+  }
+
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .scroll-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .progress-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+
+    &__path {
+      fill: none;
+      stroke: var(--progress-color);
+      stroke-width: 2;
+      transition: stroke-dashoffset 0.1s linear;
+    }
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+}

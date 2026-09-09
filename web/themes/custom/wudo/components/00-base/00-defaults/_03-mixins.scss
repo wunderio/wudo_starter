@@ -1,0 +1,17 @@
+// Mixins
+// Less mixins, better life!
+
+@mixin overlay-hidden {
+  position: absolute;
+  inset: 0 auto auto 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@mixin overlay-visible {
+  position: revert;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}

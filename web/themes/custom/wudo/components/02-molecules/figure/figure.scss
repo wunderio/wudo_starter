@@ -1,0 +1,18 @@
+//
+// Figure component.
+//
+
+.figure {
+  $root: &;
+
+  margin: 0;
+  display: block;
+
+  #{$root}__image {
+    object-fit: contain;
+  }
+
+  #{$root}__caption {
+    //
+  }
+}

@@ -1,0 +1,13 @@
+<back-to-top class="back-to-top" data-threshold="{{ threshold|default(400) }}">
+  <button type="button" class="scroll-button" aria-label="{{ 'Back to top'|t }}">
+    {% if show_progress %}
+      <svg class="progress-circle" viewBox="0 0 40 40">
+        <circle class="progress-circle__path" cx="20" cy="20" r="18"></circle>
+      </svg>
+    {% endif %}
+
+    <svg class="icon" viewBox="0 0 24 24">
+      <path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</back-to-top>

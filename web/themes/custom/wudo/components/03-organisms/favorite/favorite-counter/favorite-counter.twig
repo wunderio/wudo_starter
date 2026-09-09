@@ -1,0 +1,32 @@
+{% set drawer_id = drawer_id|default('favorite-drawer') %}
+{% set button_label = button_label|default('Favorites'|t) %}
+{% set icon_type = icon_type|default('heart') %}
+{% set icon_size = icon_size|default('large') %}
+{% set badge_style = badge_style|default('red') %}
+
+{% set button_classes = [
+  'wudo-drawer-trigger',
+  modifier_class|default(''),
+]|join(' ')|trim %}
+
+<wudo-favorite-counter-trigger drawer-id="{{ drawer_id }}">
+  {% embed 'wudo:button' with {
+  type: 'secondary',
+  icon: icon_type,
+  icon_only: true,
+  icon_size: icon_size,
+  text: button_label,
+  badge_content: 'default',
+  badge_style: badge_style,
+  modifier_class: button_classes,
+  } only %}
+    {% block badge %}
+      {{ include('wudo:badge', {
+        content: '',
+        position: 'corner',
+        style: badge_style,
+        modifier_class: 'js-count',
+      }, with_context = false) }}
+    {% endblock %}
+  {% endembed %}
+</wudo-favorite-counter-trigger>

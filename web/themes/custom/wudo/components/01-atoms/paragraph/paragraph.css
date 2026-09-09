@@ -1,0 +1,11 @@
+/**
+ * @file paragraph.scss
+ * Styles for paragraphs.
+ */
+.paragraph {
+  display: block;
+  margin-bottom: 1rem;
+}
+.paragraph:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,72 @@
+/**
+ * @file button.scss
+ * Styles for buttons
+ */
+
+.button {
+
+  --button-padding: 0.7em 1em;
+  --button-font-size: var(--font-size-2xs, 0.875rem);
+  --button-inline-gap: var(--space-sm, 8px);
+  --button-bg: var(--color-button-primary-background, #186cd5);
+  --button-color: var(--color-button-primary-color, #ffffff);
+  --button-disabled-bg: var(--color-button-disabled-background, #94A3B8);
+
+  display: inline-flex;
+  min-width: max-content;
+  max-width: 100%;
+  padding: var(--button-padding);
+  align-items: center;
+  gap: var(--button-inline-gap);
+  min-width: max-content;
+  border: 0;
+  border-radius: var(--radius-xs, 3px);
+  font-size: var(--button-font-size);
+  text-transform: uppercase;
+
+  &--with-badge {
+    position: relative;
+  }
+
+  &__text {
+    flex-shrink: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .button__icon {
+    flex-shrink: 0;
+    display: block;
+    fill: currentColor;
+  }
+
+  &--primary {
+    color: var(--button-color);
+    background: var(--button-bg);
+
+    &[disabled] {
+      background: var(--button-disabled-bg);
+    }
+  }
+
+  &--secondary {
+    //
+  }
+
+  // Size.
+  &--large {
+    --button-font-size: var(--font-size-xs, 16px);
+  }
+
+  &--regular {
+    --button-font-size: var(--font-size-2xs, 14px);
+  }
+
+  &--small {
+    --button-font-size: var(--font-size-3xs, 12px);
+  }
+
+  &--icon-only {
+    --button-padding: 0;
+  }
+}

@@ -1,0 +1,36 @@
+{#
+/**
+ * @file stat-card.twig
+ * Stat Card component template.
+ *
+ * This component displays statistical data with an animated counter effect
+ * using the wudo-count-up custom element.
+ *
+ * Available variables:
+ * - number: (string/int) The target value to count up to.
+ * - duration: (int) Animation duration in milliseconds (e.g., 2000).
+ * - suffix: (string) Optional text or symbol following the number (e.g., %, km, +).
+ * - label: (string) Description text displayed below the value.
+ * - attributes: (Attribute) Drupal Attribute object for custom classes and IDs.
+ *
+ * @see wudo-count-up (Web Component)
+ */
+#}
+
+<div {{ attributes.addClass('stat-card') }}>
+  <div class="stat-card__value">
+  <wudo-count-up
+    data-number="{{ number }}"
+    data-duration="{{ duration }}"
+    class="stat-card__number"
+  >
+    0
+  </wudo-count-up>
+  {% if suffix %}
+    <span class="stat-card__suffix">{{ suffix }}</span>
+  {% endif %}
+  </div>
+  {% if label %}
+    <div class="stat-card__label">{{ label }}</div>
+  {% endif %}
+</div>

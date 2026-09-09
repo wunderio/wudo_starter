@@ -1,0 +1,23 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Image
+status: experimental
+group: Atoms
+
+props:
+  type: object
+  properties:
+    image:
+      title: Image
+      examples:
+        - src: 'https://placehold.co/600x400.png'
+          alt: 'Alt placeholder'
+          width: 600
+          height: 400
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'

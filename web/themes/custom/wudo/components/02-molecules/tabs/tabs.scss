@@ -1,0 +1,73 @@
+/**
+ * @file tabs.scss
+ * Styles for tabs.
+ */
+
+.tabs {
+  --tabs-border-color: var(--color-neutral-20, #e5e5e5);
+  --tabs-background: var(--color-neutral-10, #f5f5f5);
+  --tabs-active-color: var(--color-text-primary, #222222);
+  --tabs-active-background: var(--color-white, #ffffff);
+  --tabs-focus-color: var(--color-semantic-info-60, #2563eb);
+  --tabs-spacing: 0.1rem;
+  --tabs-radius: var(--radius-sm, 5px);
+  --tab-shadow: 0px 0px 4px var(--tabs-border-color);
+
+  [data-theme="dark"] & {
+    --tabs-border-color: var(--color-neutral-60, #757575);
+    --tabs-background: var(--color-neutral-90, #333333);
+    --tabs-active-background: var(--color-page-bg, #454545);
+    --tab-shadow: none;
+  }
+
+  margin-block: var(--tabs-spacing);
+
+  &__list {
+    display: flex;
+    padding: 0.5rem 0.5rem 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--tabs-spacing);
+    background: var(--tabs-background);
+    box-shadow: inset 0px -3px 0px var(--tabs-border-color);
+    border-radius: var(--tabs-radius) var(--tabs-radius) 0 0;
+
+
+    &::-webkit-scrollbar {
+      display: none; /* Hide scrollbar Chrome/Safari */
+    }
+  }
+
+  &__tab {
+    flex: 0 0 auto;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    transition: background 0.2s;
+    border-radius: 3px 3px 0 0;
+
+    &[aria-selected="true"],
+    &.is-active {
+      background: var(--tabs-active-background);
+      box-shadow: var(--tab-shadow);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tabs-focus-color);
+      outline-offset: -2px;
+    }
+  }
+
+  &__item {
+
+    &[role="tabpanel"] {
+      padding: 1rem;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+}

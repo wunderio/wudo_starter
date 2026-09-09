@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Image component.
+ *
+ * Variables:
+ * - image: [object]
+ *   - src: [string] Image source.
+ *   - alt: [string] Image alternative text.
+ * - attributes: [string] Additional attributes.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{% set image_src = image.src|default(attributes.src|render|trim) %}
+{% set image_alt = image.alt|default(attributes.alt|render|trim) %}
+
+{%
+  set classes = [
+  'image',
+  modifier_class|default(''),
+]
+%}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% do attributes.addClass(classes) %}
+{% set attributes = attributes | without('src', 'alt') %}
+
+<img src="{{- image_src -}}" alt="{{- image_alt|raw -}}"
+  {{ attributes }}
+{% if image_width is not empty %}width="{{ image_width }}"{% endif %}
+{% if image_height is not empty %}height="{{ image_height }}"{% endif %}
+/>

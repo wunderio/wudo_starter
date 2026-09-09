@@ -1,0 +1,38 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Figure
+
+status: experimental
+
+group: Molecules
+
+props:
+
+  type: object
+    #required:
+    #- url
+
+  properties:
+
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Image
+      examples:
+        - src: 'https://placehold.co/600x400.png'
+          alt: 'Placeholder image'
+
+    caption:
+      type: string
+      $ref: json-schema-definitions://canvas.module/text
+      title: Caption
+      description: Caption for the image.
+      examples:
+        - 'Figure image caption.'
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'

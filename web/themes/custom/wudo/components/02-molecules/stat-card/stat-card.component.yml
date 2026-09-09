@@ -1,0 +1,32 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Stat Card
+status: experimental
+group: Molecules
+
+props:
+  type: object
+  required:
+  - number
+  properties:
+    number:
+      type: integer
+      title: Target Number
+      examples:
+        - 145
+    suffix:
+      type: string
+      title: Suffix (e.g. +, %, km)
+      examples:
+        - '%'
+    label:
+      type: string
+      title: Description
+      examples:
+        - 'Success Rate'
+    duration:
+      type: integer
+      title: Animation duration (ms)
+      default: 2000
+      examples:
+        - 2000

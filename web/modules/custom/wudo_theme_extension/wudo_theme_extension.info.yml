@@ -1,0 +1,9 @@
+name: 'Wudo Theme Extension'
+type: module
+description: 'Provide additional functionalities for the Wudo theme.'
+package: Custom
+core_version_requirement: ^11
+dependencies:
+  - drupal:node
+  - drupal:views
+  - paragraphs:paragraphs

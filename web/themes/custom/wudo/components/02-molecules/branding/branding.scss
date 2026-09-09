@@ -1,0 +1,14 @@
+//
+// Branding component.
+//
+
+.branding {
+  &__logo-link {
+    max-width: 9rem;
+    display: block;
+  }
+
+  &__logo {
+    width: 9rem
+  }
+}

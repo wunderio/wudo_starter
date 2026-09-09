@@ -1,0 +1,91 @@
+{#
+/**
+ * @file
+ * Link component.
+ *
+ * Variables:
+ * - text: [string] Link text.
+ * - url: [string|Drupal\Core\Url] Link URL.
+ * - title: [string] Title of a link.
+ * - variant: [string] Variant of a link (default, cta, list-item).
+ * - is_new_window: [boolean] Open in a new window.
+ * - is_external: [boolean] Link is external.
+ * - is_active [boolean] Link is active.
+ * - icon: [string] Icon name.
+ * - icon_placement: [string] Icon position: before, after.
+ * - attributes: [Attribute] Additional attributes.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{%
+  set classes = [
+  'link',
+  (icon and not text) ? 'link--only-icon',
+  (icon and text) ? 'link--has-icon',
+  'link--' ~ (variant|default('default')),
+  is_external ? 'link--external',
+  is_active ? 'link--active',
+  modifier_class|default(null)
+]
+%}
+
+{% set text = text|render|default('')|striptags('<em><strong>') %}
+{% set icon_placement = icon_placement|default('after') %}
+
+{% set attrs = attributes is not empty ? attributes : create_attribute() %}
+{% do attrs.addClass(classes) %}
+
+{% if url is not empty %}
+  {% do attrs.setAttribute('href', url.toString is defined ? url.toString() : url) %}
+{% endif %}
+
+{% if title is not empty %}
+  {% do attrs.setAttribute('title', title) %}
+{% endif %}
+
+{% if is_new_window %}
+  {% do attrs.setAttribute('target', '_blank') %}
+  {% do attrs.setAttribute('rel', 'noopener noreferrer') %}
+{% endif %}
+
+{% if text is not empty or icon is not empty %}
+  {% set content_markup %}
+    {% if icon and not is_external %}
+      {% set icon_markup %}
+        {{ include('wudo:icon', {
+          symbol: icon,
+          modifier_class: 'link__icon',
+        }, with_context = false) }}
+      {% endset %}
+
+      {% if icon_placement == 'before' %}
+        {{- icon_markup -}}{{- text|raw -}}
+      {% else %}
+        {{- text|raw -}}{{- icon_markup -}}
+      {% endif %}
+
+    {% else %}
+      {{- text|raw -}}
+    {% endif %}
+  {% endset %}
+
+  {% if is_new_window %}
+    {% set is_new_window_content %}
+      <span class="visually-hidden">({{ 'Opens in a new tab/window'|t }})</span>
+    {% endset %}
+  {% endif %}
+
+  {% if is_external %}
+    {% set is_external_content %}
+      {{ include('wudo:icon', {
+        symbol: 'upper-right-arrow',
+        modifier_class: 'link__icon',
+      }, with_context = false) }}
+    {% endset %}
+  {% endif %}
+
+  <a {{ attrs }}>
+    {{- content_markup -}}{{- is_new_window_content -}}{{- is_external_content -}}
+  </a>
+{% endif %}

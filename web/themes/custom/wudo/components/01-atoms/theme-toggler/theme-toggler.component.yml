@@ -1,0 +1,24 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Theme Toggle
+status: stable
+group: Atoms
+
+props:
+  type: object
+  properties:
+    light_label:
+      type: string
+      title: Label for light theme
+      default: "Light"
+      example: "Light"
+    dark_label:
+      type: string
+      title: Label for dark theme
+      default: "Dark"
+      example: "Dark"
+    auto_label:
+      type: string
+      title: Label for dark theme
+      default: "Auto"
+      example: "Auto"

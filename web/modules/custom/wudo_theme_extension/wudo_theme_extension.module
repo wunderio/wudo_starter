@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function wudo_theme_extension_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['#attached']['library'][] = 'wudo_theme_extension/paragraph_behavior';
+}

@@ -1,0 +1,40 @@
+//
+// Menu toggle component.
+//
+
+@use "../../../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
+@use "../../../00-base/00-defaults/_03-mixins.scss" as *;
+
+.mobile-menu-toggle {
+
+  @include breakpoint.mobile {
+    @include overlay-hidden;
+  }
+
+  &[aria-expanded="false"] {
+    .icon-menu {
+      display: block;
+    }
+
+    .icon-close {
+      display: none;
+    }
+  }
+
+  &[aria-expanded="true"] {
+    .icon-menu {
+      display: none;
+    }
+
+    .icon-close {
+      display: block;
+    }
+  }
+
+  .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    stroke: currentColor;
+    stroke-width: 0.3px;
+  }
+}

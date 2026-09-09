@@ -1,0 +1,137 @@
+.container {
+  $root: &;
+
+  --container-link-color: #222;
+  --container-paragraph-color: #222;
+
+  &--design-none {
+    // ...
+  }
+
+  &--design-light {
+    background-color: #f5f5f5;
+  }
+
+  &--design-dark {
+    --container-link-color: #f5f5f5;
+    --container-paragraph-color: #f5f5f5;
+
+    background-color: #454545;
+    color: #f5f5f5;
+  }
+
+  &--has-side-padding {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  &__inner {
+
+    padding: 16px 24px;
+
+    #{$root}--constrain & {
+      max-width: 1608px;
+      margin: auto;
+    }
+
+    #{$root}--gap & {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    #{$root}--gap-small & {
+      gap: 16px;
+    }
+
+    #{$root}--gap-medium & {
+      gap: 32px;
+    }
+
+    #{$root}--gap-large & {
+      gap: 40px;
+    }
+
+    &--design-slot-outline {
+      border: 2px solid #454545;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    &--design-slot-shadow {
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+      background-color: white;
+      border-radius: 10px;
+    }
+  }
+
+  &--spacing-large {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @media (min-width: 70rem) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+
+  &--spacing-x-large {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @media (min-width: 70rem) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    @media (min-width: 70rem) {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+  }
+
+  &--spacing-xx-large {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @media (min-width: 70rem) {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    @media (min-width: 70rem) {
+      padding-top: 160px;
+      padding-bottom: 160px;
+    }
+  }
+
+  &--has-image {
+    @media (min-width: 70rem) {
+      position: relative;
+      padding-right: 30%;
+    }
+  }
+
+  &__image {
+    display: none;
+
+    @media (min-width: 70rem) {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 25%;
+      object-fit: cover;
+      object-position: left;
+      width: 30%;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: left;
+    }
+  }
+}

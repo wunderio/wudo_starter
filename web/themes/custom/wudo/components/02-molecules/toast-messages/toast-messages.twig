@@ -1,0 +1,31 @@
+<toast-messages
+  class="toast-wrapper"
+  data-position="{{ position|default('top-right') }}"
+  data-duration="{{ duration|default(5000) }}"
+>
+  {# Container for Drupal messages #}
+  <div class="toast-container" data-toast-container>
+    {% for type, messages in message_list %}
+      {% for message in messages %}
+        <div class="toast-item toast-item--{{ type }}" role="alert">
+          <div class="toast-item__content">{{ message }}</div>
+          <div class="toast-item__progress"></div>
+          <button class="button button-close button--icon-only" aria-label="{{ 'Close'|t }}">
+            {{ include('wudo:icon', { symbol: 'close', size: 'large' }) }}
+          </button>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+  {# Template for JS #}
+  <template id="toast-template">
+    <div class="toast-item" role="alert">
+      <div class="toast-item__content"></div>
+      <div class="toast-item__progress"></div>
+      <button class="button button-close button--icon-only" aria-label="{{ 'Close'|t }}">
+        {{ include('wudo:icon', { symbol: 'close', size: 'large' }) }}
+      </button>
+    </div>
+  </template>
+</toast-messages>

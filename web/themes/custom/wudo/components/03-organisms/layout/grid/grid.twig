@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Grid component.
+ *
+ * Variables:
+ * - gap: [string] Gap: none, small, medium, large.
+ * - vertical: [string] Vertical: top, center, bottom.
+ * - horizontal: [string] Horizontal: left, center, right, space-between.
+ * - direction: [string] Horizontal: across, down.
+ * - col: [string] Columns: none, one, two, three, four.
+ * - wrap: [boolean] Wrap: wrap, nowrap.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{% set gap_class = 'grid--gap-%s'|format(gap|default('none')) %}
+{% set vertical_class = 'grid--vertical-%s'|format(vertical|default('center')) %}
+{% set horizontal_class = 'grid--horizontal-%s'|format(horizontal|default('left')) %}
+{% set direction_class = 'grid--direction-%s'|format(direction|default('across')) %}
+{% set wrap_class = 'grid--wrap-%s'|format(wrap|default('wrap')) %}
+
+{% set modifier_class = '%s %s %s %s %s %s'|format(gap_class, vertical_class, horizontal_class, direction_class, wrap_class, modifier_class|default('')) %}
+
+<div class="grid {{ modifier_class }} {{ auto_fit ? 'grid-auto-fit' : '' }}">
+  {%- block content %}
+    {{- content -}}
+  {% endblock -%}
+</div>

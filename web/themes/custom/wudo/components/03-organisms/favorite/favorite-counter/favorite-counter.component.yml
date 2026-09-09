@@ -1,0 +1,42 @@
+name: Favorite Counter
+status: experimental
+group: Favorite
+
+props:
+  type: object
+  properties:
+    drawer_id:
+      type: string
+      title: Drawer ID
+      description: "ID of the favorite drawer component to open"
+      default: "favorite-drawer"
+    badge_style:
+      type: string
+      title: Badge Style
+      description: 'Type: primary, red, green, blue, yellow'
+      default: primary
+      enum:
+        - primary
+        - red
+        - green
+        - blue
+        - yellow
+      examples:
+        - primary
+    icon_size:
+      type: string
+      title: Size
+      description: 'Icon size: large, regular, small.'
+      default: regular
+      enum:
+        - large
+        - regular
+        - small
+      examples:
+        - regular
+
+libraryOverrides:
+  dependencies:
+    - wudo/import-map
+  js:
+    favorite-counter.js: { attributes: { type: module } }

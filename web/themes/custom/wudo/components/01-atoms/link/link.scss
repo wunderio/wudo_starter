@@ -1,0 +1,57 @@
+// ============================================
+// Link Component
+// ============================================
+// Themeable tokens (define in :root or parent):
+//   --link-color              Base link color
+//   --link-hover-color        Hover state color
+//   --link-cta-color          CTA variant color
+//   --link-cta-hover-color    CTA variant hover color
+//
+// Internal tokens (scoped to .link):
+//   --link-decoration-*       Decoration styling
+// ============================================
+
+.link {
+  --link-decoration-color: currentColor;
+  --link-decoration-line: underline;
+  --link-decoration-thickness: 0.0625rem; // 1px
+  --link-decoration-offset: 0.125rem; // 2px
+
+  // Basic link styles.
+  color: var(--link-color, #0063a3);
+  text-decoration-line: var(--link-decoration-line);
+  text-decoration-color: var(--link-decoration-color);
+  text-decoration-thickness: var(--link-decoration-thickness);
+  text-underline-offset: var(--link-decoration-offset);
+
+  &:hover {
+    color: var(--link-hover-color, #171c1e);
+  }
+
+  &--has-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  // Variation - CTA
+  &--cta {
+    color: var(--link-cta-color, #171c1e);
+    --link-hover-color: var(--link-cta-hover-color, #171c1e);
+    --link-decoration-color: var(--color-secondary, #fbad26);
+    --link-decoration-thickness: 0.125rem;
+    --link-decoration-offset: 0.5rem;
+
+    font-weight: 600;
+
+    &:hover {
+      --link-decoration-color: currentColor;
+    }
+  }
+
+  // Variation - list-item
+  &--list-item {
+    justify-content: space-between;
+  }
+}

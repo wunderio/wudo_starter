@@ -1,0 +1,17 @@
+{#
+Parameters:
+- drawer_id: (mandatory) must match the drawer_id used in buttons/counters
+- api_url: API path (default: /api/favorites)
+#}
+
+{% set drawer_id = drawer_id|default('favorite-drawer') %}
+
+<wudo-favorite-drawer
+  id="{{ drawer_id }}"
+  api-url="{{ api_url|default('/api/favorites') }}"
+  label-title="{{ 'My Favorites'|t }}"
+  label-empty="{{ 'List is empty'|t }}"
+  label-loading="{{ 'Loading...'|t }}"
+  label-remove="{{ 'Remove'|t }}"
+  {{ attributes }}
+></wudo-favorite-drawer>

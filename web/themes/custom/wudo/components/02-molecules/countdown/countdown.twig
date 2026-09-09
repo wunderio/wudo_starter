@@ -1,0 +1,43 @@
+{#
+/**
+ * @file countdown.twig
+ * Countdown component template.
+ *
+ * Available variables:
+ * - title: (string) The main heading for the countdown.
+ * - subtitle: (string) Supporting text above the timer.
+ * - end_date: (string) ISO 8601 or timestamp for the 'data-end' attribute.
+ * - attributes: (Attribute) Pre-defined Drupal attributes object.
+ *
+ */
+#}
+
+<div {{ attributes.addClass('countdown') }}>
+  <div class="countdown__header">
+    <h2 class="countdown__title">{{ title|default('Countdown to something!') }}</h2>
+    <p class="countdown__subtitle">{{ subtitle|default('Epic things are going to happen in') }}</p>
+  </div>
+
+  <wudo-countdown
+    data-end="{{ end_date }}"
+    data-expired="{{ 'The event has started!'|t }}"
+    class="countdown__timer"
+  >
+    <div class="countdown__card">
+      <span class="countdown__number" data-days>00</span>
+      <span class="countdown__unit">{{ 'Days'|t }}</span>
+    </div>
+    <div class="countdown__card">
+      <span class="countdown__number" data-hours>00</span>
+      <span class="countdown__unit">{{ 'Hours'|t }}</span>
+    </div>
+    <div class="countdown__card">
+      <span class="countdown__number" data-minutes>00</span>
+      <span class="countdown__unit">{{ 'Minutes'|t }}</span>
+    </div>
+    <div class="countdown__card">
+      <span class="countdown__number" data-seconds>00</span>
+      <span class="countdown__unit">{{ 'Seconds'|t }}</span>
+    </div>
+  </wudo-countdown>
+</div>

@@ -1,0 +1,136 @@
+{#
+/**
+ * @file
+ * Pagination component.
+ *
+ * Variables:
+ * - heading_id: [string] Heading id.
+ * - items: [array] Array of pagination items:
+ *   - text: [string] Item text.
+ *   - href: [string] Item link.
+ * - items_modifier_class: [string] Items modifier class.
+ * - current: [string, integer] Current page number.
+ * - attributes: [string] Additional attributes.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{% set items_per_page_title = items_per_page_title|default('Items per page') %}
+{% set modifier_class = '%s %s'|format(theme_class, modifier_class|default('')) %}
+
+{% if items is not empty %}
+  <nav
+    class="pagination {{ modifier_class -}}" role="navigation"
+    {% if heading_id is not empty %}aria-labelledby="{{ heading_id }}"{% endif %}
+    {% if attributes is not empty %}{{- attributes|raw -}}{% endif %}
+  >
+    <h4 {% if heading_id is not empty %}id="{{ heading_id }}"{% endif %} class="visually-hidden">{{ 'Pagination' }}</h4>
+
+    <ul class="pagination__items {{ items_modifier_class }}">
+      {# Print first item if we are not on the first page. #}
+      {% if items.first %}
+        <li class="ct-pagination__item ct-pagination__item--first hide-xxs show-m">
+          {% set attributes = 'title="Go to first page"' %}
+          {{ include('wudo:link', {
+            text: items.first.text|default('First'),
+            url: items.first.href,
+            icon: 'chevron-double-left',
+            icon_placement: 'before',
+            icon_only: true,
+            attributes: attributes,
+            modifier_class: 'pagination__link',
+          }, with_context = false) }}
+        </li>
+      {% endif %}
+
+      {% if items.previous %}
+        <li class="pagination__item pagination__item--previous">
+          {% if current - 1 %}
+            {% set attributes = 'title="Go to previous page - page %s"'|format(current - 1) %}
+          {% else %}
+            {% set attributes = 'title="Go to previous page"' %}
+          {% endif %}
+          {{ include('wudo:link', {
+            text: items.previous.text|default('Prev'),
+            url: items.previous.href,
+            icon: 'chevron-left',
+            icon_placement: 'before',
+            icon_only: true,
+            attributes: attributes,
+            modifier_class: 'pagination__link',
+          }, with_context = false) }}
+        </li>
+      {% endif %}
+
+      {% if ellipses.previous %}
+        <li class="pagination__item pagination__item--ellipsis pagination__item--ellipsis-previous" role="presentation">
+          &hellip;
+        </li>
+      {% endif %}
+
+      {# Generate pagination. #}
+      {% for key, item in items.pages %}
+        <li class="pagination__item {% if current == key %}pagination__item--active{% else %}hide-xxs show-m{% endif %}">
+          {% if current == key %}
+            {% set title = 'Current page' %}
+          {% else %}
+            {% set title = 'Go to page %s of %s'|format(key, items.pages|length) %}
+          {% endif %}
+          {{ include('wudo:link', {
+            text: key ~ '',
+            title: title|default(''),
+            hidden_text: current == key ? 'Current page' : 'Page',
+            is_active: current == key ? 1 : 0,
+            url: item.href,
+            attributes: attributes,
+            modifier_class: 'pagination__item__link',
+          }, with_context = false) }}
+        </li>
+      {% endfor %}
+
+      {# Add an ellipsis if there are further next pages. #}
+      {% if ellipses.next %}
+        <li class="pagination__item pagination__item--ellipsis pagination__item--ellipsis-previous" role="presentation">
+          &hellip;
+        </li>
+      {% endif %}
+
+      {# Print next item if we are not on the last page. #}
+      {% if items.next %}
+        <li class="pagination__item pagination__item--next">
+          {% if current < total_pages %}
+            {% set attributes = 'title="Go to next page - page %s"'|format(current + 1) %}
+          {% else %}
+            {% set attributes = 'title="Go to next page"' %}
+          {% endif %}
+          {{ include('wudo:link', {
+            text: items.next.text|default('Next'),
+            aria_text: 'Next page',
+            url: items.next.href,
+            icon: 'chevron-right',
+            icon_placement: 'after',
+            icon_only: true,
+            attributes: attributes,
+            modifier_class: 'pagination__link',
+          }, with_context = false) }}
+        </li>
+      {% endif %}
+
+      {# Print last item if we are not on the last page. #}
+      {% if items.last %}
+        {% set attributes = 'title="Go to last page"' %}
+        <li class="pagination__item pagination__item--last hide-xxs show-m">
+          {{ include('wudo:link', {
+            text: items.last.text|default('Last'),
+            url: items.last.href,
+            icon: 'chevron-double-right',
+            icon_placement: 'after',
+            icon_only: true,
+            attributes: attributes,
+            modifier_class: 'pagination__link',
+          }, with_context = false) }}
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

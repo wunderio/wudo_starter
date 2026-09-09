@@ -1,0 +1,52 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/modules/sdc/src/metadata.schema.json
+
+name: Attribute List
+status: stable
+group: Molecules
+description: "A semantic definition list (dl) for technical specifications and product attributes."
+
+props:
+  type: object
+  required:
+    - items
+  properties:
+    title:
+      type: string
+      title: "Title"
+      description: "Optional heading for the attribute list."
+
+    title_tag:
+      type: string
+      title: "Title Tag"
+      enum: [h2, h3, h4, h5, div]
+      default: h3
+      description: "Semantic tag for the title heading."
+
+    display_mode:
+      type: string
+      title: "Display Mode"
+      enum: [table, grid, inline]
+      default: table
+      description: "Visual display mode for the attribute list."
+
+    items:
+      type: array
+      title: "Attributes"
+      items:
+        type: object
+        required:
+          - label
+          - value
+        properties:
+          label:
+            type: string
+            title: "Label"
+            description: "Weight"
+          value:
+            type: string
+            title: "Value"
+            description: "32kg"
+          highlight:
+            type: boolean
+            title: "Highlight"
+            description: "Highlight this attribute."

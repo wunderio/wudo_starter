@@ -1,0 +1,42 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Paragraph
+status: stable
+group: Atoms
+
+props:
+  type: object
+  properties:
+    content:
+      type: string
+      $ref: json-schema-definitions://canvas.module/text
+      title: Content
+      description: The description's content.
+      examples:
+        - Some paragraph content
+
+    size:
+      type: string
+      title: Size
+      description: 'Size: extra-large, large, regular, small'
+      default: regular
+      enum:
+        - extra-large
+        - large
+        - regular
+        - small
+      examples:
+        - regular
+
+    allow_html:
+      type: boolean
+      title: Allow HTML in text.
+      examples:
+        - false
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'

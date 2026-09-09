@@ -1,0 +1,58 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Badge
+status: experimental
+group: Atoms
+
+props:
+  type: object
+  properties:
+    content:
+      type: string
+      title: Content
+      description: Badge content.
+      examples:
+        - New
+
+    type:
+      type: string
+      title: Type
+      description: 'Type: text, indicator'
+      default: text
+      enum:
+        - text
+        - indicator
+      examples:
+        - text
+
+    position:
+      type: string
+      title: Position
+      description: 'Position: inline, corner'
+      default: inline
+      enum:
+        - inline
+        - corner
+      examples:
+        - corner
+
+    style:
+      type: string
+      title: Style
+      description: 'Type: primary, red, green, blue, yellow'
+      default: primary
+      enum:
+        - primary
+        - red
+        - green
+        - blue
+        - yellow
+      examples:
+        - primary
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'

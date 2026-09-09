@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Paragraph component.
+ *
+ * Variables:
+ * - content: [string] The description's content.
+ * - size: [string] Size: extra-large, large, regular, small
+ * - allow_html: [boolean] Allow HTML in text.
+ * - attributes: [string] Additional attributes.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--%s'|format(size|default('regular')),
+  modifier_class|default(''),
+]
+%}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% do attributes.addClass(classes) %}
+
+{% if content is not empty -%}
+  <div {{ attributes }}>
+    {% if allow_html|default(false) %}
+      {{- content|raw -}}
+    {% else %}
+      {{- content -}}
+    {% endif %}
+  </div>
+{%- endif %}

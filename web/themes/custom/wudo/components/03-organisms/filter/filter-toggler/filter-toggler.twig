@@ -1,0 +1,27 @@
+{% set button_label = button_label|default('Open filters'|t) %}
+{% set icon_type = icon_type|default('filter') %}
+{% set icon_size = icon_size|default('large') %}
+{% set badge_style = badge_style|default('red') %}
+{% set drawer_id = drawer_id|default('filter-control-center') %}
+
+<wudo-filter-trigger class="u-mobile-only" drawer-id="{{ drawer_id }}">
+{% embed 'wudo:button' with {
+    type: 'secondary',
+    size: 'large',
+    icon: icon_type,
+    icon_only: true,
+    icon_size: icon_size,
+    text: button_label,
+    badge_style: badge_style,
+    badge_content: 'default',
+  } only %}
+    {% block badge %}
+      {{ include('wudo:badge', {
+        content: '',
+        position: 'corner',
+        style: badge_style,
+        modifier_class: 'js-count',
+      }, with_context = false) }}
+    {% endblock %}
+  {% endembed %}
+</wudo-filter-trigger>

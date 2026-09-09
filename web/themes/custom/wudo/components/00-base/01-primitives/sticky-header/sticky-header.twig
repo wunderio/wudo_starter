@@ -1,0 +1,8 @@
+<sticky-header
+  {{ attributes.addClass('sticky-header-wrapper') }}
+  data-threshold="{{ threshold|default(150) }}"
+>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</sticky-header>

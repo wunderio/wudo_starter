@@ -1,0 +1,23 @@
+@use "../../../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
+
+
+@include breakpoint.mobile {
+  .drawer--filters {
+    position: relative;
+    visibility: visible;
+
+    .drawer__overlay {
+      position: relative;
+    }
+
+    .drawer__inner {
+      position: relative;
+      transform: translateX(0);
+      max-width: 100%;
+    }
+
+    .drawer__close {
+      display: none;
+    }
+  }
+}

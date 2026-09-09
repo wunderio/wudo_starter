@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Figure component.
+ *
+ * Variables:
+ * - image: [object]
+ *   - src: [string] Image source.
+ *   - alt: [string] Image alternative text.
+ * - caption: [string] Caption for the image.
+ * - attributes: [string] Additional attributes.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{% set image_src = image.src|default(attributes.src|render|trim) %}
+{% set image_alt = image.alt|default(attributes.alt|render|trim) %}
+
+{%
+  set classes = [
+  'figure',
+  modifier_class|default(''),
+]
+%}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% do attributes.addClass(classes) %}
+{% set attributes = attributes | without('src', 'alt') %}
+
+{% if image_src is not empty %}
+  <figure {{ attributes }}>
+    {{ include('wudo:image', {
+      image: {
+      'src': image_src,
+      'alt': image_alt,
+      },
+      modifier_class: 'figure__image',
+    }, with_context = false) }}
+
+    {% if caption is not empty %}
+      <figcaption class="figure__caption">
+        {{ caption }}
+      </figcaption>
+    {% endif %}
+  </figure>
+{% endif %}

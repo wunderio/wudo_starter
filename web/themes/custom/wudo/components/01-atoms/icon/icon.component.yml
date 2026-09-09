@@ -1,0 +1,67 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Icon
+status: stable
+group: Atoms
+
+props:
+  type: object
+  properties:
+    symbol:
+      type: string
+      title: Symbol
+      description: Required icon name.
+      enum:
+        - download
+        - left-arrow
+        - right-arrow
+        - upper-right-arrow
+        - chevron-down
+        - close
+        - menu
+        - moon
+        - sun
+        - magic
+        - heart
+        - bookmark
+        - globe
+        - filter
+        - chevron-double-left
+        - chevron-left
+        - chevron-right
+        - chevron-double-right
+      examples:
+        - download
+
+    size:
+      type: string
+      title: Size
+      description: Optional icon size.
+      enum:
+        - small
+        - regular
+        - large
+      examples:
+        - small
+
+    alt:
+      type: string
+      title: Alt
+      description: Optional alternate text of the image.
+      examples:
+        - download icon
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Optional additional classes.
+      examples:
+        - 'custom-class'
+
+    assets_dir:
+      type: string
+      title: Assets dir
+      description: Optional assets directory to get icons from.
+      default: '@wudo/../assets'
+      examples:
+        - '@wudo/../assets'

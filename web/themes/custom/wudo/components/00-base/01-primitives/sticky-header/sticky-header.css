@@ -1,0 +1,21 @@
+/**
+ * @component sticky-header
+ */
+sticky-header {
+  display: block;
+  width: 100%;
+  z-index: var(--sticky-header-z-index, 110);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: white;
+}
+[data-theme=dark] sticky-header {
+  background-color: var(--color-neutral-90, #333333);
+}
+sticky-header.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+sticky-header.is-hidden {
+  transform: translateY(-100%);
+}

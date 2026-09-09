@@ -1,0 +1,53 @@
+/**
+ * @file quantity-input.scss
+ * Styles for quantity input.
+ */
+
+.quantity-input {
+  --border-color: var(--color-neutral-20, #e5e5e5);
+  --button-bg: var(--color-neutral-10, #f5f5f5);
+  --button-color: var(--color-text-primary, #222222);
+
+  [data-theme="dark"] & {
+    --border-color: var(--color-neutral-60, #757575);
+    --button-bg: var(--color-neutral-80, #424242);
+    --button-color: var(--color-neutral-40, #bdbdbd);
+  }
+
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  overflow: hidden;
+  height: 40px;
+
+  &__field {
+    width: 50px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &__btn {
+    background-color: var(--button-bg);
+    border: none;
+    width: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--button-color);
+    transition: background 0.2s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+}

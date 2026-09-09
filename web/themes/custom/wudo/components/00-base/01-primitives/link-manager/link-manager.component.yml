@@ -1,0 +1,8 @@
+name: Link Manager
+status: experimental
+group: Utilities
+
+slots:
+  content:
+    title: Content
+    description: "Content where links will be managed."

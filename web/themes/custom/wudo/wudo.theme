@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Page related functions to support theming.
+ */
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function wudo_page_attachments_alter(array &$attachments) {
+  $theme_path = \Drupal::service('extension.list.theme')->getPath('wudo');
+  $full_path = DRUPAL_ROOT . '/' . $theme_path . '/js/import-map.js';
+
+  if (file_exists($full_path)) {
+    $import_map_content = file_get_contents($full_path);
+
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#tag' => 'script',
+        '#attributes' => ['type' => 'importmap'],
+        '#value' => $import_map_content,
+      ],
+      'wudo_importmap_inline',
+    ];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function wudo_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        // Add content type suggestions.
+        $suggestions[] = 'page__node__' . $node->bundle();
+    }
+}
+
+/**
+ * Implements hook_preprocess_links__language_block().
+ */
+function wudo_preprocess_links__language_block(&$variables) {
+  $language_manager = \Drupal::languageManager();
+  $current_lang_id = $language_manager->getCurrentLanguage()->getId();
+  $lang_items = [];
+
+  foreach ($variables['links'] as $lang_code => $item) {
+    if (isset($item['link']['#url'])) {
+      /** @var \Drupal\Core\Url $url */
+      $url = $item['link']['#url'];
+
+      $url->setOption('language', $language_manager->getLanguage($lang_code));
+      $url_string = $url->toString();
+
+      $lang_items[] = [
+        'code'       => $lang_code,
+        'text'       => $item['text'],
+        'url'        => $url_string,
+        'is_active'  => ($lang_code === $current_lang_id),
+        'attributes' => $item['attributes'],
+      ];
+    }
+  }
+
+  $variables['custom_languages'] = $lang_items;
+}

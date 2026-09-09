@@ -1,0 +1,62 @@
+:root {
+  font-size: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family-body-default);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-primary, #222222);
+  background-color: var(--color-page-bg, #ffffff);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0 0 1em 0;
+  font-family: var(--font-family-headings-default);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--font-size-2xl, 3rem);
+}
+
+h2 {
+  font-size: var(--font-size-xl, 2rem);
+}
+
+h3 {
+  font-size: var(--font-size-lg, 1.5rem);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-semantic-info-60, #2563eb);
+  outline-offset: 2px;
+}
+
+img.branding__logo {
+  [data-theme="dark"] & {
+    filter: brightness(0) invert(1);
+  }
+}
+
+// For Storybook
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

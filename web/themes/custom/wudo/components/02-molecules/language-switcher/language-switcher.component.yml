@@ -1,0 +1,26 @@
+name: Language Switcher
+status: stable
+group: Molecules
+version: 1.0.2
+
+props:
+  type: object
+  required:
+    - languages
+  properties:
+    languages:
+      type: array
+      title: "Available Languages"
+
+examples:
+  - languages:
+      - text: "LV"
+        url: "/lv"
+        is_active: true
+      - text: "EN"
+        url: "/en"
+        is_active: false
+
+libraryOverrides:
+  dependencies:
+    - wudo/focus-trap

@@ -1,0 +1,48 @@
+//
+// Heading component.
+//
+@use "../../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
+
+.heading {
+  margin: 0;
+
+  &--font-heading {
+    //
+  }
+
+  &--font-heading-2 {
+    //
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--margin-medium {
+    margin-bottom: var(--space-xl, 24px);
+
+    @include breakpoint.xxl {
+      margin-bottom: var(--space-2xl, 32px);
+    }
+  }
+
+  &--margin-large {
+    margin-bottom: var(--space-2xl, 32px);
+
+    @include breakpoint.l {
+      margin-bottom: var(--space-3xl, 32px);
+    }
+
+    @include breakpoint.xxl {
+      margin-bottom: var(--space-4xl, 32px);
+    }
+  }
+}

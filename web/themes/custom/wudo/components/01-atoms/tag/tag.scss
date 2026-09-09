@@ -1,0 +1,39 @@
+[data-wudo-type="tag"] {
+  --tag-bg: var(--color-neutral-20, #e5e5e5);
+  --tag-border: var(--color-neutral-40, #bdbdbd);
+  --tag-color: var(--color-neutral-80, #4f4f4f);
+
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 1rem;
+  border-radius: 1.5rem;
+  font-family: sans-serif;
+  font-size: var(--font-size-3xs, 0.75rem); // 12px
+  font-weight: 600;
+  color: var(--tag-color);
+  text-transform: uppercase;
+  border: 1px solid var(--tag-border);
+  background-color: var(--tag-bg);
+}
+
+.tag--default {
+  //
+}
+
+.tag--important {
+  --tag-bg: #0055ff;
+  --tag-border: #0055ff;
+  --tag-color: #ffffff;
+}
+
+.tag--warning {
+  --tag-bg: #ffc107;
+  --tag-border: #ffc107;
+  --tag-color: #000000;
+}
+
+.tag--error {
+  --tag-bg: #dc3545;
+  --tag-border: #dc3545;
+  --tag-color: #ffffff;
+}

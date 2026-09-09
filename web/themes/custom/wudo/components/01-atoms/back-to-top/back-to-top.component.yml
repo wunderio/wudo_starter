@@ -1,0 +1,23 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Back to Top
+description: A floating button that appears after scrolling and returns the user to the top.
+status: experimental
+group: Atoms
+
+props:
+  type: object
+  properties:
+    threshold:
+      type: integer
+      title: Show Threshold
+      description: How many pixels to scroll before showing the button.
+      default: 400
+      examples:
+        - 400
+    show_progress:
+      type: boolean
+      title: Show Progress Circle
+      default: true
+      examples:
+        - true

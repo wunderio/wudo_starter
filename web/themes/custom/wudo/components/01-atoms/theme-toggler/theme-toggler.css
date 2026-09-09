@@ -1,0 +1,94 @@
+/**
+ * @file theme-toggler.scss
+ * @description Styles for the theme toggler component.
+ */
+.theme-toggler {
+  --track-padding: 4px;
+  --track-bg: var(--color-neutral-10, #f5f5f5);
+  --icon-size: 1rem;
+  --icon-color: var(--color-neutral-60, #757575);
+  --thumb-size: 1.5rem;
+  --thumb-color: var(--color-white, #ffffff);
+  --track-width: 5.5rem;
+  --track-radius: 2.5rem;
+}
+[data-theme=dark] .theme-toggler {
+  --track-bg: var(--color-neutral-90, #333333);
+  --thumb-color: var(--color-neutral-10, #f5f5f5);
+}
+.theme-toggler__btn {
+  display: block;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--track-radius);
+}
+.theme-toggler__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--track-width);
+  height: calc(var(--thumb-size) + var(--track-padding) * 2);
+  background-color: var(--track-bg);
+  border-radius: var(--track-radius);
+  padding: 0 var(--track-padding);
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+.theme-toggler__icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  color: var(--icon-color);
+  transition: color 0.3s ease;
+}
+.theme-toggler__icon svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: block;
+}
+.theme-toggler__thumb {
+  position: absolute;
+  top: var(--track-padding);
+  left: var(--track-padding);
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  background-color: var(--thumb-color);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.theme-toggler {
+  /* Auto */
+}
+.theme-toggler.state-auto .theme-toggler__thumb {
+  transform: translateX(0);
+}
+.theme-toggler.state-auto .theme-toggler__icon--auto {
+  color: #000;
+}
+.theme-toggler {
+  /* Dark */
+}
+.theme-toggler.state-dark .theme-toggler__thumb {
+  transform: translateX(calc(var(--track-width) / 2 - var(--thumb-size) / 2 - var(--track-padding)));
+}
+.theme-toggler.state-dark .theme-toggler__icon--dark {
+  color: #000;
+}
+.theme-toggler {
+  /* Light */
+}
+.theme-toggler.state-light .theme-toggler__thumb {
+  transform: translateX(calc(var(--track-width) - var(--thumb-size) - var(--track-padding) * 2));
+}
+.theme-toggler.state-light .theme-toggler__icon--light {
+  color: #000;
+}

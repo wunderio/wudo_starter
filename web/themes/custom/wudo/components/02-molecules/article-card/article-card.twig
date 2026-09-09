@@ -1,0 +1,104 @@
+{#
+/**
+ * @file
+ * Article Card component.
+ *
+ * Variables:
+ * - image: [object] Image object:
+ *   - src: [string] Image URL.
+ *   - alt: [string] Image alt text.
+ * - image_over: [string] Content slot.
+ * - content_top: [string] Content slot.
+ * - title: [string] The text of card title.
+ * - title_url: [string] The URL of card title.
+ * - title_level: [string] The heading level number of title (h2, h3, etc.).
+ * - content_middle: [string] Content slot.
+ * - summary: [string] Summary of the card.
+ * - content_bottom: [string] Content slot.
+ * - with_image: [boolean] Theme: light, dark.
+ * - attributes: [string] Additional attributes.
+ * - modifier_class: [string] Additional classes to add to the component.
+ */
+#}
+
+{% set with_image = with_image|default(true) %}
+
+{%
+  set classes = [
+  'article-card',
+  with_image ? 'article-card--with-image' : '',
+  modifier_class|default(''),
+]
+%}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% do attributes.addClass(classes) %}
+
+{% set image_content %}
+  {% block image %}
+    {% if image.src is not empty %}
+      {{ include('wudo:image', {
+        image: {
+          src: image.src,
+          alt: image.alt,
+        },
+      }, with_context = false) }}
+    {% endif %}
+  {% endblock %}
+{% endset %}
+
+<div {{ attributes }}>
+  {% if image_content is not empty %}
+    <div class="article-card__image">
+      {{ image_content }}
+      {% block image_over %}
+        {% if image_over is not empty %}
+          <div class="article-card__image__over">
+            {{ image_over }}
+          </div>
+        {% endif %}
+      {% endblock %}
+    </div>
+  {% endif %}
+  <div class="article-card__content">
+    {% block card_meta %}
+      {% if card_meta is not empty %}
+        <div class="article-card__meta">
+          {{- card_meta|raw -}}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+    {% block title %}
+      {% if title is not empty %}
+        {% set title_content %}
+          {%  if title_url is not empty %}
+            {{ include('wudo:link', {
+              text: title,
+              url: title_url,
+              modifier_class: 'article-card__title__link',
+            }, with_context = false) }}
+          {% else %}
+            {{ title }}
+          {% endif %}
+        {% endset %}
+
+        {{ include('wudo:heading', {
+          content: title_content,
+          level: title_level|default(2),
+          modifier_class: 'article-card__title',
+        }, with_context = false) }}
+      {% endif %}
+    {% endblock %}
+
+    {% block summary %}
+      {% if summary is not empty %}
+        {{ include('wudo:paragraph', {
+          content: summary,
+          allow_html: true,
+          modifier_class: 'article-card__summary',
+        }, with_context = false) }}
+      {% endif %}
+    {% endblock %}
+  </div>
+</div>

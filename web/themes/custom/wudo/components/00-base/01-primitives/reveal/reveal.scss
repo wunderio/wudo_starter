@@ -1,0 +1,22 @@
+/**
+ * @component wudo-reveal
+ */
+wudo-reveal {
+  display: block;
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: var(--reveal-duration, 0.8s);
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-delay: var(--reveal-delay, 0s);
+
+  &[data-effect="fade-up"] { transform: translateY(30px); }
+  &[data-effect="fade-down"] { transform: translateY(-30px); }
+  &[data-effect="fade-left"] { transform: translateX(30px); }
+  &[data-effect="fade-right"] { transform: translateX(-30px); }
+  &[data-effect="zoom-in"] { transform: scale(0.95); }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+}

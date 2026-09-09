@@ -1,0 +1,26 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Mobile menu toggler
+
+status: experimental
+
+group: Organisms
+
+props:
+
+  type: object
+
+  properties:
+    label:
+      type: string
+      title: Button label
+      description: Accessible label for screen readers.
+      examples:
+        - Open menu
+        - Open navigation
+
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once
+    - wudo/focus-trap

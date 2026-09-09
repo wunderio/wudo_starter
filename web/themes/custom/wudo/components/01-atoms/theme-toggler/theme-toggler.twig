@@ -1,0 +1,39 @@
+{# theme-toggler.twig #}
+{% set light_label = light_label|default('Light'|t) %}
+{% set dark_label = dark_label|default('Dark'|t) %}
+{% set auto_label = auto_label|default('Auto'|t) %}
+{% set switch_to = 'Switch to'|t %}
+
+<wudo-theme-toggler
+  class="theme-toggler"
+  data-label-light="{{ light_label }}"
+  data-label-dark="{{ dark_label }}"
+  data-label-auto="{{ auto_label }}"
+  data-switch-to="{{ switch_to }}"
+>
+  <button type="button" class="theme-toggler__btn" aria-label="{{ 'Change theme'|t }}">
+    <span class="theme-toggler__track">
+      {# 1. AUTO icon #}
+      <span class="theme-toggler__icon theme-toggler__icon--auto" aria-hidden="true">
+        {{ include('wudo:icon', { symbol: 'magic' }, with_context = false) }}
+      </span>
+
+      {# 2. DARK icon #}
+      <span class="theme-toggler__icon theme-toggler__icon--dark" aria-hidden="true">
+        {{ include('wudo:icon', { symbol: 'moon' }, with_context = false) }}
+      </span>
+
+      {# 3. LIGHT icon #}
+      <span class="theme-toggler__icon theme-toggler__icon--light" aria-hidden="true">
+        {{ include('wudo:icon', { symbol: 'sun' }, with_context = false) }}
+      </span>
+
+      {# Slider (Thumb) #}
+      <span class="theme-toggler__thumb"></span>
+    </span>
+
+    <span class="theme-toggler__text visually-hidden">
+      <span class="theme-toggler__status">{{ auto_label }}</span>
+    </span>
+  </button>
+</wudo-theme-toggler>

@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Badge component.
+ *
+ * Variables:
+ * - content: [string] Badge content.
+ * - type: [string] Badge type (text, indicator).
+ * - position: [string] Badge placement (inline, corner).
+ * - style: [string] Badge style.
+ * - modifier_class: [string] Additional classes.
+ */
+#}
+
+{%
+  set classes = [
+  'badge',
+  'badge--%s'|format(type|default('text')),
+  'badge--%s'|format(position|default('inline')),
+  'badge--%s'|format(style|default('primary')),
+  modifier_class|default(''),
+]
+%}
+
+{% set badge_markup %}
+  {% if type == 'indicator' %}
+    <span class="visually-hidden">{{ content }}</span>
+  {% else %}
+    {{ content }}
+  {% endif %}
+{% endset %}
+
+<span {{ attributes.addClass(classes) }}>
+  {{- badge_markup|raw -}}
+</span>

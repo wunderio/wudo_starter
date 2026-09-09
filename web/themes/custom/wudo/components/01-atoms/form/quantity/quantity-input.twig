@@ -1,0 +1,24 @@
+<wudo-quantity
+  class="quantity-input"
+  data-min="{{ min|default(1) }}"
+  {% if max %}data-max="{{ max }}"{% endif %}
+  data-step="{{ step|default(1) }}"
+>
+  <button type="button" class="quantity-input__btn" data-action="minus" aria-label="Decrease">
+    -
+  </button>
+
+  <input
+    type="number"
+    class="quantity-input__field"
+    name="{{ name|default('quantity') }}"
+    value="{{ value|default(1) }}"
+    min="{{ min|default(1) }}"
+    {% if max %}max="{{ max }}"{% endif %}
+    step="{{ step|default(1) }}"
+  >
+
+  <button type="button" class="quantity-input__btn" data-action="plus" aria-label="Increase">
+    +
+  </button>
+</wudo-quantity>

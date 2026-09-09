@@ -1,0 +1,64 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: "Article card"
+status: experimental
+group: Molecules
+
+props:
+  type: object
+  properties:
+    image:
+      type: object
+      title: Image
+      examples:
+        - src: 'https://placehold.co/600x400.png'
+          alt: 'Alt placeholder'
+          width: 600
+          height: 400
+
+    title:
+      type: string
+      title: Title
+      description: The text of card title.
+      examples:
+        - 'Publication main title'
+
+    summary:
+      type: string
+      $ref: json-schema-definitions://canvas.module/text
+      title: Summary
+      description: Summary of the card.
+      examples:
+        - 'A brief summary of the publication.'
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes
+      examples:
+        - 'custom-class'
+
+slots:
+  image_over:
+    title: Image over
+    description: Content slot.
+    examples:
+      - '<p>image_over</p>'
+
+  content_top:
+    title: Content top
+    description: Content slot.
+    examples:
+      - '<p>content_top</p>'
+
+  content_middle:
+    title: Content middle
+    description: Content slot.
+    examples:
+      - '<p>content_middle</p>'
+
+  content_bottom:
+    title: Content bottom
+    description: Content slot.
+    examples:
+      - '<p>content_bottom</p>'

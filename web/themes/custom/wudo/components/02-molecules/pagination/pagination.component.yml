@@ -1,0 +1,42 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Pagination
+version: 1.0.0
+status: stable
+group: Molecules
+
+props:
+  type: object
+  properties:
+
+    heading_id:
+      type: string
+      title: Heading id
+      description: Heading id.
+      examples:
+        - 'pagination-demo'
+
+    items_modifier_class:
+      type: string
+      title: Items modifier class
+      description: Items modifier class.
+      examples:
+        - 'pagination--highlight'
+        - 'pagination--custom'
+
+    current:
+      type: [string, integer]
+      title: Current
+      description: Current page number.
+      examples:
+        - '1'
+        - '2'
+        - '3'
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'pagination--light'
+        - 'pagination--compact'

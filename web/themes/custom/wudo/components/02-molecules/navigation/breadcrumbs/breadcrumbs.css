@@ -1,0 +1,62 @@
+.breadcrumbs {
+  --breadcrumb-gap: 0.5rem;
+  --breadcrumb-color-link: #2563eb;
+  --breadcrumb-color-current: #1a1a1a;
+  --breadcrumb-color-separator: #ccc;
+  margin: 1rem 0;
+}
+
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs__item:not(:last-child)::after {
+  content: var(--breadcrumb-separator, "/");
+  margin: 0 var(--breadcrumb-gap);
+  color: var(--breadcrumb-color-separator);
+  font-weight: normal;
+}
+
+.breadcrumbs__link {
+  color: var(--breadcrumb-color-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs__link:hover {
+  text-decoration: underline;
+  color: #1d4ed8;
+}
+
+.breadcrumbs__current {
+  color: var(--breadcrumb-color-current);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .breadcrumbs__list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none; /* hide scrollbar Firefox */
+  }
+  .breadcrumbs__list::-webkit-scrollbar {
+    display: none; /* hide scrollbar Chrome/Safari */
+  }
+  .breadcrumbs__item {
+    flex: 0 0 auto;
+  }
+}

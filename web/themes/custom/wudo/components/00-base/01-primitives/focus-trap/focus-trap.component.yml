@@ -1,0 +1,4 @@
+name: Focus trap
+description: "Handles focus trap."
+status: stable
+group: Utilities

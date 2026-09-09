@@ -1,0 +1,47 @@
+# @file accordion.component.yml
+# @description Configuration for the native <details> based accordion.
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Accordion
+status: stable
+group: Molecules
+
+props:
+  type: object
+  required:
+  - title
+
+  properties:
+    title:
+      type: string
+      title: Title
+      description: The text of card title.
+      examples:
+        - 'Accordion item 1'
+
+    name:
+      type: string
+      title: Name
+      description: The value of the name attribute.
+      examples:
+        - 'group-1'
+
+    expanded:
+      type: boolean
+      title: Opened by default
+      description: Whether the accordion is expanded initially
+      default: false
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes
+      examples:
+        - 'custom-class'
+
+slots:
+  content:
+    title: Accordion content
+    description: Content slot.
+    examples:
+      - '<p>Accordion content</p>'

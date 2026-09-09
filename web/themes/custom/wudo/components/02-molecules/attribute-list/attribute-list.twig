@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Attribute List component.
+ *
+ * Available props:
+ * - title: (string) Optional heading.
+ * - title_tag: (string) HTML tag for the title (h2, h3, etc.).
+ * - display_mode: (string) table, grid, inline.
+ * - items: (array) List of objects with label, value, icon, highlight.
+ */
+#}
+
+{% set classes = [
+  'attribute-list',
+  display_mode ? 'attribute-list--' ~ display_mode : 'attribute-list--table',
+] %}
+
+<section {{ attributes.addClass(classes) }}>
+
+  {% if title %}
+  <{{ title_tag|default('h3') }} class="attribute-list__title">
+  {{ title }}
+</{{ title_tag|default('h3') }}>
+{% endif %}
+
+  <dl class="attribute-list__container">
+    {% for item in items %}
+      <div class="attribute-list__item{{ item.highlight ? ' attribute-list__item--highlight' : '' }}">
+        <dt class="attribute-list__label">
+          <span class="attribute-list__label-text">{{ item.label }}</span>
+        </dt>
+        <dd class="attribute-list__value">
+          {{ item.value }}
+        </dd>
+      </div>
+    {% endfor %}
+  </dl>
+</section>

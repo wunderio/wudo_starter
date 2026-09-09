@@ -1,0 +1,49 @@
+@use "../../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
+@use "../../00-base/00-defaults/_03-mixins.scss" as *;
+
+.site-header {
+  $root: &;
+
+  &__main {
+    &--content {
+      position: relative; // for dropdown
+      padding-block: var(--space-lg);
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      border-bottom: 1px solid var(--color-gray-200, #e5e5e5);
+
+      .contextual-region {
+        position: static; // for dropdown
+
+        .contextual {
+          display: none; // for development purposes
+        }
+      }
+
+      #{$root}__menu {
+        @include overlay-hidden;
+
+        order: 9999;
+        flex: 0 1 100%;
+
+        &.is-open {
+          @include overlay-visible;
+        }
+
+        @include breakpoint.mobile {
+          @include overlay-visible;
+
+          order: 2;
+          flex: 0 1 auto;
+        }
+      }
+
+      #{$root}__menu-toggle {
+        display: flex;
+      }
+    }
+  }
+}

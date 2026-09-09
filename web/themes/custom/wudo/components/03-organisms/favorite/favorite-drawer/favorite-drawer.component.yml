@@ -1,0 +1,24 @@
+name: Favorite Drawer
+status: experimental
+group: Favorite
+
+props:
+  type: object
+  properties:
+    drawer_id:
+      type: string
+      title: Drawer ID
+      description: "ID of the favorite drawer component to open"
+      default: "favorite-drawer"
+    api_url:
+      type: string
+      title: API URL
+      description: "URL to download favorite articles from (JSON API)"
+      default: "/api/articles"
+
+libraryOverrides:
+  dependencies:
+    - wudo/focus-trap
+  js:
+    favorite-drawer.js: { attributes: { type: module } }
+

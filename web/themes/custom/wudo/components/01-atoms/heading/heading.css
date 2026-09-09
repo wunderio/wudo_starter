@@ -1,0 +1,33 @@
+.heading {
+  margin: 0;
+}
+.heading--left {
+  text-align: left;
+}
+.heading--center {
+  text-align: center;
+}
+.heading--right {
+  text-align: right;
+}
+.heading--margin-medium {
+  margin-bottom: var(--space-xl, 24px);
+}
+@media (min-width: 1920px) {
+  .heading--margin-medium {
+    margin-bottom: var(--space-2xl, 32px);
+  }
+}
+.heading--margin-large {
+  margin-bottom: var(--space-2xl, 32px);
+}
+@media (min-width: 1440px) {
+  .heading--margin-large {
+    margin-bottom: var(--space-3xl, 32px);
+  }
+}
+@media (min-width: 1920px) {
+  .heading--margin-large {
+    margin-bottom: var(--space-4xl, 32px);
+  }
+}

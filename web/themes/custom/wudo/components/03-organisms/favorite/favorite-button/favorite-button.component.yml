@@ -1,0 +1,35 @@
+name: Favorite Button
+status: experimental
+group: Favorite
+
+props:
+  type: object
+  properties:
+    drawer_id:
+      type: string
+      title: Drawer ID
+      description: "ID of the favorite drawer component to open"
+      default: "favorite-drawer"
+    content_id:
+      type: string
+      title: Content ID
+      description: "Identificator, node ID or product ID"
+    label:
+      type: string
+      title: Label
+      description: "Name"
+    icon_type:
+      type: string
+      title: Icon
+      description: Icon name.
+      enum:
+        - bookmark
+        - heart
+      examples:
+        - 'heart'
+
+libraryOverrides:
+  dependencies:
+    - wudo/import-map
+  js:
+    favorite-button.js: { attributes: { type: module } }

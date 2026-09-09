@@ -1,0 +1,22 @@
+name: Filter Manager
+description: "Centralized filter manager"
+version: 1.0.0
+status: experimental
+group: Organisms
+
+props:
+  type: object
+  properties:
+    id:
+      type: string
+      title: Unique ID
+      default: "filter-control-center"
+
+slots:
+  content:
+    title: Filters
+    description: Add filters form here.
+
+libraryOverrides:
+  js:
+    filter-manager.js: { attributes: { type: module } }

@@ -1,0 +1,49 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Drawer
+status: experimental
+group: Organisms
+description: >
+  A slide-in drawer component for displaying additional content such as menus,
+  shopping carts, or forms. Configurable position, size, and title.
+version: 1.2.0
+
+props:
+  type: object
+  required:
+    - id
+  properties:
+    id:
+      type: string
+      title: Unique ID
+      description: Used for event targeting (e.g., 'cart-drawer').
+      examples:
+        - cart-drawer
+    position:
+      type: string
+      title: Position
+      enum:
+        - left
+        - right
+        - center
+      default: right
+    size:
+      type: string
+      title: Max Width
+      default: '400px'
+    title:
+      type: string
+      title: Drawer Title
+      examples:
+        - 'Shopping Cart'
+
+slots:
+  content:
+    title: Drawer Content
+    description: The main content (menu, cart view, form, etc.).
+  footer:
+    title: Drawer Footer
+    description: Optional sticky footer for buttons.
+
+libraryOverrides:
+  dependencies:
+    - wudo/focus-trap

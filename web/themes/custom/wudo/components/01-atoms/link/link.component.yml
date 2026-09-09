@@ -1,0 +1,88 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Link
+version: 1.0.0
+status: stable
+group: Atoms
+
+props:
+  type: object
+  required:
+    - url
+    - text
+
+  properties:
+    text:
+      type: string
+      title: Text
+      description: Link text.
+      examples:
+        - Link text
+
+    url:
+      type: string
+      title: Url
+      description: URL.
+      examples:
+        - https://example.com
+
+    title:
+      type: string
+      title: Title
+      description: Title of a link.
+      examples:
+        - Link title
+
+    variant:
+      type: string
+      title: Variant
+      description: Link variant.
+      enum:
+        - default
+        - cta
+        - list-item
+      examples:
+        - default
+
+    is_new_window:
+      type: boolean
+      title: Open in a new window.
+      examples:
+        - false
+
+    is_external:
+      type: boolean
+      title: Link is external.
+      examples:
+        - false
+
+    is_active:
+      type: boolean
+      title: Active state.
+      examples:
+        - false
+
+    icon:
+      type: string
+      title: Icon
+      description: Icon name.
+      examples:
+        - 'arrow-right'
+
+    icon_placement:
+      type: string
+      title: Icon placement
+      description: 'Icon position: before, after.'
+      default: after
+      enum:
+        - before
+        - after
+      examples:
+        - after
+
+    modifier_class:
+      type: string
+      title: Modifier class
+      description: Additional classes.
+      examples:
+        - 'custom-class'

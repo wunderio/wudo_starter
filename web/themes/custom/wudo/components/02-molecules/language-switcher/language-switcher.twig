@@ -1,0 +1,36 @@
+{% set switcher_id = 'lang-switcher-' ~ random() %}
+
+<lang-selector class="lang-switcher" role="navigation" aria-label="{{ 'Language selector'|t }}">
+  {% set active_lang = languages|filter(l => l.is_active)|first %}
+  {% set current_text = active_lang ? active_lang.text : languages|first.text %}
+
+  {{ include('wudo:button', {
+    type: 'secondary',
+    size: 'regular',
+    icon: 'globe',
+    icon_placement: 'before',
+    icon_size: 'regular',
+    text: current_text,
+    attributes: create_attribute({
+      'data-target': 'button',
+      'aria-expanded': 'false',
+      'aria-haspopup': 'true',
+      'aria-controls': switcher_id,
+      'aria-label': 'Current language: @lang. Click to change.'|t({'@lang': current_text})
+    })
+  }, with_context = false) }}
+
+  <ul class="lang-dropdown" id="{{ switcher_id }}" hidden data-target="list">
+    {% for lang in languages %}
+      <li class="lang-item">
+        <a href="{{ lang.url }}"
+           class="lang-link {{ lang.is_active ? 'is-active' : '' }}"
+          {% if lang.is_active %} aria-current="true" {% endif %}
+           hreflang="{{ lang.code }}"
+          {{ lang.attributes }}>
+          {{ lang.text }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</lang-selector>

@@ -1,0 +1,51 @@
+.checkbox {
+  $root: &;
+  --checked-color: var(--color-semantic-info-60, #2563eb);
+
+  gap: .5rem;
+
+  #{$root}--small {
+    input[type=checkbox] {
+      width: 1rem;
+      height: 1rem;
+
+      &:checked {
+        background-size: .6rem;
+      }
+    }
+  }
+
+  #{$root}--large {
+    input[type=checkbox] {
+      width: 1.6rem;
+      height: 1.6rem;
+
+      &:checked {
+        background-size: .8rem;
+      }
+    }
+  }
+
+  input[type=checkbox] {
+    width: 1.25rem;
+    height: 1.25rem;
+    appearance: none;
+    border-width: 1px;
+    border-color: var(--checked-color);
+    border-radius: 3px;
+    border-style: solid;
+    background-color: #fff;
+
+    &:checked {
+      background-color: var(--checked-color);
+      background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 12'%3e %3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M1 5.917 5.724 10.5 15 1.5'/%3e %3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: .7rem;
+    }
+  }
+}
+
+.js-form-type-checkbox {
+  @extend .checkbox;
+}

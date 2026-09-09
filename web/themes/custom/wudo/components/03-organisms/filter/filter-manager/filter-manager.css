@@ -1,0 +1,17 @@
+@media (min-width: 768px) {
+  .drawer--filters {
+    position: relative;
+    visibility: visible;
+  }
+  .drawer--filters .drawer__overlay {
+    position: relative;
+  }
+  .drawer--filters .drawer__inner {
+    position: relative;
+    transform: translateX(0);
+    max-width: 100%;
+  }
+  .drawer--filters .drawer__close {
+    display: none;
+  }
+}
