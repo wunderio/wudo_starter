@@ -4,12 +4,14 @@
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   font-family: var(--font-family-body-default);
   font-size: 1rem;
   line-height: 1.5;
   color: var(--color-text-primary, #222222);
   background-color: var(--color-page-bg, #ffffff);
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -60,4 +62,15 @@ img.branding__logo {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+// Resets
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input, button, textarea, select {
+  font: inherit;
 }

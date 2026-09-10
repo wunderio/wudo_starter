@@ -1,14 +1,17 @@
 .site-header {
   --header-bg: var(--color-neutral-10, #f5f5f5);
+  --utils-bg: var(--color-neutral-20, #e5e5e5);
 }
 [data-theme=dark] .site-header {
   --header-bg: var(--color-neutral-90, #333333);
+  --utils-bg: var(--color-black, #000000);
 }
 .site-header {
   background-color: var(--header-bg);
 }
 .site-header__utils {
   padding-block: var(--space-sm, 0.5rem);
+  background-color: var(--utils-bg);
 }
 .site-header__utils .region {
   display: flex;
@@ -19,7 +22,7 @@
 }
 .site-header__main--content {
   position: relative;
-  padding-block: var(--space-md);
+  padding-block: var(--space-lg);
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -54,7 +57,7 @@
     opacity: 1;
     pointer-events: auto;
     order: 2;
-    flex: 0 1 auto;
+    flex: 1;
   }
 }
 .site-header__main--content .site-header__menu-toggle {
