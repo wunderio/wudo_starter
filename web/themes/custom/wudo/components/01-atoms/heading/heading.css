@@ -31,3 +31,6 @@
     margin-bottom: var(--space-4xl, 32px);
   }
 }
+.heading.page-title > span {
+  color: var(--color-highlighted, #ff6600);
+}

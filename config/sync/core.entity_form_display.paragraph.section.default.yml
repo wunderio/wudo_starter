@@ -3,15 +3,77 @@ langcode: en-gb
 status: true
 dependencies:
   config:
+    - field.field.paragraph.section.field_background_image
     - field.field.paragraph.section.field_section_content
+    - image.style.thumbnail
     - paragraphs.paragraphs_type.section
   module:
+    - field_group
+    - image
     - paragraphs
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_section_content
+        - group_background
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        direction: horizontal
+        width_breakpoint: 640
+    group_background:
+      children:
+        - field_background_image
+      label: 'Background image'
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_section_content:
+      children:
+        - field_section_content
+      label: 'Section content'
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
 id: paragraph.section.default
 targetEntityType: paragraph
 bundle: section
 mode: default
 content:
+  field_background_image:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
   field_section_content:
     type: paragraphs
     weight: 0

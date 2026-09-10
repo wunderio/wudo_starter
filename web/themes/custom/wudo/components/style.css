@@ -3,6 +3,7 @@
   /* Colors */
   --color-page-bg: #ffffff;
   --color-text-primary: #222222;
+  --color-highlighted: #00823b;
   --color-semantic-success-10: #e8fcf1;
   --color-semantic-success-20: #a5e1bf;
   --color-semantic-success-40: #419e6a;
@@ -436,6 +437,60 @@ div[data-drupal-messages] {
 
 .page-wrapper {
   width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-indention);
+}
+
+.layout-grid-2,
+.layout-grid-3,
+.layout-grid-4,
+.layout-grid-auto {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--page-indention);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .layout-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .layout-grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(min(31ch, 100%), 1fr));
+  }
+}
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.section.has-full-width-background {
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
+}
+.section__background {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+.section__background picture,
+.section__background img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.section__background img {
+  object-fit: cover;
+  object-position: center;
+}
+.section__content {
+  position: relative;
+}
+.has-full-width-background .section__content {
   max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 var(--page-indention);

@@ -1,0 +1,21 @@
+uuid: 23fc3132-c4b2-4cd2-8ac1-8ebff8598ec1
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - image.style.max_1300x1300
+    - image.style.max_650x650
+id: section_background
+label: 'Section background'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - max_1300x1300
+        - max_650x650
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: max_1300x1300

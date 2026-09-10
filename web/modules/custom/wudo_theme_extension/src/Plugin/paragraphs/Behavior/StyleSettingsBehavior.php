@@ -23,14 +23,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
    * {@inheritdoc}
    */
   public function buildBehaviorForm(ParagraphInterface $paragraph, array &$form, FormStateInterface $form_state) {
-    // 1. Color picker
-    $form['background'] = [
-      '#type' => 'color',
-      '#title' => $this->t('Background color'),
-      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background', '#ffffff'),
-    ];
 
-    // 2. Spacing scale — values map directly to CSS padding shorthand.
     $form['padding'] = [
       '#type' => 'select',
       '#title' => $this->t('Padding'),
@@ -47,16 +40,34 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', '1rem'),
     ];
 
-    // 3. Layout selector
     $form['layout'] = [
       '#type' => 'select',
       '#title' => $this->t('Layout'),
       '#options' => [
-        'full' => $this->t('Full width'),
-        'contained' => $this->t('Contained'),
+        'grid-1' => $this->t('1 Column'),
         'grid-2' => $this->t('2 Columns'),
+        'grid-auto' => $this->t('Auto'),
       ],
-      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'layout', 'contained'),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'layout', 'grid-1'),
+    ];
+
+    $form['text'] = [
+      '#type' => 'color',
+      '#title' => $this->t('Text color'),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'text', 'inherit'),
+    ];
+
+    $form['background'] = [
+      '#type' => 'color',
+      '#title' => $this->t('Background color'),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background', '#ffffff'),
+    ];
+
+    $form['full_width_background'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Full width background'),
+      '#description' => $this->t('Extend the section background to the viewport edges while keeping its content constrained.'),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'full_width_background', FALSE),
     ];
 
     return $form;
@@ -66,12 +77,18 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
    * {@inheritdoc}
    */
   public function view(array &$build, ParagraphInterface $paragraph, EntityViewDisplayInterface $display, $view_mode) {
+    $text = $paragraph->getBehaviorSetting($this->getPluginId(), 'text', 'inherit');
     $background = $paragraph->getBehaviorSetting($this->getPluginId(), 'background', '#ffffff');
     $padding = $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', 2);
     $layout = $paragraph->getBehaviorSetting($this->getPluginId(), 'layout', 'contained');
+    $full_width_background = $paragraph->getBehaviorSetting($this->getPluginId(), 'full_width_background', FALSE);
 
     $build['#attributes']['class'][] = 'layout-' . $layout;
+    if ($full_width_background) {
+      $build['#attributes']['class'][] = 'has-full-width-background';
+    }
     $build['#attributes']['style'][] = 'background-color: ' . $background . ';';
+    $build['#attributes']['style'][] = 'color: ' . $text . ';';
     $build['#attributes']['style'][] = 'padding: ' . $padding . ';';
   }
 

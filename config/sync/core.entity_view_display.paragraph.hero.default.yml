@@ -1,0 +1,30 @@
+uuid: ba0a846f-c7e3-4e5c-b833-90cafda33564
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero.field_content
+    - field.field.paragraph.hero.field_tagline
+    - paragraphs.paragraphs_type.hero
+  module:
+    - text
+id: paragraph.hero.default
+targetEntityType: paragraph
+bundle: hero
+mode: default
+content:
+  field_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_tagline:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

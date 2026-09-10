@@ -1,0 +1,14 @@
+uuid: 01951fbb-03cb-4ea8-9a64-79822e9a693d
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - wudo_theme_extension
+id: hero
+label: Hero
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins:
+  hero_style:
+    enabled: true

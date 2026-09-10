@@ -1,0 +1,24 @@
+uuid: f58eb420-f6a1-4f28-9aa6-aade0c4ff66d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tagline
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.hero
+  module:
+    - text
+id: paragraph.hero.field_tagline
+field_name: field_tagline
+entity_type: paragraph
+bundle: hero
+label: Tagline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text

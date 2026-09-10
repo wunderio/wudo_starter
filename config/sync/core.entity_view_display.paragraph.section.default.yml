@@ -3,15 +3,29 @@ langcode: en-gb
 status: true
 dependencies:
   config:
+    - field.field.paragraph.section.field_background_image
     - field.field.paragraph.section.field_section_content
     - paragraphs.paragraphs_type.section
+    - responsive_image.styles.section_background
   module:
     - entity_reference_revisions
+    - responsive_image
 id: paragraph.section.default
 targetEntityType: paragraph
 bundle: section
 mode: default
 content:
+  field_background_image:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: section_background
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_section_content:
     type: entity_reference_revisions_entity_view
     label: hidden

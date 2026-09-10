@@ -1,6 +1,29 @@
+@use "../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
+@use "../00-base/00-defaults/_03-mixins.scss" as *;
+
 .page-wrapper {
   width: 100%;
   max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 var(--page-indention);
+}
+
+.layout-grid-2,
+.layout-grid-3,
+.layout-grid-4,
+.layout-grid-auto {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--page-indention);
+  width: 100%;
+}
+
+@include breakpoint.mobile {
+  .layout-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .layout-grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(min(31ch, 100%), 1fr));
+  }
 }

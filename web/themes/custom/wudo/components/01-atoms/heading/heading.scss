@@ -45,4 +45,10 @@
       margin-bottom: var(--space-4xl, 32px);
     }
   }
+
+  &.page-title {
+    > span {
+      color: var(--color-highlighted, #ff0090);
+    }
+  }
 }
