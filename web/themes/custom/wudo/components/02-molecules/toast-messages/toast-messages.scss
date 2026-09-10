@@ -26,11 +26,12 @@
     padding: 1rem 0.5rem 1rem 1rem;
     color: var(--toast-color);
     background: var(--toast-bg);
-    border-left: 5px solid var(--toast-accent);
+    //border-left: 5px solid var(--toast-accent);
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: var(--font-size-2xs, 14px);
     gap: 0.5rem;
     animation: toast-in 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
     position: relative;
@@ -92,6 +93,7 @@
     .button {
       background-color: transparent;
       color: currentColor;
+      border: 0;
     }
   }
 }

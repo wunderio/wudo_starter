@@ -32,5 +32,5 @@
   }
 }
 .heading.page-title > span {
-  color: var(--color-highlighted, #ff6600);
+  color: var(--color-highlighted, #ff0090);
 }
