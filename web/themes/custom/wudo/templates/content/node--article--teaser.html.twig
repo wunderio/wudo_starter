@@ -5,7 +5,7 @@
   card_meta: createdDate,
   title: label,
   title_url: url,
-  summary: content.body,
+  summary: content.field_body|default(''),
 } %}
 
   {% block image %}

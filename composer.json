@@ -25,9 +25,11 @@
         "drupal/field_group": "^4.1@alpha",
         "drupal/gin": "^5.0",
         "drupal/gin_toolbar": "^3.0",
+        "drupal/glightbox": "^1.0",
         "drupal/paragraphs": "^1.23",
         "drupal/paragraphs_features": "^2.2",
         "drupal/pathauto": "^1.15",
+        "drupal/viewsreference": "^2.0@beta",
         "drush/drush": "^13.7"
     },
     "conflict": {

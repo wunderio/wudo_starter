@@ -10,7 +10,6 @@ props:
     title:
       type: string
       title: Tab Title
-      $ref: 'json-schema-definitions://canvas.module/text'
 slots:
   content:
     title: Tab Content

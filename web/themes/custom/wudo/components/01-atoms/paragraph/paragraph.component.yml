@@ -9,7 +9,6 @@ props:
   properties:
     content:
       type: string
-      $ref: json-schema-definitions://canvas.module/text
       title: Content
       description: The description's content.
       examples:

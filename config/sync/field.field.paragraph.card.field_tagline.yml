@@ -1,0 +1,24 @@
+uuid: 560ddeb5-40f1-4b33-acab-27d6ad102a1b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tagline
+    - filter.format.plain_text
+    - paragraphs.paragraphs_type.card
+  module:
+    - text
+id: paragraph.card.field_tagline
+field_name: field_tagline
+entity_type: paragraph
+bundle: card
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text

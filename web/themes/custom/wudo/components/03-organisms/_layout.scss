@@ -10,8 +10,7 @@
 
 .layout-grid-2,
 .layout-grid-3,
-.layout-grid-4,
-.layout-grid-auto {
+.layout-grid-4 {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--page-indention);
@@ -22,8 +21,15 @@
   .layout-grid-2 {
     grid-template-columns: 1fr 1fr;
   }
+}
 
-  .layout-grid-auto {
-    grid-template-columns: repeat(auto-fit, minmax(min(31ch, 100%), 1fr));
+.layout-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(30ch, 100%), 1fr));
+  gap: clamp(1rem, 2vw, var(--page-indention));
+  justify-content: flex-start;
+
+  @include breakpoint.mobile {
+    grid-template-columns: repeat(auto-fit, minmax(min(32ch, 100%), auto));
   }
 }

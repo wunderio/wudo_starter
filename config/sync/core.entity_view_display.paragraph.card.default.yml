@@ -1,0 +1,30 @@
+uuid: 54b40583-93f1-4ccf-879b-f9ea5008101a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card.field_content
+    - field.field.paragraph.card.field_tagline
+    - paragraphs.paragraphs_type.card
+  module:
+    - text
+id: paragraph.card.default
+targetEntityType: paragraph
+bundle: card
+mode: default
+content:
+  field_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_tagline:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -69,6 +69,13 @@
   {{ page.help }}
 
   <main>
+    {% if page.featured %}
+      <div class="featured">
+        <div class="page-wrapper">
+          {{ page.featured }}
+        </div>
+      </div>
+    {% endif %}
     <div class="page-wrapper">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 

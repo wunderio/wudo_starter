@@ -32,7 +32,7 @@
   --color-white: #ffffff;
   --color-black: #000000;
   /* Layout */
-  --page-max-width: 95rem; /* 1520px */
+  --page-max-width: 75rem; /* 1200px */
   --content-max-width: 52rem; /* 832px */
   --sidebar-width: 25rem; /* 400px */
   --page-indention: 1.5rem; /* 24px */
@@ -444,8 +444,7 @@ div[data-drupal-messages] {
 
 .layout-grid-2,
 .layout-grid-3,
-.layout-grid-4,
-.layout-grid-auto {
+.layout-grid-4 {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--page-indention);
@@ -456,10 +455,19 @@ div[data-drupal-messages] {
   .layout-grid-2 {
     grid-template-columns: 1fr 1fr;
   }
+}
+.layout-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(30ch, 100%), 1fr));
+  gap: clamp(1rem, 2vw, var(--page-indention));
+  justify-content: flex-start;
+}
+@media (min-width: 768px) {
   .layout-grid-auto {
-    grid-template-columns: repeat(auto-fit, minmax(min(31ch, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(32ch, 100%), auto));
   }
 }
+
 .section {
   position: relative;
   isolation: isolate;
@@ -494,4 +502,12 @@ div[data-drupal-messages] {
   max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 var(--page-indention);
+}
+
+.views--articles .views-row {
+  max-width: 25rem;
+  width: 100%;
+}
+.views--articles .views-row:only-child {
+  justify-self: flex-start;
 }

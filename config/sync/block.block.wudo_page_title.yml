@@ -2,6 +2,8 @@ uuid: 62babf41-7cdd-4e3f-ab3b-c0104265744f
 langcode: en-gb
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - wudo
 _core:
@@ -17,4 +19,8 @@ settings:
   label: 'Page title'
   label_display: '0'
   provider: core
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/articles\r\n/article/*"

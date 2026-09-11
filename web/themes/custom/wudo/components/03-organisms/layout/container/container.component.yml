@@ -60,7 +60,6 @@ props:
 
     # Don't put examples as this is used with and without images.
     image:
-      $ref: json-schema-definitions://canvas.module/image
       type: object
       title: Image
 

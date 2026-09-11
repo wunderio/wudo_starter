@@ -1,0 +1,10 @@
+.views--articles {
+  .views-row {
+    max-width: 25rem;
+    width: 100%;
+
+    &:only-child {
+      justify-self: flex-start;
+    }
+  }
+}
