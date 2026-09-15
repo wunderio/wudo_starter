@@ -26,7 +26,6 @@
 
 # Theme and frontend dependencies/build output.
 /web/themes/custom/*/node_modules/
-/web/themes/custom/*/dist/
 /web/themes/custom/*/.sass-cache/
 
 # Local development tooling.

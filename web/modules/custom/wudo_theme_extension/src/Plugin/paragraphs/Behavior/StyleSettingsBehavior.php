@@ -35,7 +35,10 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
         '3rem' => $this->t('L — 3rem'),
         '5rem' => $this->t('XL — 5rem'),
         '2rem 0' => $this->t('M vertical only'),
+        '3rem 0' => $this->t('L vertical only'),
+        '5rem 0' => $this->t('XL vertical only'),
         '0 2rem' => $this->t('M horizontal only'),
+        '0 3rem' => $this->t('L horizontal only'),
       ],
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', '1rem'),
     ];
@@ -57,10 +60,40 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'text', 'inherit'),
     ];
 
+    $form['use_background'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Use background color'),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'use_background', FALSE),
+    ];
+
     $form['background'] = [
       '#type' => 'color',
       '#title' => $this->t('Background color'),
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background', '#ffffff'),
+      '#states' => [
+        'visible' => [
+          ':input[name="behavior_plugins[style_settings][settings][use_background]"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $form['background_style'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Background styles'),
+      '#options' => [
+        '' => $this->t('None'),
+        'background-style-1' => $this->t('Background style 1'),
+        'background-style-2' => $this->t('Background style 2'),
+        'background-style-3' => $this->t('Background style 3'),
+        'background-style-4' => $this->t('Background style 4'),
+        'background-style-5' => $this->t('Background style 5'),
+        'background-style-6' => $this->t('Background style 6'),
+        'background-style-7' => $this->t('Background style 7'),
+        'background-style-8' => $this->t('Background style 8'),
+        'background-style-9' => $this->t('Background style 9'),
+        'background-style-10' => $this->t('Background style 10'),
+      ],
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background_style', ''),
     ];
 
     $form['full_width_background'] = [
@@ -78,16 +111,23 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
    */
   public function view(array &$build, ParagraphInterface $paragraph, EntityViewDisplayInterface $display, $view_mode) {
     $text = $paragraph->getBehaviorSetting($this->getPluginId(), 'text', 'inherit');
+    $use_background = $paragraph->getBehaviorSetting($this->getPluginId(), 'use_background', FALSE);
     $background = $paragraph->getBehaviorSetting($this->getPluginId(), 'background', '#ffffff');
+    $background_style = $paragraph->getBehaviorSetting($this->getPluginId(), 'background_style', '');
     $padding = $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', 2);
     $layout = $paragraph->getBehaviorSetting($this->getPluginId(), 'layout', 'contained');
     $full_width_background = $paragraph->getBehaviorSetting($this->getPluginId(), 'full_width_background', FALSE);
 
     $build['#attributes']['class'][] = 'layout-' . $layout;
+    if ($background_style) {
+      $build['#attributes']['class'][] = $background_style;
+    }
     if ($full_width_background) {
       $build['#attributes']['class'][] = 'has-full-width-background';
     }
-    $build['#attributes']['style'][] = 'background-color: ' . $background . ';';
+    if ($use_background && $background) {
+      $build['#attributes']['style'][] = 'background-color: ' . $background . ';';
+    }
     $build['#attributes']['style'][] = 'color: ' . $text . ';';
     $build['#attributes']['style'][] = 'padding: ' . $padding . ';';
   }

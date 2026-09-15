@@ -8,6 +8,6 @@ _core:
   default_config_hash: dTfAUHooYV0uOVPO3saGpgv-c5PppJXDwxvwRTJOycM
 id: media.full
 label: 'Full content'
-description: ''
+description: null
 targetEntityType: media
 cache: true

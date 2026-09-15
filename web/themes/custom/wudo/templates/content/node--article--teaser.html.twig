@@ -6,6 +6,7 @@
   title: label,
   title_url: url,
   summary: content.field_body|default(''),
+  with_image: node.field_image is defined and not node.field_image.isEmpty(),
 } %}
 
   {% block image %}

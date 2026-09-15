@@ -1,0 +1,27 @@
+uuid: 23e5b995-2bc2-49f8-97d0-5c6b1b26da6d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_file
+    - media.type.svg_image
+  module:
+    - file
+id: media.svg_image.field_media_file
+field_name: field_media_file
+entity_type: media
+bundle: svg_image
+label: File
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: svg
+  file_extensions: svg
+  max_filesize: ''
+  description_field: false
+field_type: file

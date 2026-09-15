@@ -1,8 +1,9 @@
-uuid: 6e92d887-1795-4695-9610-353693ed099e
+uuid: 67dc5789-1b82-4bb7-8749-f70ebda9eae0
 langcode: en-gb
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.full
     - field.field.media.image.field_media_image
     - media.type.image
     - responsive_image.styles.section_background
@@ -10,14 +11,14 @@ dependencies:
     - responsive_image
 _core:
   default_config_hash: 73xaTNkI5J6sfFcBmNYeuk070X3mQS_iwwWaPYyfG2M
-id: media.image.default
+id: media.image.full
 targetEntityType: media
 bundle: image
-mode: default
+mode: full
 content:
   field_media_image:
     type: responsive_image
-    label: visually_hidden
+    label: hidden
     settings:
       responsive_image_style: section_background
       image_link: ''

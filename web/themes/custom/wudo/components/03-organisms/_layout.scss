@@ -1,6 +1,12 @@
 @use "../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
 @use "../00-base/00-defaults/_03-mixins.scss" as *;
 
+.layout-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
 .page-wrapper {
   width: 100%;
   max-width: var(--page-max-width);
@@ -8,19 +14,16 @@
   padding: 0 var(--page-indention);
 }
 
-.layout-grid-2,
-.layout-grid-3,
-.layout-grid-4 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--page-indention);
-  width: 100%;
+.grid-2 {
+  @include layout-grid(2);
 }
 
-@include breakpoint.mobile {
-  .layout-grid-2 {
-    grid-template-columns: 1fr 1fr;
-  }
+.grid-3 {
+  @include layout-grid(3);
+}
+
+.grid-4 {
+  @include layout-grid(4);
 }
 
 .layout-grid-auto {

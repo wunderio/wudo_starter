@@ -1,14 +1,14 @@
-uuid: ce59bb45-49b0-4344-95ff-b39b9bca0eba
+uuid: fa84076c-ffef-453d-a264-c5152a241d4d
 langcode: en-gb
 status: true
 dependencies:
   module:
     - wudo_theme_extension
-id: media
-label: Media
+id: parallax_layer
+label: 'Parallax layer'
 icon_uuid: null
 icon_default: null
 description: ''
 behavior_plugins:
-  media_styles:
+  parallax_layer:
     enabled: true

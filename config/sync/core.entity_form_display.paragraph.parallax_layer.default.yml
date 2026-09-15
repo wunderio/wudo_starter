@@ -1,0 +1,24 @@
+uuid: f2c78b4b-3264-490b-9c69-0012e42d11d7
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.parallax_layer.field_parallax_media
+    - paragraphs.paragraphs_type.parallax_layer
+  module:
+    - media_library
+id: paragraph.parallax_layer.default
+targetEntityType: paragraph
+bundle: parallax_layer
+mode: default
+content:
+  field_parallax_media:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

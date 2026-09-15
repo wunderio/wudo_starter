@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * Hide the breadcrumb block when the current route has no breadcrumb links.
+ */
+#}
+{% if content['#links'] is not empty %}
+  <div{{ attributes.addClass('block', 'block-system', 'block-system-breadcrumb-block') }}>
+    {{ content }}
+  </div>
+{% endif %}

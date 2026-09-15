@@ -62,7 +62,12 @@
 
   {{ page.secondary_menu }}
 
-  {{ page.breadcrumb }}
+  {% set breadcrumb_output = page.breadcrumb|render|striptags|trim %}
+  {% if breadcrumb_output is not empty %}
+    <div class="page-breadcrumb">
+      {{ page.breadcrumb }}
+    </div>
+  {% endif %}
 
   {{ page.highlighted }}
 
@@ -97,11 +102,34 @@
     </div>
   </main>
 
-  {% if page.footer %}
+  {% if page.footer_top or page.footer or page.footer_bottom or copyright %}
     <footer>
-      <div class="page-wrapper">
-        {{ page.footer }}
-      </div>
+      {% if page.footer_top %}
+        <div class="footer-top">
+          <div class="page-wrapper">
+            {{ page.footer_top }}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if page.footer %}
+        <div class="footer-main">
+          <div class="page-wrapper">
+            {{ page.footer }}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if page.footer_bottom or copyright %}
+        <div class="footer-bottom">
+          <div class="page-wrapper">
+            {{ page.footer_bottom }}
+            {% if copyright %}
+              <small class="footer-bottom__copyright">{{ copyright }}</small>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
     </footer>
   {% endif %}
 

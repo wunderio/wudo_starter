@@ -38,27 +38,15 @@
  * @ingroup themeable
  */
 #}
-{%
-  set classes = [
-  'section'
-]
-%}
-{% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {% if content.field_background_image %}
-      <div class="section__background" aria-hidden="true">
-        {{ content.field_background_image }}
-      </div>
-    {% endif %}
+{% embed 'wudo:article-card' with {
+  title: content.field_title|default(''),
+  summary: content.field_content|default(''),
+  with_image: paragraph.field_image is defined and not paragraph.field_image.isEmpty(),
+} %}
 
-    {% if content.field_parallax_layers is not empty %}
-      <div class="section__parallax" data-parallax aria-hidden="true">
-        {{ content.field_parallax_layers }}
-      </div>
+  {% block image %}
+    {% if with_image %}
+      {{ content.field_image }}
     {% endif %}
-
-    <div class="section__content">
-      {{ content|without('field_background_image', 'field_parallax_layers') }}
-    </div>
-  </div>
-{% endblock paragraph %}
+  {% endblock %}
+{% endembed %}

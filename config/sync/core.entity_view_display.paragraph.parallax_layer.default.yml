@@ -1,20 +1,20 @@
-uuid: 9ce64a2b-bd0b-4e79-89e3-fe807bd96acd
+uuid: 4c1c2962-2ecc-4c38-9706-c961f0efacb7
 langcode: en-gb
 status: true
 dependencies:
   config:
-    - field.field.paragraph.media.field_media
-    - paragraphs.paragraphs_type.media
-id: paragraph.media.default
+    - field.field.paragraph.parallax_layer.field_parallax_media
+    - paragraphs.paragraphs_type.parallax_layer
+id: paragraph.parallax_layer.default
 targetEntityType: paragraph
-bundle: media
+bundle: parallax_layer
 mode: default
 content:
-  field_media:
+  field_parallax_media:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: full
+      view_mode: default
       link: false
     third_party_settings: {  }
     weight: 0

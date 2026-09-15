@@ -21,7 +21,8 @@
  */
 #}
 
-{% set with_image = with_image|default(true) %}
+{% set has_image_prop = image is defined and image.src|default('') is not empty %}
+{% set with_image = with_image is defined ? with_image : has_image_prop %}
 
 {%
   set classes = [
@@ -48,7 +49,7 @@
 {% endset %}
 
 <div {{ attributes }}>
-  {% if image_content is not empty %}
+  {% if with_image %}
     <div class="article-card__image">
       {{ image_content }}
       {% block image_over %}

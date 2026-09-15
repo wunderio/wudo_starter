@@ -1,5 +1,6 @@
 // Mixins
 // Less mixins, better life!
+@use "02-breakpoints" as breakpoint;
 
 @mixin overlay-hidden {
   position: absolute;
@@ -14,4 +15,17 @@
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+}
+
+@mixin layout-grid($columns: 1, $breakpoint: mobile) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--page-indention);
+  width: 100%;
+
+  @if $breakpoint == mobile {
+    @include breakpoint.mobile {
+      grid-template-columns: repeat($columns, minmax(0, 1fr));
+    }
+  }
 }

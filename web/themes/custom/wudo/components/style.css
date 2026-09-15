@@ -164,6 +164,18 @@ input, button, textarea, select {
   font: inherit;
 }
 
+.media-shadow-style-1 {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.media-shadow-style-2 {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.media-shadow-style-3 {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
 form {
   --placeholder-color: var(--color-neutral-50, #9e9e9e);
   --border-color: var(--color-neutral-80, #424242);
@@ -435,6 +447,12 @@ div[data-drupal-messages] {
   color: #a51b00;
 }
 
+.layout-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
 .page-wrapper {
   width: 100%;
   max-width: var(--page-max-width);
@@ -442,20 +460,42 @@ div[data-drupal-messages] {
   padding: 0 var(--page-indention);
 }
 
-.layout-grid-2,
-.layout-grid-3,
-.layout-grid-4 {
+.grid-2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--page-indention);
   width: 100%;
 }
-
 @media (min-width: 768px) {
-  .layout-grid-2 {
-    grid-template-columns: 1fr 1fr;
+  .grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--page-indention);
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--page-indention);
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 .layout-grid-auto {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(30ch, 100%), 1fr));
@@ -495,6 +535,13 @@ div[data-drupal-messages] {
   object-fit: cover;
   object-position: center;
 }
+.section__parallax {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
 .section__content {
   position: relative;
 }
@@ -503,6 +550,23 @@ div[data-drupal-messages] {
   margin: 0 auto;
   padding: 0 var(--page-indention);
 }
+.layout-grid-2 .section__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--page-indention);
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .layout-grid-2 .section__content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.section.background-style-1 {
+  background: radial-gradient(120% 90% at 80% 8%, rgba(150, 70, 220, 0.55), transparent 60%), rgb(14, 10, 22);
+}
+.section.background-style-2 {
+  background: radial-gradient(120% 100% at 80% 38%, rgba(14, 153, 5, 0.5), transparent 60%), rgb(7, 20, 15);
+}
 
 .views--articles .views-row {
   max-width: 25rem;
@@ -510,4 +574,61 @@ div[data-drupal-messages] {
 }
 .views--articles .views-row:only-child {
   justify-self: flex-start;
+}
+
+.parallax-layer {
+  position: absolute;
+  --parallax-offset: 0px;
+}
+.parallax-layer--top-left {
+  top: 0;
+  left: 0;
+  transform: translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer--top-center {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer--top-right {
+  top: 0;
+  right: 0;
+  transform: translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer--left-center {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer--center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer--right-center {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer--bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer--bottom-center {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer--bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: translate3d(0, var(--parallax-offset), 0);
+}
+.parallax-layer img,
+.parallax-layer svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

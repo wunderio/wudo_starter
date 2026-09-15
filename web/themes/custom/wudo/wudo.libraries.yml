@@ -18,3 +18,10 @@ focus-trap:
   dependencies:
     - core/drupal
 
+parallax:
+  js:
+    components/00-base/01-primitives/parallax/parallax.js: { minified: false }
+  dependencies:
+    - core/drupal
+    - core/once
+
