@@ -460,6 +460,7 @@ div[data-drupal-messages] {
   padding: 0 var(--page-indention);
 }
 
+.layout-grid-2,
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr;
@@ -467,11 +468,13 @@ div[data-drupal-messages] {
   width: 100%;
 }
 @media (min-width: 768px) {
+  .layout-grid-2,
   .grid-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+.layout-grid-3,
 .grid-3 {
   display: grid;
   grid-template-columns: 1fr;
@@ -479,11 +482,13 @@ div[data-drupal-messages] {
   width: 100%;
 }
 @media (min-width: 768px) {
+  .layout-grid-3,
   .grid-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
+.layout-grid-4,
 .grid-4 {
   display: grid;
   grid-template-columns: 1fr;
@@ -491,6 +496,7 @@ div[data-drupal-messages] {
   width: 100%;
 }
 @media (min-width: 768px) {
+  .layout-grid-4,
   .grid-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -534,6 +540,25 @@ div[data-drupal-messages] {
 .section__background img {
   object-fit: cover;
   object-position: center;
+}
+.section__background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--section-mask, none);
+  pointer-events: none;
+}
+.section__background-mask {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+}
+.section__background-mask::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--section-mask, none);
+  pointer-events: none;
 }
 .section__parallax {
   position: absolute;

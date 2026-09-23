@@ -1,0 +1,24 @@
+uuid: 69245925-85ee-4ef2-93d4-d37648fd07b3
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.layout_wrapper.field_section_content
+    - paragraphs.paragraphs_type.layout_wrapper
+  module:
+    - entity_reference_revisions
+id: paragraph.layout_wrapper.default
+targetEntityType: paragraph
+bundle: layout_wrapper
+mode: default
+content:
+  field_section_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

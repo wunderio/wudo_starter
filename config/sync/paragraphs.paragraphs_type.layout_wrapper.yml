@@ -1,0 +1,14 @@
+uuid: ac21c8f3-0f94-4e6f-937c-d4c817f11e39
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - wudo_theme_extension
+id: layout_wrapper
+label: Layout
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins:
+  style_settings:
+    enabled: true

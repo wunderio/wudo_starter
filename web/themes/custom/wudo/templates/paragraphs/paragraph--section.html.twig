@@ -43,6 +43,7 @@
   'section'
 ]
 %}
+{% set background_mask = paragraph.getBehaviorSetting('style_settings', 'background_mask', '') %}
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% if content.field_background_image %}
@@ -55,6 +56,10 @@
       <div class="section__parallax" data-parallax aria-hidden="true">
         {{ content.field_parallax_layers }}
       </div>
+    {% endif %}
+    {% if background_mask %}
+    <div class="section__background-mask" style="--section-mask: {{ background_mask }};" aria-hidden="true">
+    </div>
     {% endif %}
 
     <div class="section__content">

@@ -14,14 +14,17 @@
   padding: 0 var(--page-indention);
 }
 
+.layout-grid-2,
 .grid-2 {
   @include layout-grid(2);
 }
 
+.layout-grid-3,
 .grid-3 {
   @include layout-grid(3);
 }
 
+.layout-grid-4,
 .grid-4 {
   @include layout-grid(4);
 }

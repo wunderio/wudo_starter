@@ -67,14 +67,33 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     ];
 
     $form['background'] = [
-      '#type' => 'color',
+      '#type' => 'textfield',
       '#title' => $this->t('Background color'),
+      '#description' => $this->t('Any CSS color value, for example #fff, rgb(255, 255, 255), rgba(0, 0, 0, 0.3), var(--color).'),
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background', '#ffffff'),
       '#states' => [
         'visible' => [
           ':input[name="behavior_plugins[style_settings][settings][use_background]"]' => ['checked' => TRUE],
         ],
       ],
+    ];
+
+    $form['background_mask'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Background mask'),
+      '#description' => $this->t('Any CSS background value used as an overlay on top of the background image, for example rgba(0, 0, 0, 0.4) or linear-gradient(...).'),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background_mask', ''),
+    ];
+
+    $form['border_radius'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Border radius'),
+      '#options' => [
+        '' => $this->t('None'),
+        '8px' => $this->t('S — 8px'),
+        '16px' => $this->t('M — 16px'),
+      ],
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'border_radius', ''),
     ];
 
     $form['background_style'] = [
@@ -113,6 +132,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     $text = $paragraph->getBehaviorSetting($this->getPluginId(), 'text', 'inherit');
     $use_background = $paragraph->getBehaviorSetting($this->getPluginId(), 'use_background', FALSE);
     $background = $paragraph->getBehaviorSetting($this->getPluginId(), 'background', '#ffffff');
+    $border_radius = $paragraph->getBehaviorSetting($this->getPluginId(), 'border_radius', '');
     $background_style = $paragraph->getBehaviorSetting($this->getPluginId(), 'background_style', '');
     $padding = $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', 2);
     $layout = $paragraph->getBehaviorSetting($this->getPluginId(), 'layout', 'contained');
@@ -127,6 +147,9 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     }
     if ($use_background && $background) {
       $build['#attributes']['style'][] = 'background-color: ' . $background . ';';
+    }
+    if ($border_radius !== '') {
+      $build['#attributes']['style'][] = 'border-radius: ' . $border_radius . ';';
     }
     $build['#attributes']['style'][] = 'color: ' . $text . ';';
     $build['#attributes']['style'][] = 'padding: ' . $padding . ';';

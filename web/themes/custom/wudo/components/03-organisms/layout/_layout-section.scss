@@ -29,6 +29,28 @@
       object-fit: cover;
       object-position: center;
     }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--section-mask, none);
+      pointer-events: none;
+    }
+  }
+
+  &__background-mask {
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--section-mask, none);
+      pointer-events: none;
+    }
   }
 
   &__parallax {
