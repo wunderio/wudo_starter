@@ -59,6 +59,20 @@ Export configuration after making intentional changes:
 vendor/bin/drush config:export --destination=config/sync
 ```
 
+## Import a demo content
+
+```bash
+ddev drush recipe ../recipes/demo
+```
+
+Export the demo content with:
+
+```bash
+ddev drush content:export node 123 \
+  --with-dependencies \
+  --dir=../recipes/demo/content
+```
+
 ## Settings and secrets
 
 `web/sites/*/settings.php` is local-only and ignored by Git. Never commit this

@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: dad02890-a551-4908-8535-eb52b33ad167
+  bundle: landingpage
+  default_langcode: en-gb
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: Frontpage
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en-gb
+      alias: null
+  field_content:
+    -
+      target_id: 17
+      target_revision_id: 924

@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - image.style.max_1300x1300
+    - image.style.max_2600x2600
+    - image.style.max_3600x3600
     - image.style.max_650x650
 id: section_background
 label: 'Section background'
@@ -14,6 +16,8 @@ image_style_mappings:
       sizes: 100vw
       sizes_image_styles:
         - max_1300x1300
+        - max_2600x2600
+        - max_3600x3600
         - max_650x650
     breakpoint_id: responsive_image.viewport_sizing
     multiplier: 1x

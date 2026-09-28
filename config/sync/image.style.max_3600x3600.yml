@@ -1,0 +1,21 @@
+uuid: 2f4df011-8d8c-487a-9230-2c3eae2e9dd8
+langcode: en-gb
+status: true
+dependencies: {  }
+name: max_3600x3600
+label: 'Max 3600x3600'
+effects:
+  b0431331-1559-41f5-9b34-4be03f576e94:
+    uuid: b0431331-1559-41f5-9b34-4be03f576e94
+    id: image_scale
+    weight: 1
+    data:
+      width: 3600
+      height: null
+      upscale: false
+  a4c32b05-38a7-40cf-aa99-c2709a3d901d:
+    uuid: a4c32b05-38a7-40cf-aa99-c2709a3d901d
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

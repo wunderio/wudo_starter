@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 7e714bb9-9c69-44aa-8e50-742c9b64f015
+  default_langcode: en-gb
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: japan-6.jpeg
+  uri:
+    -
+      value: 'public://2026-09/japan-6.jpeg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 259879
+  status:
+    -
+      value: true

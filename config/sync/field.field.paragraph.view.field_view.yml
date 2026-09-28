@@ -27,6 +27,6 @@ settings:
     page: page
     block: block
   preselect_views:
-    content_recent: content_recent
+    articles: articles
   enabled_settings: {  }
 field_type: viewsreference

@@ -1,0 +1,8 @@
+name: 'Demo content'
+description: 'Demo content for the starter project.'
+type: 'Content'
+
+install:
+  - node
+  - media
+  - paragraphs
