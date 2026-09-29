@@ -10,9 +10,14 @@
   {% block navigation %}{% endblock %}
 {% endset %}
 
+{% set header_utils %}
+  {% block header_utils %}{% endblock %}
+{% endset %}
+
 {% set utils_output = utils|render|trim %}
 {% set branding_output = branding|render|trim %}
 {% set nav_output = nav|render|trim %}
+{% set header_utils = header_utils|render|trim %}
 
 <header {{ attributes.addClass('site-header') }}>
   {% if utils_output is not empty %}
@@ -35,15 +40,22 @@
             {% endif %}
 
             {% if nav_output is not empty %}
-              <div class="site-header__menu-toggle">
-                {{ include('wudo:menu-toggle', {
-                  label: 'Open menu',
-                }, with_context = false) }}
-              </div>
               <div class="site-header__menu" data-menu>
                 {{ nav_output|raw }}
               </div>
             {% endif %}
+
+            {% if header_utils is not empty %}
+              <div class="site-header__main-utils">
+                {{ header_utils|raw }}
+              </div>
+            {% endif %}
+
+            <div class="site-header__menu-toggle">
+              {{ include('wudo:menu-toggle', {
+                label: 'Open menu',
+              }, with_context = false) }}
+            </div>
           </div>
         </div>
       </div>

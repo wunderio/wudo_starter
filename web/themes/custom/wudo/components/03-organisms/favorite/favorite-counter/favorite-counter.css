@@ -11,6 +11,7 @@ wudo-favorite-counter-trigger {
 }
 wudo-favorite-counter-trigger .button {
   padding: 0;
+  background: transparent;
 }
 wudo-favorite-counter-trigger:focus-visible {
   outline: 2px solid #f43f5e;

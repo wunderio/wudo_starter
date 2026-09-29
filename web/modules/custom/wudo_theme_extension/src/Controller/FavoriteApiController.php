@@ -3,22 +3,26 @@
 namespace Drupal\wudo_theme_extension\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\File\FileUrlGeneratorInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Render\RendererInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\node\NodeInterface;
 
 class FavoriteApiController extends ControllerBase {
 
-  protected $renderer;
+  public function __construct(
+    protected RendererInterface $renderer,
+    protected FileUrlGeneratorInterface $fileUrlGenerator,
+  ) {}
 
-  public function __construct(RendererInterface $renderer) {
-    $this->renderer = $renderer;
-  }
-
-  public static function create(ContainerInterface $container) {
-    return new static($container->get('renderer'));
+  public static function create(ContainerInterface $container): static {
+    return new static(
+      $container->get('renderer'),
+      $container->get('file_url_generator'),
+    );
   }
 
   public function getTeasers(Request $request) {
@@ -58,22 +62,24 @@ class FavoriteApiController extends ControllerBase {
 
       $result[] = [
         'id' => $node->id(),
-        'html' => $this->renderer->renderPlain($build)->__toString(),
+        'html' => (string) $this->renderer->renderInIsolation($build),
       ];
     }
 
     return new JsonResponse($result);
   }
 
-  private function getThumbnailUrl($node) {
-    // Adjust field_image to your actual image field machine name
+  private function getThumbnailUrl(NodeInterface $node): string {
     if ($node->hasField('field_image') && !$node->get('field_image')->isEmpty()) {
-      $file = $node->get('field_image')->entity;
-      if ($file) {
-        return \Drupal::service('file_url_generator')->generateString($file->getFileUri());
+      $media = $node->get('field_image')->entity;
+      if ($media && $media->hasField('field_media_image') && !$media->get('field_media_image')->isEmpty()) {
+        $file = $media->get('field_media_image')->entity;
+        if (!$file) {
+          return '';
+        }
+        return $this->fileUrlGenerator->generateString($file->getFileUri());
       }
     }
-    // Empty image fallback
-    return '/' . \Drupal::theme()->getActiveTheme()->getPath() . '/assets/no-image.jpg';
+    return '';
   }
 }

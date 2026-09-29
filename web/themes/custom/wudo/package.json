@@ -7,7 +7,7 @@
     "build:sdc": "sass components:components --update --no-source-map",
     "dev:sdc": "sass components:components --watch --no-source-map",
     "dev": "vite build --watch",
-    "build": "npm run build:sdc && vite build",
+    "build": "npm run build:sdc && vite build && npm run build:lit",
     "build:lit": "vite build --config vite.lit.config.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

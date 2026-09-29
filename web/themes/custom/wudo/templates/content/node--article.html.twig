@@ -1,0 +1,13 @@
+<article{{ attributes }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {{ include('wudo:favorite-button', {
+    content_id: node.id(),
+    label: label,
+  }, with_context = false) }}
+
+  <div{{ content_attributes }}>
+    {{ content }}
+  </div>
+</article>

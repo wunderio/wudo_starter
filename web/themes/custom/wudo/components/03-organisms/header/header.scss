@@ -28,6 +28,14 @@
 
   }
 
+  &__main-utils {
+    order: 2;
+  }
+
+  &__menu-toggle {
+    order: 3;
+  }
+
   &__main {
     &--content {
       position: relative; // for dropdown
@@ -59,7 +67,7 @@
         @include breakpoint.mobile {
           @include overlay-visible;
 
-          order: 2;
+          order: 1;
           flex: 1;
         }
       }

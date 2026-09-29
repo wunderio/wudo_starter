@@ -10,6 +10,7 @@ libraries:
 regions:
   header_top: "Header top"
   header: "Header"
+  header_utils: "Header utils"
   primary_menu: "Primary menu"
   secondary_menu: "Secondary menu"
   breadcrumb: "Breadcrumb"

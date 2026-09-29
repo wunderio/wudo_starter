@@ -7,10 +7,24 @@
   title_url: url,
   summary: content.field_body|default(''),
   with_image: node.field_image is defined and not node.field_image.isEmpty(),
+  favorite_content_id: node.id(),
+  favorite_label: label,
 } %}
 
   {% block image %}
     {{ content.field_image }}
   {% endblock %}
+
+  {% block card_meta %}
+    <div class="article-card__meta">
+      <span>{{ card_meta }}</span>
+    {{ include('wudo:favorite-button', {
+      content_id: favorite_content_id,
+      label: favorite_label,
+      icon_type: 'bookmark',
+      icon_size: 'small',
+    }, with_context = false) }}
+    </div>
+  {% endblock card_meta %}
 
 {% endembed %}

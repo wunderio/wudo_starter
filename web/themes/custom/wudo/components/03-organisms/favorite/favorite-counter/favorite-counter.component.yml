@@ -10,6 +10,14 @@ props:
       title: Drawer ID
       description: "ID of the favorite drawer component to open"
       default: "favorite-drawer"
+    icon_type:
+      type: string
+      title: Icon
+      description: Icon used by the counter button.
+      default: heart
+      enum:
+        - heart
+        - bookmark
     badge_style:
       type: string
       title: Badge Style

@@ -23,6 +23,7 @@ composer install
 cd web/themes/custom/wudo
 npm ci
 npm run build
+npm run build:lit
 cd ../../../..
 ```
 
@@ -71,6 +72,10 @@ Export the demo content with:
 ddev drush content:export node 123 \
   --with-dependencies \
   --dir=../recipes/demo/content
+```
+Export menu links with:
+```bash
+ddev drush content:export menu_link_content --dir=../recipes/demo/content
 ```
 
 ## Settings and secrets

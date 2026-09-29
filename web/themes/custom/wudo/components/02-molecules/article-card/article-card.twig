@@ -101,5 +101,11 @@
         }, with_context = false) }}
       {% endif %}
     {% endblock %}
+
+    {% block content_bottom %}
+      {% if content_bottom is not empty %}
+        {{ content_bottom }}
+      {% endif %}
+    {% endblock %}
   </div>
 </div>
