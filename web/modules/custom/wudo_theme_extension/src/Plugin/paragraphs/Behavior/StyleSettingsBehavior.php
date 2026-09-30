@@ -28,7 +28,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       '#type' => 'details',
       '#title' => $this->t('Layout & spacing'),
       '#open' => TRUE,
-      '#tree' => FALSE,
+      '#tree' => TRUE,
     ];
 
     $form['layout_spacing']['padding'] = [
@@ -60,7 +60,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
         '3rem' => $this->t('L - 3rem'),
         '5rem' => $this->t('XL - 5rem'),
       ],
-      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', '0'),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'margin_top', '0'),
     ];
 
     $form['layout_spacing']['margin_bottom'] = [
@@ -73,7 +73,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
         '3rem' => $this->t('L - 3rem'),
         '5rem' => $this->t('XL - 5rem'),
       ],
-      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', '0'),
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'margin_bottom', '0'),
     ];
 
     $form['layout_spacing']['layout'] = [
@@ -90,7 +90,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     $form['colors_background'] = [
       '#type' => 'details',
       '#title' => $this->t('Colors & background'),
-      '#tree' => FALSE,
+      '#tree' => TRUE,
     ];
 
     $form['colors_background']['text'] = [
@@ -112,7 +112,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background', '#ffffff'),
       '#states' => [
         'visible' => [
-          ':input[name="behavior_plugins[style_settings][settings][use_background]"]' => ['checked' => TRUE],
+          ':input[name="behavior_plugins[style_settings][settings][colors_background][use_background]"]' => ['checked' => TRUE],
         ],
       ],
     ];
@@ -127,7 +127,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     $form['shape'] = [
       '#type' => 'details',
       '#title' => $this->t('Shape'),
-      '#tree' => FALSE,
+      '#tree' => TRUE,
     ];
 
     $form['shape']['border_radius'] = [
@@ -168,6 +168,20 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     ];
 
     return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitBehaviorForm(ParagraphInterface $paragraph, array &$form, FormStateInterface $form_state) {
+    $values = $form_state->getValues();
+    $settings = [];
+    foreach (['layout_spacing', 'colors_background', 'shape'] as $group) {
+      if (isset($values[$group]) && is_array($values[$group])) {
+        $settings += $values[$group];
+      }
+    }
+    $paragraph->setBehaviorSettings($this->getPluginId(), $settings);
   }
 
   /**
