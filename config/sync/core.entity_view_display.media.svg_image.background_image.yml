@@ -1,0 +1,29 @@
+uuid: 5ac64be6-964e-4a2a-9e5b-088c66e08c0b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.background_image
+    - field.field.media.svg_image.field_media_file
+    - media.type.svg_image
+  module:
+    - file
+id: media.svg_image.background_image
+targetEntityType: media
+bundle: svg_image
+mode: background_image
+content:
+  field_media_file:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

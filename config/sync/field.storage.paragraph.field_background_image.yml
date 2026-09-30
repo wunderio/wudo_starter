@@ -1,27 +1,17 @@
-uuid: 929a5a1d-162a-4593-8d3d-889478c01c99
+uuid: 0d6ba397-c639-4211-bfba-3ea1781ab82d
 langcode: en-gb
 status: true
 dependencies:
   module:
-    - file
-    - image
+    - media
     - paragraphs
 id: paragraph.field_background_image
 field_name: field_background_image
 entity_type: paragraph
-type: image
+type: entity_reference
 settings:
-  target_type: file
-  display_field: false
-  display_default: true
-  uri_scheme: public
-  default_image:
-    uuid: ''
-    alt: ''
-    title: ''
-    width: null
-    height: null
-module: image
+  target_type: media
+module: core
 locked: false
 cardinality: 1
 translatable: true

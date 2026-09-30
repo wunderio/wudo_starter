@@ -24,7 +24,14 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
    */
   public function buildBehaviorForm(ParagraphInterface $paragraph, array &$form, FormStateInterface $form_state) {
 
-    $form['padding'] = [
+    $form['layout_spacing'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Layout & spacing'),
+      '#open' => TRUE,
+      '#tree' => FALSE,
+    ];
+
+    $form['layout_spacing']['padding'] = [
       '#type' => 'select',
       '#title' => $this->t('Padding'),
       '#options' => [
@@ -43,7 +50,33 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', '1rem'),
     ];
 
-    $form['layout'] = [
+    $form['layout_spacing']['margin_top'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Margin Top'),
+      '#options' => [
+        '0' => $this->t('None'),
+        '1rem' => $this->t('SM - 1rem'),
+        '2rem' => $this->t('M - 2rem'),
+        '3rem' => $this->t('L - 3rem'),
+        '5rem' => $this->t('XL - 5rem'),
+      ],
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', '0'),
+    ];
+
+    $form['layout_spacing']['margin_bottom'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Margin Bottom'),
+      '#options' => [
+        '0' => $this->t('None'),
+        '1rem' => $this->t('SM - 1rem'),
+        '2rem' => $this->t('M - 2rem'),
+        '3rem' => $this->t('L - 3rem'),
+        '5rem' => $this->t('XL - 5rem'),
+      ],
+      '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', '0'),
+    ];
+
+    $form['layout_spacing']['layout'] = [
       '#type' => 'select',
       '#title' => $this->t('Layout'),
       '#options' => [
@@ -54,19 +87,25 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'layout', 'grid-1'),
     ];
 
-    $form['text'] = [
+    $form['colors_background'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Colors & background'),
+      '#tree' => FALSE,
+    ];
+
+    $form['colors_background']['text'] = [
       '#type' => 'color',
       '#title' => $this->t('Text color'),
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'text', 'inherit'),
     ];
 
-    $form['use_background'] = [
+    $form['colors_background']['use_background'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Use background color'),
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'use_background', FALSE),
     ];
 
-    $form['background'] = [
+    $form['colors_background']['background'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Background color'),
       '#description' => $this->t('Any CSS color value, for example #fff, rgb(255, 255, 255), rgba(0, 0, 0, 0.3), var(--color).'),
@@ -78,14 +117,20 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       ],
     ];
 
-    $form['background_mask'] = [
+    $form['colors_background']['background_mask'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Background mask'),
       '#description' => $this->t('Any CSS background value used as an overlay on top of the background image, for example rgba(0, 0, 0, 0.4) or linear-gradient(...).'),
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background_mask', ''),
     ];
 
-    $form['border_radius'] = [
+    $form['shape'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Shape'),
+      '#tree' => FALSE,
+    ];
+
+    $form['shape']['border_radius'] = [
       '#type' => 'select',
       '#title' => $this->t('Border radius'),
       '#options' => [
@@ -96,7 +141,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'border_radius', ''),
     ];
 
-    $form['background_style'] = [
+    $form['colors_background']['background_style'] = [
       '#type' => 'select',
       '#title' => $this->t('Background styles'),
       '#options' => [
@@ -115,7 +160,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
       '#default_value' => $paragraph->getBehaviorSetting($this->getPluginId(), 'background_style', ''),
     ];
 
-    $form['full_width_background'] = [
+    $form['colors_background']['full_width_background'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Full width background'),
       '#description' => $this->t('Extend the section background to the viewport edges while keeping its content constrained.'),
@@ -135,6 +180,8 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     $border_radius = $paragraph->getBehaviorSetting($this->getPluginId(), 'border_radius', '');
     $background_style = $paragraph->getBehaviorSetting($this->getPluginId(), 'background_style', '');
     $padding = $paragraph->getBehaviorSetting($this->getPluginId(), 'padding', 2);
+    $margin_top = $paragraph->getBehaviorSetting($this->getPluginId(), 'margin_top', 0);
+    $margin_bottom = $paragraph->getBehaviorSetting($this->getPluginId(), 'margin_bottom', 0);
     $layout = $paragraph->getBehaviorSetting($this->getPluginId(), 'layout', 'contained');
     $full_width_background = $paragraph->getBehaviorSetting($this->getPluginId(), 'full_width_background', FALSE);
 
@@ -153,6 +200,7 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     }
     $build['#attributes']['style'][] = 'color: ' . $text . ';';
     $build['#attributes']['style'][] = 'padding: ' . $padding . ';';
+    $build['#attributes']['style'][] = 'margin-top: ' . $margin_top . ';';
+    $build['#attributes']['style'][] = 'margin-bottom: ' . $margin_bottom . ';';
   }
-
 }

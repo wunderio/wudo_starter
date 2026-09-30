@@ -23,9 +23,6 @@ default:
   sticky:
     -
       value: false
-  revision_translation_affected:
-    -
-      value: true
   path:
     -
       langcode: en-gb
@@ -33,4 +30,4 @@ default:
   field_content:
     -
       target_id: 17
-      target_revision_id: 924
+      target_revision_id: 1045

@@ -7,25 +7,21 @@ dependencies:
     - field.field.paragraph.section.field_parallax_layers
     - field.field.paragraph.section.field_section_content
     - paragraphs.paragraphs_type.section
-    - responsive_image.styles.section_background
   module:
     - entity_reference_revisions
-    - responsive_image
 id: paragraph.section.default
 targetEntityType: paragraph
 bundle: section
 mode: default
 content:
   field_background_image:
-    type: responsive_image
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      responsive_image_style: section_background
-      image_link: ''
-      image_loading:
-        attribute: lazy
+      view_mode: background_image
+      link: false
     third_party_settings: {  }
-    weight: 1
+    weight: 3
     region: content
   field_parallax_layers:
     type: entity_reference_revisions_entity_view

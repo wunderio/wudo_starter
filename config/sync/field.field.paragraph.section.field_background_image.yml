@@ -1,12 +1,12 @@
-uuid: 7814686f-e1ec-498f-b61d-290fa8f34fa1
+uuid: 3f49e0d9-5919-4843-a546-22ae7340d262
 langcode: en-gb
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_background_image
+    - media.type.image
+    - media.type.svg_image
     - paragraphs.paragraphs_type.section
-  module:
-    - image
 id: paragraph.section.field_background_image
 field_name: field_background_image
 entity_type: paragraph
@@ -18,21 +18,14 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:file'
-  handler_settings: {  }
-  file_directory: background-images
-  file_extensions: 'png gif jpg jpeg webp'
-  max_filesize: 5MB
-  max_resolution: ''
-  min_resolution: ''
-  alt_field: false
-  alt_field_required: true
-  title_field: false
-  title_field_required: false
-  default_image:
-    uuid: ''
-    alt: ''
-    title: ''
-    width: null
-    height: null
-field_type: image
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg_image: svg_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

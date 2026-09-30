@@ -41,7 +41,7 @@
 
   &__background-mask {
     position: absolute;
-    z-index: 4;
+    z-index: 7;
     inset: 0;
 
     &::after {
@@ -63,6 +63,7 @@
 
   &__content {
     position: relative;
+    z-index: 10;
 
     .has-full-width-background & {
       max-width: var(--page-max-width);

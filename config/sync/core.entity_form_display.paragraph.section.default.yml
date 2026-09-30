@@ -6,11 +6,10 @@ dependencies:
     - field.field.paragraph.section.field_background_image
     - field.field.paragraph.section.field_parallax_layers
     - field.field.paragraph.section.field_section_content
-    - image.style.thumbnail
     - paragraphs.paragraphs_type.section
   module:
     - field_group
-    - image
+    - media_library
     - paragraphs
 third_party_settings:
   field_group:
@@ -85,12 +84,11 @@ bundle: section
 mode: default
 content:
   field_background_image:
-    type: image_image
-    weight: 1
+    type: media_library_widget
+    weight: 23
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      media_types: {  }
     third_party_settings: {  }
   field_parallax_layers:
     type: paragraphs

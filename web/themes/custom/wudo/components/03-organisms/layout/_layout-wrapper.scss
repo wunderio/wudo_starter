@@ -1,0 +1,36 @@
+@use "../../00-base/00-defaults/_03-mixins.scss" as *;
+
+.layout-wrapper {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  &__background-mask {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--section-mask, none);
+      pointer-events: none;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+
+    .has-full-width-background & {
+      max-width: var(--page-max-width);
+      margin: 0 auto;
+      padding: 0 var(--page-indention);
+    }
+
+    .layout-grid-2 & {
+      @include layout-grid(2);
+    }
+  }
+}
