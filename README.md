@@ -4,6 +4,8 @@ Drupal 11 starter project containing the site dependencies, custom theme,
 custom module, and project recipes in one repository. The project uses
 `web/` as its document root.
 
+![Wudo screenshot](web/themes/custom/wudo/screenshot.png)
+
 ## Repository layout
 
 - `web/` is the Drupal document root.
