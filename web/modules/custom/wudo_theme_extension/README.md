@@ -11,9 +11,9 @@ module.
 
 ### Favorites block
 Provides a `Favorites counter and drawer` block under the **Wudo** category.
-Place it once from `/admin/structure/block`; it renders both the favorite
-counter and its drawer. Keep the drawer ID set to `favorite-drawer` to match the
-Article favorite buttons.
+Place one instance in the header with **Counter only**, then place a second
+instance in the `Page bottom` region with **Drawer only**. Both instances must
+use the same drawer ID (`favorite-drawer`) as the Article favorite buttons.
 
 ### Paragraphs Behavior: Style & Layout Settings
 Adds a collapsible **Styles** panel to each paragraph in the editor, powered by the `style_settings` Paragraphs Behavior plugin. Editors can set per-paragraph background color, padding, and layout directly in the edit form without switching tabs.

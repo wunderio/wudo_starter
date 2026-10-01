@@ -1,4 +1,4 @@
-uuid: 91c95d47-4f10-4841-b971-38a73896e258
+uuid: 6c712489-faf1-4b13-a4cf-5f2181b84019
 langcode: en-gb
 status: true
 dependencies:
@@ -6,18 +6,18 @@ dependencies:
     - wudo_theme_extension
   theme:
     - wudo
-id: wudo_favoritescounteranddrawer
+id: wudo_favoritesdrawer
 theme: wudo
-region: header_utils
-weight: -4
+region: page_bottom
+weight: 0
 provider: null
 plugin: wudo_favorites
 settings:
   id: wudo_favorites
-  label: 'Favorites counter and drawer'
+  label: 'Favorites drawer'
   label_display: '0'
   provider: wudo_theme_extension
   drawer_id: favorite-drawer
   icon_type: bookmark
-  display_mode: counter
+  display_mode: drawer
 visibility: {  }

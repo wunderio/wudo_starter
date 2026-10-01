@@ -6,12 +6,19 @@ Parameters:
 
 {% set drawer_id = drawer_id|default('favorite-drawer') %}
 
-<wudo-favorite-drawer
-  id="{{ drawer_id }}"
-  api-url="{{ api_url|default('/api/favorites') }}"
-  label-title="{{ 'My Favorites'|t }}"
-  label-empty="{{ 'List is empty'|t }}"
-  label-loading="{{ 'Loading...'|t }}"
-  label-remove="{{ 'Remove'|t }}"
-  {{ attributes }}
-></wudo-favorite-drawer>
+{% embed 'wudo:drawer' with {
+  id: drawer_id,
+  position: 'right',
+  size: '400px',
+  title: 'My Favorites'|t,
+} %}
+  {% block content %}
+    <wudo-favorite-drawer
+      drawer-id="{{ drawer_id }}"
+      api-url="{{ api_url|default('/api/favorites') }}"
+      label-empty="{{ 'List is empty'|t }}"
+      label-loading="{{ 'Loading...'|t }}"
+      label-remove="{{ 'Remove'|t }}"
+    ></wudo-favorite-drawer>
+  {% endblock %}
+{% endembed %}

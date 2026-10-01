@@ -23,6 +23,7 @@ class FavoritesBlock extends BlockBase {
     return [
       'drawer_id' => 'favorite-drawer',
       'icon_type' => 'heart',
+      'display_mode' => 'both',
     ] + parent::defaultConfiguration();
   }
 
@@ -47,6 +48,17 @@ class FavoritesBlock extends BlockBase {
       '#default_value' => $this->configuration['icon_type'],
       '#required' => TRUE,
     ];
+    $form['display_mode'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Display'),
+      '#options' => [
+        'counter' => $this->t('Counter only'),
+        'drawer' => $this->t('Drawer only'),
+        'both' => $this->t('Counter and drawer'),
+      ],
+      '#default_value' => $this->configuration['display_mode'],
+      '#required' => TRUE,
+    ];
 
     return $form;
   }
@@ -57,6 +69,7 @@ class FavoritesBlock extends BlockBase {
   public function blockSubmit($form, FormStateInterface $form_state): void {
     $this->configuration['drawer_id'] = $form_state->getValue('drawer_id');
     $this->configuration['icon_type'] = $form_state->getValue('icon_type');
+    $this->configuration['display_mode'] = $form_state->getValue('display_mode');
   }
 
   /**
@@ -64,29 +77,37 @@ class FavoritesBlock extends BlockBase {
    */
   public function build(): array {
     $drawer_id = $this->configuration['drawer_id'];
-
-    return [
+    $display_mode = $this->configuration['display_mode'] ?? 'both';
+    $build = [
       '#type' => 'container',
       '#attributes' => [
         'class' => ['wudo-favorites'],
       ],
-      'counter' => [
+    ];
+
+    if ($display_mode === 'counter' || $display_mode === 'both') {
+      $build['counter'] = [
         '#type' => 'component',
         '#component' => 'wudo:favorite-counter',
         '#props' => [
           'drawer_id' => $drawer_id,
           'icon_type' => $this->configuration['icon_type'],
         ],
-      ],
-      'drawer' => [
+      ];
+    }
+
+    if ($display_mode === 'drawer' || $display_mode === 'both') {
+      $build['drawer'] = [
         '#type' => 'component',
         '#component' => 'wudo:favorite-drawer',
         '#props' => [
           'drawer_id' => $drawer_id,
           'api_url' => '/api/favorites',
         ],
-      ],
-    ];
+      ];
+    }
+
+    return $build;
   }
 
 }

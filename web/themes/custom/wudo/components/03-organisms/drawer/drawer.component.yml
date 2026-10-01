@@ -47,3 +47,5 @@ slots:
 libraryOverrides:
   dependencies:
     - wudo/focus-trap
+  js:
+    drawer.js: { attributes: { type: module } }

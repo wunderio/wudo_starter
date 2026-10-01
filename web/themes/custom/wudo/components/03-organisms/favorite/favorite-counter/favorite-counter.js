@@ -22,7 +22,7 @@ class WudoFavoriteCounterTrigger extends LitElement {
 
     this.addEventListener('click', (e) => {
       e.preventDefault();
-      window.dispatchEvent(new CustomEvent('drawer:open', {
+      document.dispatchEvent(new CustomEvent('drawer:open', {
         detail: { id: this.drawerId || 'favorite-drawer', trigger: this },
         bubbles: true,
         composed: true
