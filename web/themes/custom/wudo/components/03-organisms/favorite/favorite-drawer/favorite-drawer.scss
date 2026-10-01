@@ -1,6 +1,7 @@
 .wudo-fav-content {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .wudo-fav-empty,
@@ -16,13 +17,19 @@
   grid-template-columns: 1fr auto;
   column-gap: 1rem;
   align-items: center;
-  padding: 15px;
+  padding: 0;
 }
 
 .wudo-fav-delete {
   width: 2rem;
   height: 2rem;
   padding: 0.5rem;
+  background: none;
+  border: none;
+
+  &:hover {
+    color: var(--color-semantic-error-60);
+  }
 }
 
 .wudo-fav-teaser-wrap {

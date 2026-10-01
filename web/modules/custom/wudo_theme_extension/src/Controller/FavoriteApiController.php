@@ -3,25 +3,24 @@
 namespace Drupal\wudo_theme_extension\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\File\FileUrlGeneratorInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Render\RendererInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\node\NodeInterface;
 
 class FavoriteApiController extends ControllerBase {
 
   public function __construct(
     protected RendererInterface $renderer,
-    protected FileUrlGeneratorInterface $fileUrlGenerator,
+    protected EntityTypeManagerInterface $entityManager,
   ) {}
 
   public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('renderer'),
-      $container->get('file_url_generator'),
+      $container->get('entity_type.manager'),
     );
   }
 
@@ -46,19 +45,9 @@ class FavoriteApiController extends ControllerBase {
         continue;
       }
 
-      $build = [
-        '#type' => 'component',
-        '#component' => 'wudo:article-card',
-        '#props' => [
-          'id' => $node->id(),
-          'title' => $node->label(),
-          'url' => $node->toUrl()->toString(),
-          'image' => [
-            'src' => $this->getThumbnailUrl($node),
-            'alt' => $node->label(),
-          ],
-        ],
-      ];
+      $build = $this->entityManager
+        ->getViewBuilder('node')
+        ->view($node, 'card');
 
       $result[] = [
         'id' => $node->id(),
@@ -67,19 +56,5 @@ class FavoriteApiController extends ControllerBase {
     }
 
     return new JsonResponse($result);
-  }
-
-  private function getThumbnailUrl(NodeInterface $node): string {
-    if ($node->hasField('field_image') && !$node->get('field_image')->isEmpty()) {
-      $media = $node->get('field_image')->entity;
-      if ($media && $media->hasField('field_media_image') && !$media->get('field_media_image')->isEmpty()) {
-        $file = $media->get('field_media_image')->entity;
-        if (!$file) {
-          return '';
-        }
-        return $this->fileUrlGenerator->generateString($file->getFileUri());
-      }
-    }
-    return '';
   }
 }

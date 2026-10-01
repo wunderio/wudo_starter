@@ -37,6 +37,15 @@ props:
       examples:
         - 'custom-class'
 
+    variant:
+      type: string
+      title: Variant
+      description: Card layout variant.
+      default: default
+      enum:
+        - default
+        - mini-horizontal
+
 slots:
   image_over:
     title: Image over

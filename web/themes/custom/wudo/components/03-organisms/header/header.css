@@ -9,6 +9,14 @@
 .site-header {
   background-color: var(--header-bg);
 }
+.site-header__branding {
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .site-header__branding {
+    flex: 0 1 auto;
+  }
+}
 .site-header__utils {
   padding-block: var(--space-sm, 0.5rem);
   background-color: var(--utils-bg);

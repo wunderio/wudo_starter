@@ -27,6 +27,7 @@
 {%
   set classes = [
   'article-card',
+  variant is defined and variant != 'default' ? 'article-card--' ~ variant : '',
   with_image ? 'article-card--with-image' : '',
   modifier_class|default(''),
 ]
