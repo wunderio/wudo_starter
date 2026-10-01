@@ -1,0 +1,33 @@
+uuid: 06e13019-8420-46b5-a364-c21c9dd4baaf
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.article.field_body
+    - field.field.node.article.field_image
+    - node.type.article
+  module:
+    - user
+id: node.article.card
+targetEntityType: node
+bundle: article
+mode: card
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: thumbnail
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body: true
+  langcode: true
