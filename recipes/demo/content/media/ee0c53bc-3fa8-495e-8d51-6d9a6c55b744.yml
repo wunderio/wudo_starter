@@ -3,7 +3,7 @@ _meta:
   entity_type: media
   uuid: ee0c53bc-3fa8-495e-8d51-6d9a6c55b744
   bundle: image
-  default_langcode: en-gb
+  default_langcode: en
   depends:
     427574dc-f1da-44cd-8244-2c044ce9b494: file
 default:
@@ -21,7 +21,7 @@ default:
       value: true
   path:
     -
-      langcode: en-gb
+      langcode: en
       alias: null
   field_media_image:
     -

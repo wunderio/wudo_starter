@@ -3,7 +3,7 @@ _meta:
   entity_type: menu_link_content
   uuid: 9cfe96b8-46f0-41dc-8009-53226fda9c06
   bundle: menu_link_content
-  default_langcode: en-gb
+  default_langcode: en
 default:
   enabled:
     -

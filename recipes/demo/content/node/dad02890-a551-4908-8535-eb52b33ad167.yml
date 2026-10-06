@@ -3,7 +3,7 @@ _meta:
   entity_type: node
   uuid: dad02890-a551-4908-8535-eb52b33ad167
   bundle: landingpage
-  default_langcode: en-gb
+  default_langcode: en
 default:
   revision_uid:
     -
@@ -25,7 +25,7 @@ default:
       value: false
   path:
     -
-      langcode: en-gb
+      langcode: en
       alias: null
   field_content:
     -

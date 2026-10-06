@@ -1,5 +1,5 @@
 uuid: 28029e26-d2c9-4951-9d28-ccbfa014453c
-langcode: en-gb
+langcode: en
 status: true
 dependencies:
   module:
@@ -13,6 +13,6 @@ name: Landingpage
 type: landingpage
 description: null
 help: null
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: true

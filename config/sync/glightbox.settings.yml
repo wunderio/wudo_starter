@@ -1,6 +1,6 @@
 _core:
   default_config_hash: e4lHOh2jMu4BTmZv8Pds85ZvpYvEYgH1AsR9crZHJPg
-langcode: en-gb
+langcode: en
 custom:
   activate: 0
   open_effect: zoom

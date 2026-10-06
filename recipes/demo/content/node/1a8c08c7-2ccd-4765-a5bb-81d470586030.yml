@@ -3,7 +3,7 @@ _meta:
   entity_type: node
   uuid: 1a8c08c7-2ccd-4765-a5bb-81d470586030
   bundle: article
-  default_langcode: en-gb
+  default_langcode: en
   depends:
     ee0c53bc-3fa8-495e-8d51-6d9a6c55b744: media
 default:
@@ -30,7 +30,7 @@ default:
       value: true
   path:
     -
-      langcode: en-gb
+      langcode: en
       alias: null
   field_body:
     -

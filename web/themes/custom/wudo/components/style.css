@@ -94,6 +94,7 @@
 :root {
   font-size: 100%;
   text-size-adjust: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -451,6 +452,7 @@ div[data-drupal-messages] {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .page-wrapper {
@@ -699,6 +701,15 @@ div[data-drupal-messages] {
 
 .featured {
   padding: 2rem 0;
+}
+
+footer {
+  background-color: #000;
+  color: var(--color-white, #fff);
+}
+footer .footer-bottom {
+  padding-block: 1rem;
+  text-align: center;
 }
 
 .node--type-gallery.node--view-mode-full .text-long {

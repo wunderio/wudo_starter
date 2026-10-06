@@ -1,5 +1,5 @@
 uuid: aa823c0a-a27a-49b6-b3be-7985a04b8f6f
-langcode: en-gb
+langcode: en
 status: true
 dependencies:
   module:
@@ -13,6 +13,6 @@ name: Article
 type: article
 description: null
 help: null
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: true

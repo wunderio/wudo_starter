@@ -1,0 +1,8 @@
+uuid: b2d8f4cd-e216-4c5f-b60e-b8b623a4df58
+langcode: en
+status: true
+dependencies: {  }
+id: terms
+label: Terms
+description: ''
+locked: false

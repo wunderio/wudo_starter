@@ -1,5 +1,5 @@
 uuid: 7043cb2b-797d-4556-87be-87ae8837ff13
-langcode: en-gb
+langcode: en
 status: true
 dependencies:
   module:
@@ -13,6 +13,6 @@ name: Gallery
 type: gallery
 description: null
 help: null
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: true
