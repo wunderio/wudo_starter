@@ -33,12 +33,24 @@ function wudo_page_attachments_alter(array &$attachments) {
  */
 function wudo_preprocess_page(array &$variables) {
   $variables['copyright'] = theme_get_setting('copyright', 'wudo');
+  $variables['use_scroll_to_top'] = (bool) theme_get_setting('use_scroll_to_top', 'wudo');
 }
 
 /**
- * Adds the copyright setting to the Wudo theme settings form.
+ * Adds custom settings to the Wudo theme settings form.
  */
 function wudo_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state) {
+  $form['wudo_page'] = [
+    '#type' => 'details',
+    '#title' => t('Page'),
+    '#open' => TRUE,
+  ];
+  $form['wudo_page']['use_scroll_to_top'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Use scroll to top'),
+    '#default_value' => (bool) theme_get_setting('use_scroll_to_top', 'wudo'),
+  ];
+
   $form['wudo_footer'] = [
     '#type' => 'details',
     '#title' => t('Footer'),

@@ -140,4 +140,8 @@
 
 </div>{# /.layout-container #}
 
+{% if use_scroll_to_top %}
+  {{ include('wudo:back-to-top', {}, with_context = false) }}
+{% endif %}
+
 {{ page.page_bottom }}

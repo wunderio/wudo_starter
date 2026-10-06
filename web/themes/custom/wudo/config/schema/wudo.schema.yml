@@ -1,0 +1,10 @@
+wudo.settings:
+  type: theme_settings
+  label: 'Wudo settings'
+  mapping:
+    copyright:
+      type: label
+      label: 'Copyright text'
+    use_scroll_to_top:
+      type: boolean
+      label: 'Use scroll to top'
