@@ -5,6 +5,16 @@ Parameters:
 #}
 
 {% set drawer_id = drawer_id|default('favorite-drawer') %}
+{% set card_component_assets = include('wudo:article-card', {
+  variant: 'mini-horizontal',
+  title: 'Favorite card assets',
+  title_url: '/',
+  summary: 'Favorite card assets',
+  image: {
+    src: '/favicon.ico',
+    alt: '',
+  },
+}, with_context = false) %}
 
 {% embed 'wudo:drawer' with {
   id: drawer_id,

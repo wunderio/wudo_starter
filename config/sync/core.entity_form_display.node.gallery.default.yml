@@ -1,20 +1,18 @@
-uuid: 0e70c674-89ac-4e65-8ec3-a9f40552f533
+uuid: dbf186fb-c9db-4866-9013-7a3b2add5ea3
 langcode: en-gb
 status: true
 dependencies:
   config:
-    - field.field.media.image.field_caption
-    - field.field.media.image.field_media_image
-    - image.style.thumbnail
-    - media.type.image
+    - field.field.node.gallery.field_body
+    - field.field.node.gallery.field_images
+    - node.type.gallery
   module:
-    - image
+    - media_library
     - path
-_core:
-  default_config_hash: JSY4-JPyNZBiYYo6imdRYF6_SdtWQexPndrLvn3-vw4
-id: media.image.default
-targetEntityType: media
-bundle: image
+    - text
+id: node.gallery.default
+targetEntityType: node
+bundle: gallery
 mode: default
 content:
   created:
@@ -23,21 +21,20 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_caption:
-    type: string_textarea
-    weight: 101
+  field_body:
+    type: text_textarea
+    weight: 121
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_media_image:
-    type: image_image
-    weight: 0
+  field_images:
+    type: media_library_widget
+    weight: 122
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      media_types: {  }
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -54,10 +51,18 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 100
+    weight: 120
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
@@ -70,4 +75,5 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
-  name: true
+  promote: true
+  sticky: true

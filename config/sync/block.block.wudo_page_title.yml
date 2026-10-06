@@ -23,4 +23,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/articles\r\n/article/*"
+    pages: "/articles\r\n/article/*\r\n/gallery/*"

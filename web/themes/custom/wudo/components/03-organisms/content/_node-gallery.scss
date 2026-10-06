@@ -1,0 +1,8 @@
+.node--type-gallery {
+  &.node--view-mode-full {
+    .text-long {
+      max-width: 48rem;
+      margin-bottom: 2rem;
+    }
+  }
+}

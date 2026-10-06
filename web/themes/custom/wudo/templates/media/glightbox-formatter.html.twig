@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a formatted glightbox image field.
+ *
+ * Available variables:
+ * - image: A collection of image data.
+ * - url: An URL the image can be linked to.
+ * - attributes: Link attributes.
+ *
+ * @see template_preprocess_glightbox_formatter()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set caption_description = '' %}
+{% if entity.hasField('field_caption') and not entity.get('field_caption').isEmpty() %}
+  {% set caption_description = entity.get('field_caption').value|striptags|trim %}
+{% endif %}
+
+{% if caption_description is not empty %}
+  {% do attributes.setAttribute('data-glightbox', 'description: ' ~ caption_description) %}
+{% endif %}
+
+<a href="{{ url }}" role="button" {{ attributes }}>
+  {{ image }}
+</a>

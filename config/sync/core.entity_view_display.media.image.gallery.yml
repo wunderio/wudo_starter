@@ -1,8 +1,9 @@
-uuid: 6e92d887-1795-4695-9610-353693ed099e
+uuid: 132e709a-d210-4d69-834a-eff24f5ca9fc
 langcode: en-gb
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.gallery
     - field.field.media.image.field_caption
     - field.field.media.image.field_media_image
     - image.style.max_1300x1300
@@ -12,18 +13,11 @@ dependencies:
     - glightbox
 _core:
   default_config_hash: 73xaTNkI5J6sfFcBmNYeuk070X3mQS_iwwWaPYyfG2M
-id: media.image.default
+id: media.image.gallery
 targetEntityType: media
 bundle: image
-mode: default
+mode: gallery
 content:
-  field_caption:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_media_image:
     type: glightbox
     label: visually_hidden
@@ -38,10 +32,11 @@ content:
       glightbox_caption_description: auto
       glightbox_caption_description_custom: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
 hidden:
   created: true
+  field_caption: true
   langcode: true
   name: true
   thumbnail: true

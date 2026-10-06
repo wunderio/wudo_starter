@@ -696,3 +696,12 @@ div[data-drupal-messages] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.featured {
+  padding: 2rem 0;
+}
+
+.node--type-gallery.node--view-mode-full .text-long {
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}

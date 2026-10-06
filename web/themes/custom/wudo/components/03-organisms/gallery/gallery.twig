@@ -1,0 +1,5 @@
+{% set content_attributes = content_attributes|default(create_attribute()) %}
+
+<div{{ content_attributes.addClass('gallery') }}>
+  {% block content %}{% endblock %}
+</div>
