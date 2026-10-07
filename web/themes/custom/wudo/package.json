@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wunderio/wudo.git"
+    "url": "git+https://github.com/wunderio/wudo_starter.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wunderio/wudo/issues"
+    "url": "https://github.com/wunderio/wudo_starter/issues"
   },
-  "homepage": "https://github.com/wunderio/wudo#readme",
+  "homepage": "https://github.com/wunderio/wudo_starter#readme",
   "devDependencies": {
     "@storybook/addon-a11y": "^10.1.9",
     "@storybook/addon-docs": "^10.1.9",

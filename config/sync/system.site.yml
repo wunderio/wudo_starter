@@ -3,7 +3,7 @@ _core:
 langcode: en
 uuid: 1ae0e9f6-bf4f-49c0-983d-dd78ecba96b0
 name: Wudo
-mail: gints.erglis@mearra.com
+mail: admin@example.com
 slogan: ''
 page:
   403: ''

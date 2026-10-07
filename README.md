@@ -106,8 +106,9 @@ npm run dev:sdc
 npm run storybook
 ```
 
-Build production assets with `npm run build`. Do not commit `node_modules/` or
-`dist/`; both are recreated from the theme package files.
+Build production assets with `npm run build`. `node_modules/`, `dist/` and the
+`.css` files compiled next to each component's `.scss` are ignored by Git and
+recreated by the build, so run it after changing any `.scss` file.
 
 ### Twig template suggestions
 

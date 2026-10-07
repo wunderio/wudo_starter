@@ -4,3 +4,6 @@
 .DS_Store
 .idea/
 .vscode/
+
+# Compiled from the .scss files next to them by "npm run build".
+/components/**/*.css

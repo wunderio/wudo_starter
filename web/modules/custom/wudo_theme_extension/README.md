@@ -30,5 +30,5 @@ Enable the behavior per paragraph type at:
 Both endpoints require the `access content` permission.
 
 ## Requirements
-- Drupal 10+
+- Drupal 11
 - [Paragraphs](https://www.drupal.org/project/paragraphs) module

@@ -40,3 +40,6 @@
 
 *storybook.log
 NOTES.md
+
+# Stray build output; the theme builds into its own dist/.
+/dist/
