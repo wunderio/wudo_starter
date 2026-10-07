@@ -11,95 +11,90 @@ custom module, and project recipes in one repository. The project uses
 - `web/` is the Drupal document root.
 - `web/themes/custom/wudo/` contains the custom theme and its component source.
 - `web/modules/custom/wudo_theme_extension/` contains custom Drupal behavior and API endpoints.
-- `recipes/` contains project recipes that can be applied with Drush.
+- `recipes/` contains the content recipes applied during installation.
 - `config/sync/` contains exported Drupal configuration tracked in Git.
 - `vendor/` and frontend dependencies are generated locally and are not committed.
 
 Contributed extensions are managed by Composer. Custom extensions and recipes
 are committed directly in this repository.
 
-## Install dependencies
+## Quick start
+
+Requires [DDEV](https://ddev.com). Everything else, including Composer and
+Node.js, runs inside the containers.
+
+```bash
+git clone git@github.com:wunderio/wudo_starter.git && cd wudo_starter
+ddev start
+ddev site-install
+```
+
+`ddev site-install` installs the Composer and npm dependencies, builds the
+theme, installs Drupal from the configuration in `config/sync/`, creates the
+home page and prints a one-time login link. Add `--demo` to install the demo
+content (articles, a gallery and landing pages) instead of the bare home page:
+
+```bash
+ddev site-install --demo
+```
+
+Running the command on an existing site reinstalls it; Drush asks before
+dropping the database.
+
+## Installing without DDEV
+
+Create `web/sites/default/settings.local.php` with the database connection
+(see `web/sites/example.settings.local.php`), set the `DRUPAL_HASH_SALT`
+environment variable, then run from the project root:
 
 ```bash
 composer install
-cd web/themes/custom/wudo
-npm ci
-npm run build
-npm run build:lit
-cd ../../../..
+(cd web/themes/custom/wudo && npm ci && npm run build)
+vendor/bin/drush site:install --existing-config
+vendor/bin/drush recipe ../recipes/base_content
 ```
 
-## Install the site and apply configuration
+Use `../recipes/demo` in place of `../recipes/base_content` for the demo
+content.
 
-After configuring a Drupal database and `web/sites/default/settings.php`, run
-the site installation and recipe from the project root:
+## Configuration
+
+`config/sync/` is the single source of truth for site configuration, and the
+site is installed from it. Export after making intentional changes and import
+when deploying:
 
 ```bash
-vendor/bin/drush site:install standard --root=web
-vendor/bin/drush recipe recipes/wudo_site
-vendor/bin/drush config:import --source=config/sync
-vendor/bin/drush cr
+ddev drush config:export
+ddev drush config:import
 ```
 
-The `wudo_site` recipe installs the custom module, installs the custom theme,
-and sets it as the default front-end theme. Configuration in `config/sync/`
-is handled separately by Drupal's configuration management system. Recipes
-bootstrap the site; configuration sync is used for subsequent deployment.
+## Content recipes
 
-Before the first import, set this in the environment's local
-`web/sites/default/settings.php`:
+- `recipes/base_content` holds the home page. The front page setting points to
+  its `/home` alias.
+- `recipes/demo` holds the demo content, including its own `/home` page.
 
-```php
-$settings['config_sync_directory'] = '../config/sync';
-```
-
-In the included DDEV setup, this value is already set in the local
-`web/sites/default/settings.ddev.php` file.
-
-Export configuration after making intentional changes:
+Apply only one of the two to a site. To update a recipe from a running site,
+export the entities with their dependencies:
 
 ```bash
-vendor/bin/drush config:export --destination=config/sync
-```
-
-## Import a demo content
-
-```bash
-ddev drush recipe ../recipes/demo
-```
-
-Export the demo content with:
-
-```bash
-ddev drush content:export node 123 \
-  --with-dependencies \
-  --dir=../recipes/demo/content
-```
-Export menu links with:
-```bash
+ddev drush content:export node --with-dependencies --dir=../recipes/demo/content
 ddev drush content:export menu_link_content --dir=../recipes/demo/content
 ```
 
+The `wudo_theme_extension` module makes paragraphs and hand-set URL aliases
+part of the export; paragraphs are written inline in the entity that owns them.
+
 ## Settings and secrets
 
-`web/sites/*/settings.php` is local-only and ignored by Git. Never commit this
-file, database credentials, API keys, or production secrets. Keep the tracked
-`default.settings.php` as the template for new environments and use local
-include files for environment-specific values.
+`web/sites/default/settings.php` is tracked in Git and contains no credentials.
+Database connections, API keys and other environment-specific values belong in
+`settings.local.php`, which is ignored, or in environment variables. Never
+commit credentials or production secrets.
 
-The DDEV-generated `settings.ddev.php` is also local-only. Its permissive
+The DDEV-generated `settings.ddev.php` is local-only. Its permissive
 `trusted_host_patterns` setting is suitable for local development only; set
 explicit host patterns before deploying to a shared or production environment.
-
-For local development with DDEV:
-
-```bash
-ddev start
-ddev composer install
-ddev drush site:install standard --root=web
-ddev drush recipe recipes/wudo_site --root=web
-ddev drush config:import --source=config/sync --root=web
-```
 
 ## Theme development
 

@@ -2,6 +2,7 @@
 @use "00-base/00-defaults/01-variables.scss" as *;
 @use "00-base/00-defaults/04-utilities.scss" as *;
 @use "00-base/03-base/base";
+@use "00-base/03-base/text-long";
 @use "01-atoms/form/form";
 @use "01-atoms/form/input";
 @use "01-atoms/form/checkbox";

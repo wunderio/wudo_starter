@@ -19,7 +19,6 @@
 
 # Drupal generated files and local settings.
 /web/sites/*/files/
-/web/sites/*/settings.php
 /web/sites/*/settings.local.php
 /web/sites/*/services.local.yml
 /web/sites/*/development.services.yml
@@ -40,3 +39,4 @@
 *.sql
 
 *storybook.log
+NOTES.md

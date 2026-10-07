@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 2d469bf8-71b0-4c7f-82c4-5089e1d89632
+  bundle: image
+  default_langcode: en
+  depends:
+    cb2365a8-abf9-4ae0-8016-77813a68c1a5: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: katana_L3.png
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: decorative
+      title: ''
+      width: 1243
+      height: 831
+      entity: cb2365a8-abf9-4ae0-8016-77813a68c1a5

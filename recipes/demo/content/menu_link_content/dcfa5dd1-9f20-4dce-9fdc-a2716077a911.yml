@@ -1,32 +1,32 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: fcad0013-43de-4250-be02-577aefe73065
+  uuid: dcfa5dd1-9f20-4dce-9fdc-a2716077a911
   bundle: menu_link_content
   default_langcode: en
   depends:
-    34dec79a-8c2f-455c-a5f6-7601f38a1a07: node
+    9f7d4698-a703-40a3-827b-45b3df23b3dd: node
 default:
   enabled:
     -
       value: true
   title:
     -
-      value: Autumn
+      value: 'Terms of Service'
   menu_name:
     -
-      value: main
+      value: terms
   link:
     -
       title: ''
       options: {  }
-      target_uuid: 34dec79a-8c2f-455c-a5f6-7601f38a1a07
+      target_uuid: 9f7d4698-a703-40a3-827b-45b3df23b3dd
   external:
     -
       value: false
   rediscover:
     -
-      value: false
+      value: true
   weight:
     -
       value: 0

@@ -1,0 +1,48 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 3bce1307-a0ca-41ec-9f2d-458ce2434922
+  bundle: gallery
+  default_langcode: en
+  depends:
+    583829ca-5b0b-47b8-831c-bfc3520660dd: media
+    19059b7b-728b-41ef-b86d-bd216fd8b8ba: media
+    f281e38c-b520-41c3-aebf-0dd60a5961cd: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: Interior
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /gallery/interior
+      langcode: en
+      pathauto: 0
+  field_body:
+    -
+      value: '<p>Japanese interior design can achieve an almost absolute minimalism. Japandi introduces soft textures and more enveloping hues, like an invitation to unwind. It is the meeting of Asian contemplation and Nordic intimacy.</p>'
+      format: full_html
+  field_images:
+    -
+      entity: 583829ca-5b0b-47b8-831c-bfc3520660dd
+    -
+      entity: 19059b7b-728b-41ef-b86d-bd216fd8b8ba
+    -
+      entity: f281e38c-b520-41c3-aebf-0dd60a5961cd

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+## Description: Install the site from scratch: dependencies, theme build, configuration and content
+## Usage: site-install [--demo]
+## Example: "ddev site-install" or "ddev site-install --demo"
+
+set -euo pipefail
+
+content=base_content
+for arg in "$@"; do
+  case "$arg" in
+    --demo) content=demo ;;
+    *) echo "Unknown option: $arg" >&2; exit 1 ;;
+  esac
+done
+
+cd "$DDEV_COMPOSER_ROOT"
+composer install
+
+cd "$DDEV_DOCROOT/themes/custom/wudo"
+npm ci
+npm run build
+
+# Drush asks for confirmation before dropping an existing database.
+cd "$DDEV_COMPOSER_ROOT"
+drush site:install --existing-config
+drush recipe "../recipes/$content"
+drush cache:rebuild
+drush user:login

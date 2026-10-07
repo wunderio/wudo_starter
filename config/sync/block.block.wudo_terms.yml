@@ -1,0 +1,25 @@
+uuid: ca9b7bc2-f5b1-41b6-8e29-032425a7b571
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.terms
+  module:
+    - system
+  theme:
+    - wudo
+id: wudo_terms
+theme: wudo
+region: footer
+weight: 0
+provider: null
+plugin: 'system_menu_block:terms'
+settings:
+  id: 'system_menu_block:terms'
+  label: 'About Us'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility: {  }

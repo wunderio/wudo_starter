@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: e9c53d66-09f8-4a4a-afd3-7b5d9a352dda
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: background-1.jpg
+  uri:
+    -
+      value: 'public://2026-09/background-1.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 906485
+  status:
+    -
+      value: true

@@ -1,0 +1,7 @@
+name: 'Base content'
+description: 'Minimal content a fresh site needs: the home page that the front page setting points to.'
+type: 'Content'
+
+install:
+  - node
+  - paragraphs

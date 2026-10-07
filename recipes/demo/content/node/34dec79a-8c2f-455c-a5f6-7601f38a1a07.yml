@@ -1,12 +1,11 @@
 _meta:
   version: '1.0'
   entity_type: node
-  uuid: dad02890-a551-4908-8535-eb52b33ad167
+  uuid: 34dec79a-8c2f-455c-a5f6-7601f38a1a07
   bundle: landingpage
   default_langcode: en
   depends:
-    6472e57d-d44c-4b28-a4d6-4b3a1ef6f279: media
-    2d469bf8-71b0-4c7f-82c4-5089e1d89632: media
+    2f05c6f4-a895-42e1-a30e-6f6d32204fb7: media
 default:
   revision_uid:
     -
@@ -19,7 +18,7 @@ default:
       target_id: 1
   title:
     -
-      value: Frontpage
+      value: Autumn
   promote:
     -
       value: false
@@ -32,20 +31,18 @@ default:
   path:
     -
       langcode: en
-      alias: /home
-      pathauto: 0
+      alias: null
   field_content:
     -
       entity:
         _meta:
           version: '1.0'
           entity_type: paragraph
-          uuid: d43a42b3-60fc-4920-a304-f351dbc1db6f
+          uuid: 7c6c712a-6853-4d53-8878-524d849abaca
           bundle: section
           default_langcode: en
           depends:
-            6472e57d-d44c-4b28-a4d6-4b3a1ef6f279: media
-            2d469bf8-71b0-4c7f-82c4-5089e1d89632: media
+            2f05c6f4-a895-42e1-a30e-6f6d32204fb7: media
         default:
           status:
             -
@@ -54,13 +51,13 @@ default:
             -
               value:
                 style_settings:
-                  padding: '5rem 0'
+                  padding: 1rem
                   margin_top: '0'
                   margin_bottom: '0'
                   layout: grid-1
-                  text: '#f4f0dc'
+                  text: '#000000'
                   use_background: 0
-                  background: 'rgba(0,0,0,0.8)'
+                  background: '#ffffff'
                   background_mask: ''
                   background_style: ''
                   full_width_background: 1
@@ -74,11 +71,11 @@ default:
                 _meta:
                   version: '1.0'
                   entity_type: paragraph
-                  uuid: 8b537c33-6df2-4494-bfb2-9a38a324f22f
+                  uuid: 4d0aa627-f933-47ad-94af-124143ae76b7
                   bundle: parallax_layer
                   default_langcode: en
                   depends:
-                    6472e57d-d44c-4b28-a4d6-4b3a1ef6f279: media
+                    2f05c6f4-a895-42e1-a30e-6f6d32204fb7: media
                 default:
                   status:
                     -
@@ -90,49 +87,20 @@ default:
                           enable_parallax: 1
                           position: center
                           width: 100%
-                          height: 100%
-                          speed: '0.3'
+                          speed: '0.2'
                   revision_translation_affected:
                     -
                       value: true
                   field_parallax_media:
                     -
-                      entity: 6472e57d-d44c-4b28-a4d6-4b3a1ef6f279
-            -
-              entity:
-                _meta:
-                  version: '1.0'
-                  entity_type: paragraph
-                  uuid: 4a6886a6-4daf-41a3-9f83-00271f444792
-                  bundle: parallax_layer
-                  default_langcode: en
-                  depends:
-                    2d469bf8-71b0-4c7f-82c4-5089e1d89632: media
-                default:
-                  status:
-                    -
-                      value: true
-                  behavior_settings:
-                    -
-                      value:
-                        parallax_layer:
-                          enable_parallax: 1
-                          position: left-center
-                          width: 100%
-                          speed: '0.6'
-                  revision_translation_affected:
-                    -
-                      value: true
-                  field_parallax_media:
-                    -
-                      entity: 2d469bf8-71b0-4c7f-82c4-5089e1d89632
+                      entity: 2f05c6f4-a895-42e1-a30e-6f6d32204fb7
           field_section_content:
             -
               entity:
                 _meta:
                   version: '1.0'
                   entity_type: paragraph
-                  uuid: 856b1fcc-87bd-4679-95b6-b48576ba93a9
+                  uuid: 68459b0d-e7ec-48d6-9e7e-23e5d67926d0
                   bundle: layout_wrapper
                   default_langcode: en
                 default:
@@ -145,15 +113,15 @@ default:
                         style_settings:
                           padding: '5rem 0'
                           margin_top: '0'
-                          margin_bottom: 2rem
+                          margin_bottom: '0'
                           layout: grid-1
-                          text: '#363636'
+                          text: '#000000'
                           use_background: 0
                           background: '#ffffff'
-                          background_mask: 'rgba(255,255,255,0.8)'
+                          background_mask: ''
                           background_style: ''
                           full_width_background: 0
-                          border_radius: 16px
+                          border_radius: ''
                   revision_translation_affected:
                     -
                       value: true
@@ -163,7 +131,7 @@ default:
                         _meta:
                           version: '1.0'
                           entity_type: paragraph
-                          uuid: 21d848fd-489c-43e9-92e8-7a5bec79a1e9
+                          uuid: 7c881793-2de9-40e8-8f84-3cf40d454c94
                           bundle: hero
                           default_langcode: en
                         default:
@@ -174,39 +142,16 @@ default:
                             -
                               value:
                                 hero_style:
-                                  layout: grid-2
-                                  highlighted_color: '#000000'
+                                  layout: grid-1
+                                  highlighted_color: '#750000'
                           revision_translation_affected:
                             -
                               value: true
                           field_content:
                             -
-                              value: '<h2><span>Finding beauty in simplicity</span></h2><p><span>Japanese design is an invitation to slow down, observe, and appreciate what is essential. From quiet interiors and natural materials to carefully considered details, it creates spaces that feel balanced, calm, and deeply connected to their surroundings.</span></p>'
+                              value: '<p>Crisp air, golden leaves, and slower days. A collection of stories that celebrates the beauty of autumn and the little moments that make the season unforgettable.</p>'
                               format: full_html
                           field_tagline:
                             -
-                              value: 'The Art of Japanese Design'
+                              value: 'Autumn <span>stories</span>'
                               format: full_html
-            -
-              entity:
-                _meta:
-                  version: '1.0'
-                  entity_type: paragraph
-                  uuid: 40ab2378-400a-4ced-a303-ea40339859da
-                  bundle: view
-                  default_langcode: en
-                default:
-                  status:
-                    -
-                      value: true
-                  behavior_settings:
-                    -
-                      value: {  }
-                  revision_translation_affected:
-                    -
-                      value: true
-                  field_view:
-                    -
-                      target_id: articles
-                      display_id: articles
-                      data: 'a:6:{s:5:"pager";N;s:8:"argument";N;s:6:"offset";N;s:5:"title";N;s:6:"header";N;s:5:"limit";N;}'

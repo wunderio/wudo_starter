@@ -1,0 +1,6 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Drupal\wudo_theme_extension\EventSubscriber\DefaultContentSubscriber: ~

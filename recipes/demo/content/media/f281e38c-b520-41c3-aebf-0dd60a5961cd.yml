@@ -7,6 +7,9 @@ _meta:
   depends:
     7e714bb9-9c69-44aa-8e50-742c9b64f015: file
 default:
+  revision_user:
+    -
+      target_id: 1
   status:
     -
       value: true
@@ -23,6 +26,9 @@ default:
     -
       langcode: en
       alias: null
+  field_caption:
+    -
+      value: 'Authentic Japanese decor cultivates a refined simplicity and a deep harmony with emptiness.'
   field_media_image:
     -
       alt: decorative
