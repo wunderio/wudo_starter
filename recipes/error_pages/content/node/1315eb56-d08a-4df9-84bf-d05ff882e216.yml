@@ -1,0 +1,112 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 1315eb56-d08a-4df9-84bf-d05ff882e216
+  bundle: landingpage
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Page not found'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /page-not-found
+      langcode: en
+      pathauto: 0
+  field_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 2e8c06b6-abd0-49c5-a824-667deef63ce1
+          bundle: section
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          behavior_settings:
+            -
+              value:
+                style_settings:
+                  padding: '5rem 0'
+                  margin_top: '0'
+                  margin_bottom: '0'
+                  layout: grid-1
+                  text: ''
+                  use_background: 0
+                  background: ''
+                  background_mask: ''
+                  background_style: ''
+                  full_width_background: 0
+                  border_radius: ''
+          revision_translation_affected:
+            -
+              value: true
+          field_section_content:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: dc068a35-70d6-4443-9a20-211fa27a7c7b
+                  bundle: hero
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  behavior_settings:
+                    -
+                      value:
+                        hero_style:
+                          layout: grid-1
+                          highlighted_color: ''
+                  revision_translation_affected:
+                    -
+                      value: true
+                  field_tagline:
+                    -
+                      value: 'Page not found'
+                      format: full_html
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 54fe4617-09bd-4b21-ab17-d29691ecad05
+                  bundle: text
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  behavior_settings:
+                    -
+                      value: {  }
+                  revision_translation_affected:
+                    -
+                      value: true
+                  field_content:
+                    -
+                      value: '<p>The page you are looking for does not exist or has been moved. <a href="/">Go to the home page</a>.</p>'
+                      format: full_html

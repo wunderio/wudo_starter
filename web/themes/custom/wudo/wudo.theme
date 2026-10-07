@@ -1,6 +1,8 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\csp\Csp;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @file
@@ -8,24 +10,50 @@ use Drupal\Core\Form\FormStateInterface;
  */
 
 /**
+ * Builds the import map that lets components import Lit by its bare name.
+ *
+ * Generated rather than read from a file so that it follows the theme's
+ * location, e.g. when Drupal is installed in a subdirectory.
+ */
+function wudo_import_map(): string {
+  $bundle = base_path() . \Drupal::service('extension.list.theme')->getPath('wudo') . '/dist/lit-core.bundle.js';
+
+  return json_encode([
+    'imports' => [
+      'lit' => $bundle,
+      'lit/directives/unsafe-html.js' => $bundle,
+    ],
+  ], JSON_UNESCAPED_SLASHES);
+}
+
+/**
  * Implements hook_page_attachments_alter().
  */
 function wudo_page_attachments_alter(array &$attachments) {
-  $theme_path = \Drupal::service('extension.list.theme')->getPath('wudo');
-  $full_path = DRUPAL_ROOT . '/' . $theme_path . '/js/import-map.js';
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'script',
+      '#attributes' => ['type' => 'importmap'],
+      '#value' => wudo_import_map(),
+    ],
+    'wudo_importmap_inline',
+  ];
+}
 
-  if (file_exists($full_path)) {
-    $import_map_content = file_get_contents($full_path);
-
-    $attachments['#attached']['html_head'][] = [
-      [
-        '#tag' => 'script',
-        '#attributes' => ['type' => 'importmap'],
-        '#value' => $import_map_content,
-      ],
-      'wudo_importmap_inline',
-    ];
-  }
+/**
+ * Implements hook_csp_policy_alter().
+ *
+ * Allows the inline import map by its hash, so that the Content Security
+ * Policy does not need to allow inline scripts in general.
+ */
+function wudo_csp_policy_alter(Csp $policy, Response $response): void {
+  \Drupal::service('csp.policy_helper')->appendHash(
+    $policy,
+    'script',
+    'elem',
+    [Csp::POLICY_UNSAFE_INLINE],
+    Csp::calculateHash(wudo_import_map()),
+  );
 }
 
 /**

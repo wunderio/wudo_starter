@@ -6,8 +6,8 @@ name: Wudo
 mail: admin@example.com
 slogan: ''
 page:
-  403: ''
-  404: ''
+  403: /access-denied
+  404: /page-not-found
   front: /home
 admin_compact_mode: false
 weight_select_max: 100

@@ -49,6 +49,12 @@ class WudoDrawer extends HTMLElement {
 
     /** @listens focusTrap:escape */
     this.addEventListener('focusTrap:escape', () => this.close());
+
+    // Overlay and close button; nested drawers only close themselves.
+    this.addEventListener('click', (e) => {
+      const closer = e.target.closest('.drawer__overlay, .drawer__close');
+      if (closer && closer.closest('wudo-drawer') === this) this.close();
+    });
   }
 
   /**
@@ -188,4 +194,13 @@ class WudoDrawer extends HTMLElement {
 
 if (!customElements.get('wudo-drawer')) {
   customElements.define('wudo-drawer', WudoDrawer);
+
+  // Declarative triggers: <button data-drawer-open="drawer-id">.
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-drawer-open]');
+    if (!trigger) return;
+    document.dispatchEvent(new CustomEvent('drawer:open', {
+      detail: { id: trigger.dataset.drawerOpen, trigger },
+    }));
+  });
 }

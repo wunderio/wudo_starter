@@ -49,7 +49,7 @@
                 'class': 'drawer-menu-toggle-button u-mobile-only',
                 'data-menu-drawer-trigger': '',
                 'aria-expanded': 'false',
-                'onclick': "document.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'mobile-menu-drawer', trigger: this } }))"
+                'data-drawer-open': 'mobile-menu-drawer'
               }) %}
 
               {{ include('wudo:button', {

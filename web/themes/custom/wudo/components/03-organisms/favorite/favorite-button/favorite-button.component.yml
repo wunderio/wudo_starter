@@ -29,7 +29,5 @@ props:
         - 'heart'
 
 libraryOverrides:
-  dependencies:
-    - wudo/import-map
   js:
     favorite-button.js: { attributes: { type: module } }

@@ -113,7 +113,7 @@ The component listens for a global `drawer:open` event, so triggers can be place
 ### HTML button
 ```html
 <button type="button"
-  onclick="document.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'newsletter-modal' } }))">
+  data-drawer-open="newsletter-modal">
   Open Modal
 </button>
 ```

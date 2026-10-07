@@ -44,7 +44,5 @@ props:
         - regular
 
 libraryOverrides:
-  dependencies:
-    - wudo/import-map
   js:
     favorite-counter.js: { attributes: { type: module } }

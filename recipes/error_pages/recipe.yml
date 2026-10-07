@@ -1,0 +1,7 @@
+name: 'Error pages'
+description: 'Editable "Page not found" and "Access denied" pages that the site error page settings point to.'
+type: 'Content'
+
+install:
+  - node
+  - paragraphs

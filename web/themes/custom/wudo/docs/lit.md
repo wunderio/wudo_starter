@@ -32,31 +32,12 @@ class MyComponent extends LitElement {
 }
 customElements.define('my-component', MyComponent);
 ```
-`importmap` implementation consists of two parts:
-1. `js/import-map.js` - JSON object defining the import map.
-2. `importmap` included in the HTML template with help of preprocess function in `wudo.theme`.
-```php
-/**
- * Implements hook_page_attachments_alter().
- */
-function wudo_page_attachments_alter(array &$attachments) {
-  $theme_path = \Drupal::service('extension.list.theme')->getPath('wudo');
-  $full_path = DRUPAL_ROOT . '/' . $theme_path . '/js/import-map.js';
-
-  if (file_exists($full_path)) {
-    $import_map_content = file_get_contents($full_path);
-
-    $attachments['#attached']['html_head'][] = [
-      [
-        '#tag' => 'script',
-        '#attributes' => ['type' => 'importmap'],
-        '#value' => $import_map_content,
-      ],
-      'wudo_importmap_inline',
-    ];
-  }
-}
-```
+The `importmap` is generated in `wudo.theme`:
+1. `wudo_import_map()` builds the JSON from the theme's path, so it also works
+   when Drupal is installed in a subdirectory.
+2. `wudo_page_attachments_alter()` prints it inline in the page head.
+3. `wudo_csp_policy_alter()` adds its hash to the Content Security Policy, which
+   otherwise blocks inline scripts.
 
 ## 4. Maintenance Commands
 Build the Lit Library
@@ -65,4 +46,4 @@ If you update the Lit version via NPM, you must rebuild the core bundle:
 npm run build:lit
 ```
 This generates `dist/lit-core.bundle.js` which is used by the Import Map.
-If need add more libraries to import map, you can edit `lit-entry.js` and then run the build command, then update importmap.
+If need add more libraries to import map, you can edit `lit-entry.js` and then run the build command, then add the new specifier to `wudo_import_map()`.

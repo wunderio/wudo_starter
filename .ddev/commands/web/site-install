@@ -24,6 +24,8 @@ npm run build
 # Drush asks for confirmation before dropping an existing database.
 cd "$DDEV_COMPOSER_ROOT"
 drush site:install --existing-config
+drush recipe ../recipes/error_pages
 drush recipe "../recipes/$content"
+drush xmlsitemap:rebuild
 drush cache:rebuild
 drush user:login
