@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  php:
+    name: PHP lint, static analysis and tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: gd, pdo_sqlite
+          coverage: none
+      - uses: ramsey/composer-install@v3
+      - name: Coding standards
+        run: vendor/bin/phpcs
+      - name: Static analysis
+        run: vendor/bin/phpstan analyse --no-progress --memory-limit=1G
+      - name: Tests
+        run: vendor/bin/phpunit
+
+  theme:
+    name: Theme lint and build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web/themes/custom/wudo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/themes/custom/wudo/package-lock.json
+      - run: npm ci
+      - run: npm run lint:css
+      - run: npm run build
+
+  install:
+    name: Install from scratch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ddev/github-action-setup-ddev@v1
+      - name: Install the site with demo content
+        run: ddev site-install --demo
+      - name: Configuration matches config/sync
+        run: ddev drush config:status 2>&1 | tee /dev/stderr | grep -q 'No differences'
+      - name: Pages respond
+        run: |
+          check() {
+            code=$(ddev exec curl -sL -o /dev/null -w '%{http_code}' "http://localhost$2")
+            echo "$code $2"
+            [ "$code" = "$1" ]
+          }
+          check 200 /
+          check 200 /articles
+          check 200 /sitemap.xml
+          check 200 /api/views/articles
+          check 404 /this-page-does-not-exist
+          check 403 /admin
+      - name: No errors were logged
+        run: ddev drush watchdog:show --severity-min=3 2>&1 | tee /dev/stderr | grep -q 'No log messages'
+      - name: End-to-end, accessibility and Lighthouse tests
+        run: ddev e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: tests/e2e/playwright-report
+          retention-days: 7

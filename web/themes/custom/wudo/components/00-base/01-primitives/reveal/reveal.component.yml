@@ -40,4 +40,3 @@ slots:
     type: string
     title: Content
     description: Content slot.
-

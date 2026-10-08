@@ -21,4 +21,3 @@ libraryOverrides:
     - wudo/focus-trap
   js:
     favorite-drawer.js: { attributes: { type: module } }
-

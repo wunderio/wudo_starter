@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+## Description: Add a language and make the site multilingual: translatable content, language switcher, sitemap
+## Usage: add-language <langcode>
+## Example: "ddev add-language lv"
+
+set -euo pipefail
+
+if [ $# -ne 1 ]; then
+  echo "Usage: ddev add-language <langcode>, e.g. ddev add-language lv" >&2
+  exit 1
+fi
+
+cd "$DDEV_COMPOSER_ROOT"
+drush pm:install content_translation config_translation --yes
+# Also downloads the interface translations from localize.drupal.org.
+drush language:add "$1"
+drush wudo:multilingual
+drush xmlsitemap:rebuild
+drush cache:rebuild
+# The language is part of the site from now on, including fresh installs.
+drush config:export --yes

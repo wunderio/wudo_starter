@@ -1,0 +1,33 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "ignoreFiles": [
+    "dist/**",
+    "node_modules/**",
+    "storybook-static/**",
+    "**/*.css"
+  ],
+  "rules": {
+    "selector-class-pattern": null,
+    "scss/load-no-partial-leading-underscore": null,
+    "color-function-notation": null,
+    "color-function-alias-notation": null,
+    "alpha-value-notation": null,
+    "color-hex-length": null,
+    "media-feature-range-notation": null,
+    "property-no-vendor-prefix": null,
+    "selector-no-vendor-prefix": null,
+    "declaration-block-single-line-max-declarations": null,
+    "scss/comment-no-empty": null,
+    "no-empty-source": null,
+    "scss/at-extend-no-missing-placeholder": null,
+    "property-no-deprecated": [
+      true,
+      {
+        "ignoreProperties": [
+          "clip"
+        ]
+      }
+    ],
+    "declaration-block-no-redundant-longhand-properties": null
+  }
+}

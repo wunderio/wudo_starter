@@ -217,4 +217,5 @@ class StyleSettingsBehavior extends ParagraphsBehaviorBase {
     $build['#attributes']['style'][] = 'margin-top: ' . $margin_top . ';';
     $build['#attributes']['style'][] = 'margin-bottom: ' . $margin_bottom . ';';
   }
+
 }

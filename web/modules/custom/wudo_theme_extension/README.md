@@ -24,10 +24,19 @@ Enable the behavior per paragraph type at:
 ### JSON Endpoints
 | Path | Description |
 |------|-------------|
-| `/api/favorites` | Returns rendered favorite article teasers |
-| `/api/views/{view_id}/{display_id}` | Renders a View display as paginated HTML cards |
+| `/api/favorites?ids=1,2,3` | Returns the given nodes rendered as cards (at most 50 per request) |
+| `/api/views/{view_id}/{display_id}?page=0` | Renders a View display as paginated HTML cards |
 
-Both endpoints require the `access content` permission.
+Both endpoints require the `access content` permission, and their responses are
+cached and invalidated like any other Drupal page.
+
+`/api/views` only serves the views listed in
+`wudo_theme_extension.settings:api_views` (`articles` by default). Add a view
+there before requesting it:
+
+```bash
+drush config:set wudo_theme_extension.settings api_views.1 my_view
+```
 
 ## Requirements
 - Drupal 11

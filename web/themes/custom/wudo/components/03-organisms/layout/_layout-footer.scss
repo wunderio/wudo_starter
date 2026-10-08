@@ -2,6 +2,15 @@ footer {
   background-color: #000;
   color: var(--color-white, #fff);
 
+  // The default link and menu colors are unreadable on black.
+  --link-color: var(--color-white, #fff);
+  --link-hover-color: var(--color-neutral-30, #d4d4d4);
+
+  .menu {
+    --menu-item-color: var(--color-white, #fff);
+    --menu-item-color-hover: var(--color-neutral-30, #d4d4d4);
+  }
+
   .footer-bottom {
     padding-block: 1rem;
     text-align: center;

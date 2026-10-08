@@ -26,7 +26,6 @@
   }
 
   &__inner {
-
     padding: 16px 24px;
 
     #{$root}--constrain & {
@@ -121,7 +120,6 @@
       top: 0;
       right: 0;
       height: 100%;
-      width: 25%;
       object-fit: cover;
       object-position: left;
       width: 30%;

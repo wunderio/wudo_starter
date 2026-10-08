@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+## Description: Run the Playwright end-to-end, accessibility (axe) and Lighthouse tests against the installed site
+## Usage: e2e [playwright test arguments]
+## Example: "ddev e2e" or "ddev e2e a11y --project=desktop" or "ddev e2e --project=lighthouse"
+
+set -euo pipefail
+
+cd "$DDEV_COMPOSER_ROOT/tests/e2e"
+
+if [ ! -d node_modules ]; then
+  npm ci
+fi
+
+# The browser lives in the container, so it is fetched again after a rebuild.
+if ! compgen -G "$HOME/.cache/ms-playwright/chromium_headless_shell-*" > /dev/null; then
+  npx playwright install --with-deps chromium
+fi
+
+npx playwright test "$@"

@@ -4,6 +4,7 @@ namespace Drupal\wudo_theme_extension\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 /**
  * Provides the favorites counter and drawer.
@@ -102,7 +103,7 @@ class FavoritesBlock extends BlockBase {
         '#component' => 'wudo:favorite-drawer',
         '#props' => [
           'drawer_id' => $drawer_id,
-          'api_url' => '/api/favorites',
+          'api_url' => Url::fromRoute('wudo_theme_extension.favorites_api')->toString(),
         ],
       ];
     }

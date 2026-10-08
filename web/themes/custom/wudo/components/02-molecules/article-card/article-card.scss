@@ -72,7 +72,7 @@
 
       a {
         text-decoration: none;
-        color: currentColor;
+        color: currentcolor;
 
         &:hover {
           text-decoration: underline;
@@ -104,7 +104,8 @@
 
   &--mini-horizontal {
     height: auto;
-    //min-height: 6rem;
+
+    // min-height: 6rem;
     flex-direction: row;
     align-items: stretch;
     border: 0;

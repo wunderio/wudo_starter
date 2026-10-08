@@ -32,7 +32,7 @@
 
   &__subtitle {
     font-size: 1.5rem;
-    margin: 0.5rem 0 2rem 0;
+    margin: 0.5rem 0 2rem;
     opacity: 0.9;
   }
 
@@ -74,10 +74,12 @@
   .countdown__card {
     width: 70px;
   }
+
   .countdown__number {
     font-size: 1.8rem;
     height: 60px;
   }
+
   .countdown__title {
     font-size: 1.5rem;
   }

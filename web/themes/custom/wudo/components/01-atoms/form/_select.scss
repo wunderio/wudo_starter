@@ -4,7 +4,7 @@ select {
   font-size: 1rem;
   position: relative;
   appearance: none;
-  background-image: url(/themes/custom/wudo/assets/icons/chevron-down.svg);
+  background-image: url("/themes/custom/wudo/assets/icons/chevron-down.svg");
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
   border: 1px solid var(--border-color);
@@ -21,6 +21,7 @@ select {
 
     .select2-selection__rendered {
       line-height: 2.5rem;
+
       .select2-selection__clear {
         margin-right: var(--space-sm, 0.5rem);
       }
@@ -37,7 +38,7 @@ select {
       right: 0.5rem;
       top: 50%;
       transform: translateY(-50%);
-      background-image: url(/themes/custom/wudo/assets/icons/chevron-down.svg);
+      background-image: url("/themes/custom/wudo/assets/icons/chevron-down.svg");
       background-repeat: no-repeat;
       background-position: center;
 

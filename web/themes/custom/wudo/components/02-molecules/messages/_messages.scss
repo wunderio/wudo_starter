@@ -10,7 +10,6 @@ div[data-drupal-messages] {
 .messages {
   margin-left: .5rem;
   padding: 15px 20px 15px 35px; /* LTR */
-  word-wrap: break-word;
   border: 1px solid;
   border-width: 1px 1px 1px 0; /* LTR */
   border-radius: 2px;
@@ -44,7 +43,7 @@ div[data-drupal-messages] {
   color: #325e1c;
   border-color: #c9e1bd #c9e1bd #c9e1bd transparent; /* LTR */
   background-color: #f3faef;
-  background-image: url(../images/icons/good.svg);
+  background-image: url("../images/icons/good.svg");
   box-shadow: -8px 0 0 #77b259; /* LTR */
 }
 
@@ -58,7 +57,7 @@ div[data-drupal-messages] {
   color: #734c00;
   border-color: #f4daa6 #f4daa6 #f4daa6 transparent; /* LTR */
   background-color: #fdf8ed;
-  background-image: url(../images/icons/warning.svg);
+  background-image: url("../images/icons/warning.svg");
   box-shadow: -8px 0 0 #e09600; /* LTR */
 }
 
@@ -71,7 +70,7 @@ div[data-drupal-messages] {
   color: #a51b00;
   border-color: #f9c9bf #f9c9bf #f9c9bf transparent; /* LTR */
   background-color: #fcf4f2;
-  background-image: url(../images/icons/error.svg);
+  background-image: url("../images/icons/error.svg");
   box-shadow: -8px 0 0 #e62600; /* LTR */
 }
 

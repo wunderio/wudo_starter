@@ -29,7 +29,7 @@ default:
   path:
     -
       alias: /page-not-found
-      langcode: en
+      langcode: und
       pathauto: 0
   field_content:
     -

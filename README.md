@@ -90,6 +90,42 @@ ddev drush content:export menu_link_content --dir=../recipes/demo/content
 The `wudo_theme_extension` module makes paragraphs and hand-set URL aliases
 part of the export; paragraphs are written inline in the entity that owns them.
 
+## Adding a language
+
+The starter ships with one language, English. To make the site multilingual,
+run one command with the code of the language to add:
+
+```bash
+ddev add-language lv
+```
+
+It can be run again for every further language. The command:
+
+- installs Content Translation and Configuration Translation;
+- adds the language and downloads its interface translations;
+- makes content, media, taxonomy terms, menu links, blocks and paragraphs
+  translatable;
+- places the language switcher in the header;
+- makes the front page and error page aliases work in every language;
+- adds an XML sitemap per language (`/lv/sitemap.xml`);
+- exports the configuration, so the language is part of every later install.
+  Review and commit the changes in `config/sync`.
+
+URLs get a language prefix (`/en/...`, `/lv/...`) and `/` redirects to the
+default language. Content stays in English until it is translated: an
+untranslated page is not listed in the other language and its alias only
+works under `/en`.
+
+Without DDEV, run the steps yourself:
+
+```bash
+drush pm:install content_translation config_translation
+drush language:add lv
+drush wudo:multilingual
+drush xmlsitemap:rebuild
+drush config:export
+```
+
 ## Settings and secrets
 
 `web/sites/default/settings.php` is tracked in Git and contains no credentials.
@@ -112,6 +148,35 @@ explicit host patterns before deploying to a shared or production environment.
   blocked, so attach behavior from JavaScript files. Embeds are allowed from
   YouTube and Vimeo; add other sources at `/admin/config/system/csp`.
 - `seckit` sends `Strict-Transport-Security` and `Referrer-Policy`.
+
+## Quality checks
+
+The same checks run in GitHub Actions (`.github/workflows/ci.yml`) on every
+pull request, together with a full `ddev site-install --demo` from scratch.
+
+```bash
+ddev exec vendor/bin/phpcs      # Drupal coding standards
+ddev exec vendor/bin/phpstan    # static analysis
+ddev exec vendor/bin/phpunit    # tests, on a throwaway SQLite database
+ddev npm run lint:css           # run in web/themes/custom/wudo
+ddev e2e                        # browser tests against the installed site
+```
+
+`ddev e2e` runs the Playwright tests in `tests/e2e` inside the web container;
+the first run downloads Chromium. They cover every page in the XML sitemap:
+
+- smoke checks: status codes, one `h1`, no JavaScript or CSP errors;
+- interactions: favorites drawer, favorites via `/api/favorites`, mobile menu;
+- accessibility: axe-core, WCAG 2.2 AA, on desktop and mobile viewports;
+- Lighthouse: accessibility, best practices and SEO must score 100.
+
+Arguments are passed to Playwright, e.g. `ddev e2e a11y --project=desktop`.
+The HTML report, with Lighthouse reports attached, is written to
+`tests/e2e/playwright-report`. Tests that need articles are skipped unless
+the site was installed with `--demo`.
+
+`vendor/bin/phpcbf` and `npm run lint:css -- --fix` fix most style issues
+automatically.
 
 ## Theme development
 

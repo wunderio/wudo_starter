@@ -9,7 +9,9 @@
   margin: auto;
   text-align: center;
   padding: 40px;
-  color: #94a3b8;
+
+  // Muted, but readable on both the light and the dark drawer.
+  color: color-mix(in srgb, currentcolor 75%, transparent);
 }
 
 .wudo-fav-row {

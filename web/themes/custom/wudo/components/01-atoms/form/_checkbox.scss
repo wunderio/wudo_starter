@@ -1,11 +1,12 @@
 .checkbox {
   $root: &;
+
   --checked-color: var(--color-semantic-info-60, #2563eb);
 
   gap: .5rem;
 
   #{$root}--small {
-    input[type=checkbox] {
+    input[type="checkbox"] {
       width: 1rem;
       height: 1rem;
 
@@ -16,7 +17,7 @@
   }
 
   #{$root}--large {
-    input[type=checkbox] {
+    input[type="checkbox"] {
       width: 1.6rem;
       height: 1.6rem;
 
@@ -26,7 +27,7 @@
     }
   }
 
-  input[type=checkbox] {
+  input[type="checkbox"] {
     width: 1.25rem;
     height: 1.25rem;
     appearance: none;

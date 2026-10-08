@@ -31,7 +31,7 @@ default:
       value: true
   path:
     -
-      langcode: en
+      langcode: und
       alias: /home
       pathauto: 0
   field_content:

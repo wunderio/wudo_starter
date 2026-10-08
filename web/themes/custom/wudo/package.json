@@ -10,7 +10,8 @@
     "build": "npm run build:sdc && vite build && npm run build:lit",
     "build:lit": "vite build --config vite.lit.config.js",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint:css": "stylelint \"components/**/*.scss\" \"scss/**/*.scss\""
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,8 @@
     "sass": "^1.95.1",
     "sass-embedded": "^1.93.3",
     "storybook": "^10.1.9",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard-scss": "^17.0.0",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "vite": "^7.2.6"

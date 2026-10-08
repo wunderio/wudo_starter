@@ -44,7 +44,7 @@ label[aria-required='true'] {
   column-gap: 0.5rem;
   align-items: baseline;
 
-  input[type=checkbox] {
+  input[type="checkbox"] {
     grid-column: 1;
     grid-row: 1 / span 2;
     transform: translateY(0.3em);

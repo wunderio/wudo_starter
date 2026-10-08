@@ -2,7 +2,6 @@
  * @component back-to-top
  */
 back-to-top {
-
   --bg: var(--color-white, #fff);
   --progress-color: var(--color-neutral-90, #333333);
 
@@ -65,7 +64,7 @@ back-to-top {
     width: 20px;
     height: 20px;
     fill: none;
-    stroke: currentColor;
+    stroke: currentcolor;
     stroke-width: 2;
   }
 }

@@ -4,7 +4,6 @@
  */
 
 .button {
-
   --button-padding: 0.7em 1em;
   --button-font-size: var(--font-size-2xs, 0.875rem);
   --button-inline-gap: var(--space-sm, 8px);
@@ -13,7 +12,6 @@
   --button-disabled-bg: var(--color-button-disabled-background, #94A3B8);
 
   display: inline-flex;
-  min-width: max-content;
   max-width: 100%;
   padding: var(--button-padding);
   align-items: center;
@@ -37,7 +35,7 @@
   .button__icon {
     flex-shrink: 0;
     display: block;
-    fill: currentColor;
+    fill: currentcolor;
   }
 
   &--primary {

@@ -41,5 +41,8 @@
 *storybook.log
 NOTES.md
 
+# Throwaway database of the PHPUnit kernel tests.
+/web/tmp/
+
 # Stray build output; the theme builds into its own dist/.
 /dist/

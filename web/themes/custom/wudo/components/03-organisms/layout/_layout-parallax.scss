@@ -1,51 +1,52 @@
-//.parallax-layer {
+// .parallax-layer {
 //  position: absolute;
 //  --parallax-offset: 0px;
-//}
-//.parallax-layer--top-left {
+// }
+// .parallax-layer--top-left {
 //  top: 0;
 //  left: 0;
 //  transform: translate3d(0, var(--parallax-offset), 0);
-//}
-//.parallax-layer--top-center {
+// }
+// .parallax-layer--top-center {
 //  top: 0;
 //  left: 50%;
 //  transform: translateX(-50%) translate3d(0, var(--parallax-offset), 0);
-//}
-//.parallax-layer--top-right {
+// }
+// .parallax-layer--top-right {
 //  top: 0;
 //  right: 0;
 //  transform: translate3d(0, var(--parallax-offset), 0);
-//}
-//.parallax-layer--center {
+// }
+// .parallax-layer--center {
 //  top: 50%;
 //  left: 50%;
 //  transform: translate(-50%, -50%) translate3d(0, var(--parallax-offset), 0);
-//}
-//.parallax-layer--bottom-left {
+// }
+// .parallax-layer--bottom-left {
 //  bottom: 0;
 //  left: 0;
 //  transform: translate3d(0, var(--parallax-offset), 0);
-//}
-//.parallax-layer--bottom-center {
+// }
+// .parallax-layer--bottom-center {
 //  bottom: 0;
 //  left: 50%;
 //  transform: translateX(-50%) translate3d(0, var(--parallax-offset), 0);
-//}
-//.parallax-layer--bottom-right {
+// }
+// .parallax-layer--bottom-right {
 //  bottom: 0;
 //  right: 0;
 //  transform: translate3d(0, var(--parallax-offset), 0);
-//}
-//.parallax-layer img,
-//.parallax-layer svg {
+// }
+// .parallax-layer img,
+// .parallax-layer svg {
 //  display: block;
 //  width: 100%;
 //  height: 100%;
 //  object-fit: contain;
-//}
+// }
 .parallax-layer {
   position: absolute;
+
   --parallax-offset: 0px;
 
   &--top-left     { top: 0; left: 0; transform: translate3d(0, var(--parallax-offset), 0); }

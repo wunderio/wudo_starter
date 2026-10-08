@@ -12,7 +12,7 @@
 // ============================================
 
 .link {
-  --link-decoration-color: currentColor;
+  --link-decoration-color: currentcolor;
   --link-decoration-line: underline;
   --link-decoration-thickness: 0.0625rem; // 1px
   --link-decoration-offset: 0.125rem; // 2px
@@ -38,6 +38,7 @@
   // Variation - CTA
   &--cta {
     color: var(--link-cta-color, #171c1e);
+
     --link-hover-color: var(--link-cta-hover-color, #171c1e);
     --link-decoration-color: var(--color-secondary, #fbad26);
     --link-decoration-thickness: 0.125rem;
@@ -46,7 +47,7 @@
     font-weight: 600;
 
     &:hover {
-      --link-decoration-color: currentColor;
+      --link-decoration-color: currentcolor;
     }
   }
 

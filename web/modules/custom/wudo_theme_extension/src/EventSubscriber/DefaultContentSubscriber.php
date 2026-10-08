@@ -43,7 +43,12 @@ class DefaultContentSubscriber implements EventSubscriberInterface {
   public function preExport(PreExportEvent $event): void {
     // The parent reference is restored when the parent entity is saved.
     $entity_type = $event->entity->getEntityType();
-    foreach (['entity_revision_parent_type_field', 'entity_revision_parent_id_field', 'entity_revision_parent_field_name_field'] as $key) {
+    $parent_keys = [
+      'entity_revision_parent_type_field',
+      'entity_revision_parent_id_field',
+      'entity_revision_parent_field_name_field',
+    ];
+    foreach ($parent_keys as $key) {
       if ($field_name = $entity_type->get($key)) {
         $event->setExportable($field_name, FALSE);
       }

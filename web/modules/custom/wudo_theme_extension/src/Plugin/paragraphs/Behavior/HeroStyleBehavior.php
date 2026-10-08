@@ -60,4 +60,5 @@ class HeroStyleBehavior extends ParagraphsBehaviorBase {
     $build['#attributes']['class'][] = 'layout-' . $layout;
 
   }
+
 }

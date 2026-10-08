@@ -2,59 +2,73 @@
 
 namespace Drupal\wudo_theme_extension\Controller;
 
+use Drupal\Core\Cache\CacheableJsonResponse;
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Drupal\node\Entity\Node;
+use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Render\RendererInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
-class FavoriteApiController extends ControllerBase {
+/**
+ * Returns favorite nodes rendered as cards.
+ */
+final class FavoriteApiController extends ControllerBase {
+
+  /**
+   * The most nodes a single request can ask for.
+   */
+  const MAX_IDS = 50;
 
   public function __construct(
     protected RendererInterface $renderer,
     protected EntityTypeManagerInterface $entityManager,
   ) {}
 
+  /**
+   * {@inheritdoc}
+   */
   public static function create(ContainerInterface $container): static {
-    return new static(
+    return new self(
       $container->get('renderer'),
       $container->get('entity_type.manager'),
     );
   }
 
-  public function getTeasers(Request $request) {
-    $ids_raw = $request->query->get('ids');
-    if (empty($ids_raw)) {
-      return new JsonResponse([]);
-    }
+  /**
+   * Returns the nodes given in the "ids" query argument as rendered cards.
+   */
+  public function getTeasers(Request $request): CacheableJsonResponse {
+    $cacheability = (new CacheableMetadata())
+      ->addCacheContexts(['url.query_args:ids']);
 
-    // Clean and split the IDs
-    $ids = array_filter(explode(',', $ids_raw));
-    if (empty($ids)) {
-      return new JsonResponse([]);
-    }
+    // Keep numeric IDs only, without duplicates, and cap their number.
+    $ids = array_filter(explode(',', (string) $request->query->get('ids')), 'ctype_digit');
+    $ids = array_slice(array_unique($ids), 0, self::MAX_IDS);
 
-    $nodes = Node::loadMultiple($ids);
     $result = [];
+    $storage = $this->entityManager->getStorage('node');
+    $view_builder = $this->entityManager->getViewBuilder('node');
 
-    foreach ($nodes as $node) {
-      // Check if the user has access to view the node
-      if (!$node->access('view')) {
+    foreach ($storage->loadMultiple($ids) as $node) {
+      $access = $node->access('view', NULL, TRUE);
+      $cacheability->addCacheableDependency($access)->addCacheableDependency($node);
+      if (!$access->isAllowed()) {
         continue;
       }
 
-      $build = $this->entityManager
-        ->getViewBuilder('node')
-        ->view($node, 'card');
+      $build = $view_builder->view($node, 'card');
+      $html = $this->renderer->executeInRenderContext(new RenderContext(), fn () => (string) $this->renderer->render($build));
+      $cacheability->addCacheableDependency(CacheableMetadata::createFromRenderArray($build));
 
       $result[] = [
         'id' => $node->id(),
-        'html' => (string) $this->renderer->renderInIsolation($build),
+        'html' => $html,
       ];
     }
 
-    return new JsonResponse($result);
+    return (new CacheableJsonResponse($result))->addCacheableDependency($cacheability);
   }
+
 }
