@@ -20,8 +20,6 @@ for (const path of ['/', '/articles']) {
       const result = await lighthouse(new URL(path, baseURL).href, {
         port,
         output: 'html',
-        // Known gap: content has no description field to feed the meta tag.
-        skipAudits: ['meta-description'],
         logLevel: 'error',
       });
       await testInfo.attach('lighthouse-report.html', { body: result.report, contentType: 'text/html' });

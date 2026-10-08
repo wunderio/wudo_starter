@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 
 name: Badge
+description: "Small label or counter, shown inline or pinned to the corner of another element such as a button."
 status: experimental
 group: Atoms
 

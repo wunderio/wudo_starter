@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 
 name: Theme Toggle
+description: "Switch between the light, dark and automatic color theme. The choice is remembered in the browser."
 status: stable
 group: Atoms
 

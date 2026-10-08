@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 
 name: Container
+description: "Section wrapper that sets the width, spacing, gap and optional background image of its content."
 status: experimental
 group: Base
 
@@ -78,3 +79,13 @@ slots:
     description: Content slot.
     #examples:
     #  - '<strong>sample html content</strong>'
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        slots:
+          content: "<p>Any content can be placed here.</p>"

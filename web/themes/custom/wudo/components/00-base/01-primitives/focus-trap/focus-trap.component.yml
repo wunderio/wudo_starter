@@ -1,4 +1,4 @@
 name: Focus trap
-description: "Handles focus trap."
+description: "Handles focus trap. It has no markup of its own, so there is nothing to preview."
 status: stable
 group: Utilities

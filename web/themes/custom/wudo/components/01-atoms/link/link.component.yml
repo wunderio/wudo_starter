@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 
 name: Link
+description: "Text link with optional icon, including call-to-action and external link variants."
 version: 1.0.0
 status: stable
 group: Atoms

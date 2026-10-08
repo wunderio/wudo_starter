@@ -14,7 +14,7 @@ Wudo, derived from the Wunder and the Japanese Dō (Path).
 * **Single Directory Components (SDC)** keep markup, styles, metadata, and logic together, making components clear, reusable, and Drupal-native.
 * **Vite** is chosen for speed, simplicity, and modern ESM workflows.
 * **Lit** provides a lightweight, reactive layer for Web Components. It ensures that complex UI logic remains fast and encapsulated, allowing for high interactivity with minimal overhead
-* **Storybook** is isolated by design to enforce clean, native, CMS-agnostic components.
+* **Storybook** is the component catalog. It is generated from each component's `*.component.yml` and Twig template, so nothing is described twice.
 
 ## Component Inventory
 
@@ -82,9 +82,9 @@ Build SDC components and main style.css
 ```bash
 npm run build
 ```
-Run Storybook
+Build the component catalog (Storybook)
 ```bash
-npm run storybook
+ddev storybook
 ```
 
 ## Theme Renaming
@@ -127,6 +127,6 @@ The [Theme Toggler](./components/01-atoms/theme-toggler) Web Component allows us
 
 ## Documentation
 
-* **UI Library / Storybook:** [Setup and Usage Guide](./docs/storybook.md)
+* **Component catalog / Storybook:** [How it works and how to describe a component](./docs/storybook.md)
 * **Drupal / SDC:** [Using Single-Directory Components](https://www.drupal.org/docs/develop/theming-drupal/using-single-directory-components)
 * **Lit:** [Setup and Usage Guide](./docs/lit.md)

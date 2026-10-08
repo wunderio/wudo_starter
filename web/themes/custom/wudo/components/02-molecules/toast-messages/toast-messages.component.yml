@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 
 name: Toast Messages
+description: "Notifications that slide in at a corner of the screen and hide after a while. Shows Drupal status messages and messages sent from JavaScript."
 status: stable
 group: Molecules
 version: 1.0.0
@@ -17,3 +18,20 @@ props:
       type: integer
       title: Auto-hide duration (ms)
       default: 5000
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        props:
+          duration: 600000
+          message_list:
+            status:
+              - Your changes have been saved.
+            warning:
+              - Your session is about to expire.
+            error:
+              - The form could not be submitted.

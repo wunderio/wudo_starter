@@ -17,6 +17,9 @@ default:
   title:
     -
       value: Home
+  field_description:
+    -
+      value: 'Welcome to Wudo, a Drupal starter for fast, accessible websites built from reusable components.'
   promote:
     -
       value: false

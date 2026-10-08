@@ -1,4 +1,5 @@
 name: Language Switcher
+description: "Dropdown listing the site's languages, with the current one on the button."
 status: stable
 group: Molecules
 version: 1.0.2
@@ -11,15 +12,18 @@ props:
     languages:
       type: array
       title: "Available Languages"
+      description: "Each language has text, code, url and is_active."
+      examples:
+        -
+          - text: English
+            code: en
+            url: '#'
+            is_active: true
+          - text: Latviešu
+            code: lv
+            url: '#'
+            is_active: false
 
-examples:
-  - languages:
-      - text: "LV"
-        url: "/lv"
-        is_active: true
-      - text: "EN"
-        url: "/en"
-        is_active: false
 
 libraryOverrides:
   dependencies:

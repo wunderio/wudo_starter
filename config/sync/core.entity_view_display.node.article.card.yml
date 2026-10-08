@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.card
     - field.field.node.article.field_body
+    - field.field.node.article.field_description
     - field.field.node.article.field_image
     - node.type.article
   module:
@@ -30,4 +31,5 @@ content:
     region: content
 hidden:
   field_body: true
+  field_description: true
   langcode: true

@@ -1,4 +1,5 @@
 name: Link Manager
+description: "Wrapper that finds external links in its content and adds the security attributes and the external-link indicator."
 status: experimental
 group: Utilities
 
@@ -6,3 +7,13 @@ slots:
   content:
     title: Content
     description: "Content where links will be managed."
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        slots:
+          content: "<p>Any content can be placed here.</p>"

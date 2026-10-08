@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+## Description: Build the Storybook catalog of the theme's components and print its address
+## Usage: storybook
+## Example: "ddev storybook"
+
+set -euo pipefail
+
+cd "$DDEV_DOCROOT/themes/custom/wudo"
+
+if [ ! -d node_modules ]; then
+  npm ci
+fi
+
+# The previews use the compiled CSS.
+npm run build
+npm run build-storybook
+
+echo
+echo "Component catalog: $DDEV_PRIMARY_URL/themes/custom/wudo/storybook-static/"

@@ -1,4 +1,5 @@
 name: Favorite Drawer
+description: "List of the visitor's favorites, loaded from the favorites API and shown inside a drawer. Outside Drupal there is no favorites API, so the preview stays empty."
 status: experimental
 group: Favorite
 

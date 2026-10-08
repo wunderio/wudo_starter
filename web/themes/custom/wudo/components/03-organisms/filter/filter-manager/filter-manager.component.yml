@@ -20,3 +20,13 @@ slots:
 libraryOverrides:
   js:
     filter-manager.js: { attributes: { type: module } }
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        slots:
+          content: "<p>Any content can be placed here.</p>"

@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 
 name: "Article card"
+description: "Teaser card for an article: image, title and summary, with slots over the image and below the text."
 status: experimental
 group: Molecules
 

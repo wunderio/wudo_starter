@@ -1,7 +1,7 @@
 name: Header
 status: stable
-description: Main site header with branding, navigation, and utility slots.
-
+group: Organisms
+description: "Main site header with branding, navigation, and utility slots. Its slots are Twig blocks filled by page.html.twig, so the preview stays empty outside Drupal."
 props:
   type: object
   properties:
@@ -30,3 +30,17 @@ slots:
   utilities:
     title: Header Utilities
     description: "Slot for search, language switcher, etc."
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        slots:
+          branding:
+            - type: component
+              component: 'wudo:branding'
+          navigation: '<a href="#">Home</a> <a href="#">Articles</a>'
+          utilities: "<span>Utilities</span>"

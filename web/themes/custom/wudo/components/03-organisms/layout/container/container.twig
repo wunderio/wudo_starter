@@ -25,7 +25,7 @@
 {% set constrain_class = constrain ? 'container--constrain' : '' %}
 {% set has_image_class = image and image.src ? 'container--has-image' : '' %}
 {% set side_padding_class = side_padding ? 'container--has-side-padding' : '' %}
-{% set modifier_class = '%s %s %s %s %s %s %s %s %s'|format(design_class, constrain_class, spacing_class, has_gap_class, gap_class, has_image_class, side_padding_class, drop_shadow_class, modifier_class|default('')) %}
+{% set modifier_class = '%s %s %s %s %s %s %s %s %s'|format(design_class, constrain_class, spacing_class, has_gap_class, gap_class, has_image_class, side_padding_class, drop_shadow_class|default(''), modifier_class|default('')) %}
 
 {% set design_slot_class = 'container__inner--design-slot-%s'|format(design_slot|default('none')) %}
 {% set modifier_inner_class = '%s %s'|format(design_slot_class, modifier_inner_class|default('')) %}

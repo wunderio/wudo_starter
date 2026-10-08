@@ -256,7 +256,11 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            description: 'The latest articles.'
+          tokenize: false
       path: articles
     cache_metadata:
       max-age: -1

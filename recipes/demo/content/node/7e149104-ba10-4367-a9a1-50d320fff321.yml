@@ -19,6 +19,9 @@ default:
   title:
     -
       value: 'Materials with a Sense of Place'
+  field_description:
+    -
+      value: 'Wood, paper, stone and clay: how local materials give Japanese design its sense of place.'
   promote:
     -
       value: false

@@ -10,3 +10,5 @@ tags:
   canonical_url: '[site:url]'
   shortlink: '[site:url]'
   og_url: '[site:url]'
+  description: '[node:field_description:value]'
+  og_description: '[node:field_description:value]'

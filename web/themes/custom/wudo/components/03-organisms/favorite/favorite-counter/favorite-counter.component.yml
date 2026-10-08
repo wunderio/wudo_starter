@@ -1,4 +1,5 @@
 name: Favorite Counter
+description: "Header button showing how many favorites are saved. Opens the favorites drawer."
 status: experimental
 group: Favorite
 

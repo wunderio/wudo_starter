@@ -20,3 +20,23 @@ slots:
   items:
     title: Carousel Items
     description: "The slides of the carousel (e.g., images, cards, or custom content)."
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        props:
+          items_per_view: 2
+        slots:
+          items:
+            - type: image
+              uri: 'https://placehold.co/600x400?text=1'
+            - type: image
+              uri: 'https://placehold.co/600x400?text=2'
+            - type: image
+              uri: 'https://placehold.co/600x400?text=3'
+            - type: image
+              uri: 'https://placehold.co/600x400?text=4'

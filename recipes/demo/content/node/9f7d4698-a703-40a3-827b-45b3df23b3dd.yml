@@ -19,6 +19,9 @@ default:
   title:
     -
       value: 'Terms of Service'
+  field_description:
+    -
+      value: 'The terms that apply when you use this website.'
   promote:
     -
       value: false

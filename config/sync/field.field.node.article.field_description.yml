@@ -1,0 +1,19 @@
+uuid: 9aeb531e-1fdc-4d30-ba0d-c0a6ff2f34a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.article
+id: node.article.field_description
+field_name: field_description
+entity_type: node
+bundle: article
+label: Description
+description: 'One or two sentences (about 150 characters) shown in search results and when the page is shared.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

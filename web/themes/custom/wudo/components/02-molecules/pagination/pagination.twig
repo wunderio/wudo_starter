@@ -16,7 +16,7 @@
 #}
 
 {% set items_per_page_title = items_per_page_title|default('Items per page') %}
-{% set modifier_class = '%s %s'|format(theme_class, modifier_class|default('')) %}
+{% set modifier_class = '%s %s'|format(theme_class|default(''), modifier_class|default('')) %}
 
 {% if items is not empty %}
   <nav

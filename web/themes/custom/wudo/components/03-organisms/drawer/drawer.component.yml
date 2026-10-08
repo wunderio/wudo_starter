@@ -49,3 +49,24 @@ libraryOverrides:
     - wudo/focus-trap
   js:
     drawer.js: { attributes: { type: module } }
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        props:
+          id: example-drawer
+          title: Shopping Cart
+          attributes:
+            open: open
+        slots:
+          content: "<p>Your cart is empty.</p>"
+          footer:
+            - type: component
+              component: 'wudo:button'
+              props:
+                text: Continue shopping
+                type: primary

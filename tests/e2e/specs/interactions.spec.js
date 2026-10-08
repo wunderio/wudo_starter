@@ -54,3 +54,16 @@ test('the mobile menu toggles', async ({ page, isMobile }) => {
   await page.keyboard.press('Escape');
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
 });
+
+test('the header hides on scroll down and sticks on scroll up', async ({ page }) => {
+  await page.goto('/');
+  const header = page.locator('header.site-header');
+  test.skip(await page.evaluate(() => document.documentElement.scrollHeight < innerHeight + 450), 'The page is too short to scroll.');
+
+  await page.evaluate(() => window.scrollTo(0, 400));
+  await expect(header).not.toBeInViewport();
+
+  await page.evaluate(() => window.scrollTo(0, 250));
+  // The header slides back in, so wait for it to settle at the top.
+  await expect.poll(() => header.evaluate((element) => Math.round(element.getBoundingClientRect().top))).toBe(0);
+});

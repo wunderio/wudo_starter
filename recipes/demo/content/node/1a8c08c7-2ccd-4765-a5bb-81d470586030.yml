@@ -19,6 +19,9 @@ default:
   title:
     -
       value: 'Colors of change'
+  field_description:
+    -
+      value: 'How the shifting colors of the seasons shape Japanese design, from fresh spring greens to the deep reds of autumn.'
   promote:
     -
       value: false

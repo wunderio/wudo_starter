@@ -178,6 +178,18 @@ the site was installed with `--demo`.
 `vendor/bin/phpcbf` and `npm run lint:css -- --fix` fix most style issues
 automatically.
 
+## Component catalog
+
+```bash
+ddev storybook
+```
+
+builds a Storybook catalog of the theme's Single Directory Components and
+prints its address. Every page is generated from the component's
+`*.component.yml` and rendered with its own Twig template, CSS and JS, so a
+new component shows up without writing a story. See
+`web/themes/custom/wudo/docs/storybook.md`.
+
 ## Theme development
 
 Run these commands from `web/themes/custom/wudo`:
@@ -185,7 +197,6 @@ Run these commands from `web/themes/custom/wudo`:
 ```bash
 npm run dev
 npm run dev:sdc
-npm run storybook
 ```
 
 Build production assets with `npm run build`. `node_modules/`, `dist/` and the

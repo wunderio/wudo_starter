@@ -7,3 +7,6 @@
 
 # Compiled from the .scss files next to them by "npm run build".
 /components/**/*.css
+
+# Static Storybook build ("npm run build-storybook").
+/storybook-static

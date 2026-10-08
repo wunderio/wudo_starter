@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 
 name: Tab Item
+description: "One tab with its title and panel content. Used inside the Tabs component."
 status: stable
 group: Molecules
 
@@ -10,6 +11,10 @@ props:
     title:
       type: string
       title: Tab Title
+      examples:
+        - Details
 slots:
   content:
     title: Tab Content
+    examples:
+      - "<p>The content of the tab panel.</p>"

@@ -2,7 +2,6 @@
   "name": "wudo",
   "version": "1.0.0",
   "description": "Drupal 11 base theme (SDC)",
-  "main": "index.js",
   "scripts": {
     "build:sdc": "sass components:components --update --no-source-map",
     "dev:sdc": "sass components:components --watch --no-source-map",
@@ -10,7 +9,7 @@
     "build": "npm run build:sdc && vite build && npm run build:lit",
     "build:lit": "vite build --config vite.lit.config.js",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build --quiet",
     "lint:css": "stylelint \"components/**/*.scss\" \"scss/**/*.scss\""
   },
   "repository": {
@@ -25,21 +24,20 @@
   },
   "homepage": "https://github.com/wunderio/wudo_starter#readme",
   "devDependencies": {
-    "@storybook/addon-a11y": "^10.1.9",
-    "@storybook/addon-docs": "^10.1.9",
-    "@storybook/react-vite": "^10.1.9",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "@storybook/addon-docs": "^10.6.1",
+    "@storybook/html-vite": "^10.6.1",
+    "drupal-attribute": "^1.2.1",
     "sass": "^1.95.1",
     "sass-embedded": "^1.93.3",
-    "storybook": "^10.1.9",
+    "storybook": "^10.6.1",
+    "storybook-addon-sdc": "^0.24.21",
     "stylelint": "^17.16.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "ts-loader": "^9.5.4",
-    "typescript": "^5.9.3",
+    "twing": "^7.3.1",
     "vite": "^7.2.6"
   },
   "dependencies": {
     "lit": "^3.1.0"
-  }
+  },
+  "type": "module"
 }

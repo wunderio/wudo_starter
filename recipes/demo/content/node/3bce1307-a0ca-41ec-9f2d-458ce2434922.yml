@@ -21,6 +21,9 @@ default:
   title:
     -
       value: Interior
+  field_description:
+    -
+      value: 'A gallery of calm Japanese interiors shaped by natural light, wood and open space.'
   promote:
     -
       value: false

@@ -1,4 +1,5 @@
 name: Favorite Button
+description: "Button that adds an item to, or removes it from, the visitor's favorites stored in the browser."
 status: experimental
 group: Favorite
 
@@ -14,10 +15,14 @@ props:
       type: string
       title: Content ID
       description: "Identificator, node ID or product ID"
+      examples:
+        - "1"
     label:
       type: string
       title: Label
       description: "Name"
+      examples:
+        - "The Beauty of Ma"
     icon_type:
       type: string
       title: Icon

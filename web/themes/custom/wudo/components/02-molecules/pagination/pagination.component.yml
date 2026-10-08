@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 
 name: Pagination
+description: "Links to the first, previous, numbered, next and last page of a list."
 version: 1.0.0
 status: stable
 group: Molecules
@@ -40,3 +41,29 @@ props:
       examples:
         - 'pagination--light'
         - 'pagination--compact'
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        props:
+          current: 2
+          items:
+            first:
+              href: '#'
+            previous:
+              href: '#'
+            pages:
+              1:
+                href: '#'
+              2:
+                href: '#'
+              3:
+                href: '#'
+            next:
+              href: '#'
+            last:
+              href: '#'

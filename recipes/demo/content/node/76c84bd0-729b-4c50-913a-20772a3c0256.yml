@@ -19,6 +19,9 @@ default:
   title:
     -
       value: 'The Beauty of Ma'
+  field_description:
+    -
+      value: 'Ma is the Japanese idea of meaningful empty space. See how the pause between things gives a room its calm.'
   promote:
     -
       value: false

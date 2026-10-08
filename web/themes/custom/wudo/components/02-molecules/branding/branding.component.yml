@@ -1,17 +1,25 @@
 name: Branding
+description: "Site logo, name and slogan, linked to the front page."
 status: stable
+group: Molecules
 props:
   type: object
   properties:
     logo_url:
       type: string
       title: Logo image URL
+      examples:
+        - logo.svg
     site_name:
       type: string
       title: Site Name
+      examples:
+        - Wudo
     site_slogan:
       type: string
       title: Site Slogan
+      examples:
+        - Drupal starter
     home_url:
       type: string
       title: Home URL

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.landingpage.field_content
+    - field.field.node.landingpage.field_description
     - node.type.landingpage
   module:
     - entity_reference_revisions
@@ -28,4 +29,5 @@ content:
     weight: 100
     region: content
 hidden:
+  field_description: true
   langcode: true

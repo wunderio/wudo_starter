@@ -20,6 +20,9 @@ default:
   title:
     -
       value: Frontpage
+  field_description:
+    -
+      value: 'Stories about Japanese design: quiet interiors, natural materials and the beauty of simplicity.'
   promote:
     -
       value: false

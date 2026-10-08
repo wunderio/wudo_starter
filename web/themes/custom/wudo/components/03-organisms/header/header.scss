@@ -14,6 +14,25 @@
 
   background-color: var(--header-bg);
 
+  // A sticky element only travels inside its parent, and <sticky-header> sits
+  // in this header, which is no taller than itself. So the header does the
+  // sticking and follows the state classes <sticky-header> sets on itself.
+  &:has(> sticky-header) {
+    position: sticky;
+    top: 0;
+    z-index: var(--sticky-header-z-index, 110);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    > sticky-header {
+      position: static;
+      transform: none;
+    }
+  }
+
+  &:has(> sticky-header.is-hidden) {
+    transform: translateY(-100%);
+  }
+
   &__branding {
     flex: 1;
 

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.gallery.field_body
+    - field.field.node.gallery.field_description
     - field.field.node.gallery.field_images
     - node.type.gallery
   module:
@@ -36,4 +37,5 @@ content:
     weight: 100
     region: content
 hidden:
+  field_description: true
   langcode: true
