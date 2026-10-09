@@ -9,7 +9,7 @@ dependencies:
 id: gallery
 label: Gallery
 type: 'canonical_entities:node'
-pattern: '/gallery/[node:source:original:title]'
+pattern: '/gallery/[node:title]'
 selection_criteria:
   367e7d37-4c21-454b-8e56-496a254e3aca:
     id: 'entity_bundle:node'

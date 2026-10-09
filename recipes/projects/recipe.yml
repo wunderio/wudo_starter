@@ -22,5 +22,9 @@ config:
         visibility.request_path.pages: "/articles\r\n/article/*\r\n/gallery/*\r\n/projects\r\n/projects/*"
     user.role.content_editor:
       grantPermissions:
+        - 'create project content'
+        - 'edit any project content'
+        - 'delete any project content'
         - 'create terms in project_category'
         - 'edit terms in project_category'
+        - 'delete terms in project_category'

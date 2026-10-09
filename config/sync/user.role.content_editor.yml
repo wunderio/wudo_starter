@@ -3,15 +3,28 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - filter.format.basic_html
+    - filter.format.full_html
+    - node.type.article
+    - node.type.gallery
+    - node.type.landingpage
+    - node.type.project
     - taxonomy.vocabulary.project_category
     - taxonomy.vocabulary.tags
   module:
+    - block_content
     - contextual
     - file
+    - filter
+    - media
     - node
+    - paragraphs
     - path
+    - redirect
     - system
     - taxonomy
+    - toolbar
 _core:
   default_config_hash: og55Zu0F-q-X8zG0Ohrls49zws6IrmmosZS-30Es8vw
 id: content_editor
@@ -20,17 +33,47 @@ weight: 2
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access block library'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access media overview'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'administer menu'
+  - 'administer redirects'
   - 'administer url aliases'
+  - 'create article content'
+  - 'create basic block content'
+  - 'create gallery content'
+  - 'create landingpage content'
+  - 'create media'
+  - 'create project content'
   - 'create terms in project_category'
   - 'create terms in tags'
   - 'create url aliases'
+  - 'delete any article content'
+  - 'delete any gallery content'
+  - 'delete any landingpage content'
+  - 'delete any media'
+  - 'delete any project content'
   - 'delete own files'
+  - 'delete terms in project_category'
+  - 'delete terms in tags'
+  - 'edit any article content'
+  - 'edit any basic block content'
+  - 'edit any gallery content'
+  - 'edit any landingpage content'
+  - 'edit any project content'
   - 'edit terms in project_category'
   - 'edit terms in tags'
   - 'revert all revisions'
+  - 'update any media'
+  - 'use text format basic_html'
+  - 'use text format full_html'
+  - 'view all media revisions'
   - 'view all revisions'
   - 'view own unpublished content'
+  - 'view own unpublished media'
   - 'view the administration theme'
+  - 'view unpublished paragraphs'

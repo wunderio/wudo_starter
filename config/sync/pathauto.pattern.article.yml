@@ -9,7 +9,7 @@ dependencies:
 id: article
 label: Article
 type: 'canonical_entities:node'
-pattern: '/article/[node:source:original:title]'
+pattern: '/article/[node:title]'
 selection_criteria:
   9e5e296f-bcad-4fb4-bd1e-71b79720b11a:
     id: 'entity_bundle:node'

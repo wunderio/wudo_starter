@@ -71,6 +71,17 @@ ddev drush config:export
 ddev drush config:import
 ```
 
+## Roles
+
+- **Administrator** builds the site: content types, views, modules, settings.
+- **Content editor** (`content_editor`) runs it day to day: creates, edits and
+  deletes every content type, uploads media, manages tags, menu links, URL
+  aliases and redirects, and uses the rich text editor. It cannot reach
+  people, modules, content types, views, appearance or site settings.
+
+Give a client the content editor role. A browser test signs in as one, writes
+an article and checks which admin pages open and which answer 403.
+
 ## Content recipes
 
 - `recipes/error_pages` holds the "Page not found" and "Access denied" pages
@@ -292,6 +303,7 @@ the first run downloads Chromium. They cover every page in the XML sitemap:
   are installed;
 - consent: nothing is loaded from Google before consent, when consent is
   installed;
+- content editor: can write an article, cannot reach site building pages;
 - accessibility: axe-core, WCAG 2.2 AA, on desktop and mobile viewports;
 - Lighthouse: accessibility, best practices and SEO must score 100.
 
