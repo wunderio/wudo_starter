@@ -1,0 +1,26 @@
+name: 'Projects'
+description: 'Optional "Project" content type with facts, an image gallery, category and status vocabularies, and a filterable /projects listing.'
+type: 'Content type'
+
+install:
+  - node
+  - taxonomy
+  - media
+  - views
+  - pathauto
+  - xmlsitemap
+
+config:
+  # Applying the recipe again must not fail on a site that has since been
+  # customised.
+  strict: false
+  actions:
+    # The page title block is limited to listed paths, so that landing pages
+    # can bring their own heading.
+    block.block.wudo_page_title:
+      setProperties:
+        visibility.request_path.pages: "/articles\r\n/article/*\r\n/gallery/*\r\n/projects\r\n/projects/*"
+    user.role.content_editor:
+      grantPermissions:
+        - 'create terms in project_category'
+        - 'edit terms in project_category'

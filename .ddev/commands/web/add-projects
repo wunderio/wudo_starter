@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+## Description: Add the optional "Project" content type: fields, category and status vocabularies, /projects list with filters
+## Usage: add-projects [--demo]
+## Example: "ddev add-projects" or "ddev add-projects --demo"
+
+set -euo pipefail
+
+demo=
+for arg in "$@"; do
+  case "$arg" in
+    --demo) demo=1 ;;
+    *) echo "Unknown option: $arg" >&2; exit 1 ;;
+  esac
+done
+
+cd "$DDEV_COMPOSER_ROOT"
+drush recipe ../recipes/projects
+if [ -n "$demo" ]; then
+  drush recipe ../recipes/projects_demo
+fi
+# On a multilingual site the new content type is translatable as well.
+if drush pm:list --status=enabled --field=name | grep -qx content_translation; then
+  drush wudo:multilingual
+fi
+drush xmlsitemap:rebuild
+drush cache:rebuild
+# Projects are part of the site from now on, including fresh installs.
+drush config:export --yes

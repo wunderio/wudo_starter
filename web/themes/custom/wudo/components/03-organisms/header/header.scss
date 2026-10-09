@@ -59,8 +59,51 @@
     order: 2;
   }
 
-  &__menu-toggle {
+  #{$root} &__menu-button {
     order: 3;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+
+    // Without JavaScript there is no drawer; the menu stays in the header.
+    display: none;
+
+    .icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      stroke: currentcolor;
+      stroke-width: 0.3px;
+    }
+  }
+
+  &__menu {
+    order: 9999;
+    flex: 0 1 100%;
+
+    @include breakpoint.mobile {
+      order: 1;
+      flex: 1;
+    }
+  }
+
+  // With JavaScript the menu moves into the drawer on small screens.
+  &:has(+ .drawer--menu:defined) {
+    #{$root}__menu {
+      display: none;
+
+      @include breakpoint.mobile {
+        display: block;
+      }
+    }
+
+    #{$root}__menu-button {
+      display: inline-flex;
+
+      @include breakpoint.mobile {
+        display: none;
+      }
+    }
   }
 
   &__main {
@@ -79,28 +122,6 @@
         .contextual {
           display: none; // for development purposes
         }
-      }
-
-      #{$root}__menu {
-        @include overlay-hidden;
-
-        order: 9999;
-        flex: 0 1 100%;
-
-        &.is-open {
-          @include overlay-visible;
-        }
-
-        @include breakpoint.mobile {
-          @include overlay-visible;
-
-          order: 1;
-          flex: 1;
-        }
-      }
-
-      #{$root}__menu-toggle {
-        display: flex;
       }
     }
   }

@@ -107,6 +107,7 @@
 
   &__footer {
     padding: 1rem;
+    border-top: 1px solid color-mix(in srgb, currentcolor 15%, transparent);
   }
 
   &__title {

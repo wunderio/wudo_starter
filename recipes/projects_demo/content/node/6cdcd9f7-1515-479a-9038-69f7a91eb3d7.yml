@@ -1,0 +1,72 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 6cdcd9f7-1515-479a-9038-69f7a91eb3d7
+  bundle: project
+  default_langcode: en
+  depends:
+    583829ca-5b0b-47b8-831c-bfc3520660dd: media
+    f281e38c-b520-41c3-aebf-0dd60a5961cd: media
+    ee0c53bc-3fa8-495e-8d51-6d9a6c55b744: media
+    7ea0b4e2-a6ba-47b7-94f2-af10e2e89d24: taxonomy_term
+    8935f0b8-a4b8-4b72-9c3c-1b7ba2ceaaed: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'House Among the Pines'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /projects/house-among-pines
+      langcode: en
+      pathauto: 0
+  field_body:
+    -
+      value: '<p>Not a single pine was felled. The house steps around the trunks, and each bend of the plan frames a different part of the forest.</p><p>Charred timber cladding, a deep veranda and sliding screens borrow from the Japanese engawa, blurring the line between room and garden.</p>'
+      format: full_html
+  field_description:
+    -
+      value: 'A single-storey family house that bends around the trees it was built between.'
+  field_image:
+    -
+      entity: 583829ca-5b0b-47b8-831c-bfc3520660dd
+  field_images:
+    -
+      entity: f281e38c-b520-41c3-aebf-0dd60a5961cd
+    -
+      entity: ee0c53bc-3fa8-495e-8d51-6d9a6c55b744
+  field_project_area:
+    -
+      value: 182
+  field_project_category:
+    -
+      entity: 7ea0b4e2-a6ba-47b7-94f2-af10e2e89d24
+  field_project_client:
+    -
+      value: 'Private client'
+  field_project_location:
+    -
+      value: Jūrmala
+  field_project_status:
+    -
+      entity: 8935f0b8-a4b8-4b72-9c3c-1b7ba2ceaaed
+  field_project_year:
+    -
+      value: 2024

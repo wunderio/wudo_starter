@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Wudo theme implementation for the project list.
+ *
+ * Same as views-view.html.twig, with the cards laid out as a grid.
+ *
+ * @see views-view.html.twig
+ */
+#}
+{%
+  set classes = [
+  'views--projects',
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+]
+%}
+{% set filters_id = ('filters-' ~ id ~ '-' ~ display_id)|clean_id %}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title }}
+  {{ title_suffix }}
+
+  {% if exposed %}
+    {% embed 'wudo:filter-bar' with {
+      id: filters_id,
+      exposed: exposed,
+    } only %}
+      {% block content %}
+        {{ exposed }}
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
+  {{ attachment_before }}
+
+  {# Replaced as a whole when the filters change. #}
+  <div id="{{ filters_id }}-results" class="view__results">
+    {% if header %}
+      <header class="view__summary" data-filter-summary>
+        {{ header }}
+      </header>
+    {% endif %}
+
+    {% if rows -%}
+      <div class="view__content layout-grid-auto">
+        {{ rows }}
+      </div>
+    {% elseif empty -%}
+      <div class="view__empty" data-filter-empty>
+        {{ empty }}
+      </div>
+    {% endif %}
+    {{ pager }}
+  </div>
+
+  {{ attachment_after }}
+  {{ more }}
+
+  {% if footer %}
+    <footer>
+      {{ footer }}
+    </footer>
+  {% endif %}
+
+  {{ feed_icons }}
+</div>

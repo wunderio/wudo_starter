@@ -1,7 +1,8 @@
 @use "../../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
 @use "../../00-base/00-defaults/_03-mixins.scss" as *;
 
-footer {
+// The page footer only; other <footer> elements keep their own look.
+.site-footer {
   background-color: #000;
   color: var(--color-white, #fff);
 

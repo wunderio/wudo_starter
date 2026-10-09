@@ -1,0 +1,102 @@
+{#
+/**
+ * @file
+ * Filter bar component.
+ *
+ * One filtering pattern for every list: the filter form sits above the
+ * results on wide screens and moves into a drawer on narrow ones. Results are
+ * updated in place, the address stays shareable, and without JavaScript the
+ * form is a plain form with its own submit button.
+ *
+ * Variables:
+ * - id: [string] Unique ID.
+ * - results_id: [string] ID of the element that holds the results; its
+ *   content is replaced after filtering. Defaults to "<id>-results". Inside
+ *   it, [data-filter-summary] is announced to screen readers and shown in the
+ *   drawer.
+ * - title: [string] Label of the drawer and its trigger.
+ * - content: [string] The filter form.
+ */
+#}
+
+{% set id = id|default('filters') %}
+{% set title = title|default('Filters'|t) %}
+{% set drawer_id = id ~ '-drawer' %}
+{% set slot_id = id ~ '-slot' %}
+
+<wudo-filter-bar
+  id="{{ id }}"
+  class="filter-bar"
+  drawer-id="{{ drawer_id }}"
+  results-id="{{ results_id|default(id ~ '-results') }}"
+  data-label-remove="{{ 'Remove filter'|t }}"
+  data-label-active="{{ 'active'|t }}"
+  data-label-updated="{{ 'Results updated.'|t }}"
+>
+  <div class="filter-bar__bar">
+    {% embed 'wudo:button' with {
+      type: 'secondary',
+      icon: 'filter',
+      icon_placement: 'before',
+      text: title,
+      badge_content: 'default',
+      attributes: create_attribute({
+        'class': ['filter-bar__toggle'],
+        'data-drawer-open': drawer_id,
+        'aria-haspopup': 'dialog',
+      }),
+    } only %}
+      {% block badge %}
+        {{ include('wudo:badge', {
+          content: '',
+          position: 'inline',
+          style: 'primary',
+          modifier_class: 'js-count',
+        }, with_context = false) }}
+      {% endblock %}
+    {% endembed %}
+
+    <div class="filter-bar__inline" id="{{ id }}-inline">
+      <div class="filter-bar__form" id="{{ id }}-form">
+        {% block content %}
+          {{ content }}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-bar__active" data-filter-active hidden>
+    <ul class="filter-bar__chips" aria-label="{{ 'Active filters'|t }}"></ul>
+    <button type="button" class="filter-bar__clear" data-filter-clear>{{ 'Clear all'|t }}</button>
+  </div>
+
+  <p class="visually-hidden" role="status" data-filter-status></p>
+
+  {% set drawer_footer %}
+    <p class="filter-bar__drawer-summary" data-filter-drawer-summary></p>
+    {{ include('wudo:button', {
+      type: 'primary',
+      text: 'Show results'|t,
+      attributes: create_attribute({'data-filter-close': ''}),
+    }, with_context = false) }}
+  {% endset %}
+
+  {% embed 'wudo:drawer' with {
+    id: drawer_id,
+    position: 'right',
+    size: '400px',
+    title: title,
+    modifier_class: 'drawer--filters',
+    footer: drawer_footer,
+    slot_id: slot_id,
+    portal: {
+      source: '#' ~ id ~ '-form',
+      wrapper: '#' ~ id ~ '-inline',
+      slot: slot_id,
+    },
+  } only %}
+    {% block content %}
+      <div id="{{ slot_id }}"></div>
+    {% endblock %}
+  {% endembed %}
+</wudo-filter-bar>

@@ -7,6 +7,7 @@
 
 use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\csp\Csp;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -186,4 +187,51 @@ function wudo_preprocess_menu__social(array &$variables): void {
       }
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for nodes.
+ *
+ * Prepares the facts list of a project: every field shown in "Manage display",
+ * apart from the ones the template places itself, becomes a row labelled with
+ * the name of the field.
+ */
+function wudo_preprocess_node(array &$variables): void {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  if ($node->bundle() !== 'project') {
+    return;
+  }
+
+  // Projects that span several years show a range, e.g. "2025–2026".
+  $years = [];
+  foreach (['field_project_year', 'field_project_year_end'] as $field) {
+    if ($node->hasField($field) && !$node->get($field)->isEmpty()) {
+      $years[] = $node->get($field)->value;
+    }
+  }
+  $variables['project_years'] = implode('–', array_unique($years));
+
+  $placed = [
+    'field_body',
+    'field_description',
+    'field_image',
+    'field_images',
+    'field_project_year_end',
+  ];
+  $facts = [];
+  foreach (Element::children($variables['content'], TRUE) as $name) {
+    $element = $variables['content'][$name];
+    if (($element['#theme'] ?? NULL) !== 'field' || in_array($name, $placed, TRUE)) {
+      continue;
+    }
+    $facts[$name] = [
+      'label' => $element['#title'],
+      'value' => ['#label_display' => 'hidden'] + $element,
+    ];
+  }
+  if (isset($facts['field_project_year'])) {
+    $facts['field_project_year']['value'] = ['#plain_text' => $variables['project_years']];
+  }
+  $variables['facts'] = $facts;
 }

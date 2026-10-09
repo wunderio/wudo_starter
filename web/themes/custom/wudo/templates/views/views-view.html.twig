@@ -27,6 +27,9 @@
  * - dom_id: Unique id for every view being printed to give unique class for
  *   JavaScript.
  *
+ * Exposed filters are shown with the filter bar component, which replaces
+ * the results in place when they change.
+ *
  * @see template_preprocess_views_view()
  *
  * @ingroup themeable
@@ -34,32 +37,46 @@
 #}
 {%
   set classes = [
-    dom_id ? 'js-view-dom-id-' ~ dom_id,
-  ]
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+]
 %}
+{% set filters_id = ('filters-' ~ id ~ '-' ~ display_id)|clean_id %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ title }}
   {{ title_suffix }}
 
-  {% if header %}
-    <header>
-      {{ header }}
-    </header>
+  {% if exposed %}
+    {% embed 'wudo:filter-bar' with {
+      id: filters_id,
+      exposed: exposed,
+    } only %}
+      {% block content %}
+        {{ exposed }}
+      {% endblock %}
+    {% endembed %}
   {% endif %}
-
-  {{ exposed }}
   {{ attachment_before }}
 
-  {% if rows -%}
-    <div class="view__content">
-      {{ rows }}
-    </div>
+  {# Replaced as a whole when the filters change. #}
+  <div id="{{ filters_id }}-results" class="view__results">
+    {% if header %}
+      <header class="view__summary" data-filter-summary>
+        {{ header }}
+      </header>
+    {% endif %}
 
-  {% elseif empty -%}
-    {{ empty }}
-  {% endif %}
-  {{ pager }}
+    {% if rows -%}
+      <div class="view__content">
+        {{ rows }}
+      </div>
+    {% elseif empty -%}
+      <div class="view__empty" data-filter-empty>
+        {{ empty }}
+      </div>
+    {% endif %}
+    {{ pager }}
+  </div>
 
   {{ attachment_after }}
   {{ more }}

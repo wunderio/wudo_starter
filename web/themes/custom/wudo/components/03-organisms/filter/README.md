@@ -1,46 +1,41 @@
-# Wudo Filter Manager & Filter trigger
-A decoupled UI pattern for Drupal Views consisting of three synchronized components: Toggler, Drawer, and Manager. This suite handles the complex lifecycle of AJAX-powered filters while providing a clear UX for active filter states.
+# Filters
 
-## Core Components
-1. `filter-toggler`: A trigger button that opens the filter panel and listens for state updates to display an active filter count (Badge).
-2. `filter-manager`: A logic wrapper that analyzes the nested `<form>`, calculates active selections (ignoring defaults like "All"), and broadcasts updates via Custom Events.
-3. `drawer`: A reusable sliding panel component that can be positioned on any side of the viewport, used here to contain the filter manager.
+## Filter bar (`wudo:filter-bar`)
 
-## Usage
-This code can be placed in the views-view.html.twig
+The one filtering pattern for lists. `views-view.html.twig` uses it for every
+view that has exposed filters, so a view needs no template of its own to get
+it.
+
+- **Wide screens:** the form sits above the results. Selects, checkboxes and
+  radios filter as soon as they change; text fields filter on Enter, and the
+  form keeps its buttons when it has any.
+- **Narrow screens:** a "Filters" button with the number of active filters
+  opens the same form in a drawer. The list updates behind it, and the drawer
+  footer shows the result summary next to "Show results".
+- **Active filters** are listed above the results as chips that remove them,
+  with "Clear all".
+- **Accessibility:** only the results are replaced, so focus stays on the
+  control in use; the result summary is announced through a live region; the
+  drawer traps focus and returns it to its trigger.
+- **Address:** every change updates the URL, so a filtered list can be shared
+  and the back button works.
+- **Without JavaScript** it is a plain GET form with its submit button.
+
 ```twig
-{% if exposed %}
-  <div class="view__filters layout__sidebar">
-  {# Trigger Button - can be placed anywhere in the DOM tree #}
-    <div class="view__filters--header">
-      {{ include('wudo:filter-toggler', {
-        drawer_id: 'filter-control-center',
-        badge_style: 'yellow',
-        badge_position: 'inline',
-        button_label: 'Filters'|t,
-      }, with_context = false) }}
-    </div>
-    <div class="view__filters--content">
-      {% embed 'wudo:drawer' with {
-        id: 'filter-control-center',
-        position: 'right',
-        size: '400px',
-        title: 'Filters'|t,
-        exposed: exposed,
-        modifier_class: 'drawer--filters'
-      } only %}
-        {% block content %}
-          {% embed 'wudo:filter-manager' with {
-            id: 'filter',
-            exposed: exposed
-          } only %}
-            {% block content %}
-              {{ exposed }}
-            {% endblock %}
-          {% endembed %}
-        {% endblock %}
-      {% endembed %}
-    </div>
-  </div>
-{% endif %}
+{% embed 'wudo:filter-bar' with { id: 'project-filters' } only %}
+  {% block content %}
+    {{ exposed }}
+  {% endblock %}
+{% endembed %}
+
+<div id="project-filters-results">
+  <header data-filter-summary>{{ header }}</header>
+  {{ rows }}
+  {{ pager }}
+</div>
 ```
+
+The element with the ID `<id>-results` is what gets replaced. Inside it,
+`[data-filter-summary]` (or `[data-filter-empty]` when there are no rows) is
+the text that is announced; in a view, add the "Result summary" header to
+provide it. The view does not need "Use AJAX".

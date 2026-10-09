@@ -8,10 +8,11 @@ The primary site header organism. It manages the layout for branding, navigation
 - **Conditional Layouts:** Utility and Navigation sections only render if content is provided.
 - **SDC Ready:** Fully compliant with Single Directory Component standards.
 
-### Mobile menu solution using `wudo:drawer`
-`_1_header.twig` - Mobile menu solution using `wudo:header` with `wudo:drawer` and `wudo:button` components.
-Rename it to `header.twig`.
-
+### Mobile menu
+On small screens the navigation opens in a `wudo:drawer` from the right. The
+menu is rendered once: the drawer borrows it from the header while it is open
+and returns it when it closes or the viewport widens. Without JavaScript the
+menu stays in the header, below the branding.
 
 ## Properties (Props)
 
@@ -26,7 +27,7 @@ Rename it to `header.twig`.
 | Slot | Description |
 | :--- | :--- |
 | `branding` | Typically contains the Site Logo and Site Name. |
-| `navigation` | Reserved for the primary menu and mobile toggle. |
+| `navigation` | Reserved for the primary menu. |
 | `utilities` | Secondary items like search, language switcher, or top-bar links. |
 
 

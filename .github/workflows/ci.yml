@@ -72,6 +72,12 @@ jobs:
           check 403 /admin
       - name: No errors were logged
         run: ddev drush watchdog:show --severity-min=3 2>&1 | tee /dev/stderr | grep -q 'No log messages'
+      - name: Optional project content type installs
+        run: |
+          ddev add-projects --demo
+          code=$(ddev exec curl -sL -o /dev/null -w '%{http_code}' http://localhost/projects)
+          echo "$code /projects"
+          [ "$code" = "200" ]
       - name: End-to-end, accessibility and Lighthouse tests
         run: ddev e2e
       - uses: actions/upload-artifact@v4

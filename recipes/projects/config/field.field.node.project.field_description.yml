@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.project
+id: node.project.field_description
+field_name: field_description
+entity_type: node
+bundle: project
+label: Description
+description: 'One or two sentences (about 150 characters) shown on the project card, in search results and when the page is shared.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

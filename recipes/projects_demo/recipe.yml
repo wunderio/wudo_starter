@@ -1,0 +1,6 @@
+name: 'Projects demo content'
+description: 'Example projects and categories for the optional "Project" content type.'
+type: 'Content'
+
+recipes:
+  - projects

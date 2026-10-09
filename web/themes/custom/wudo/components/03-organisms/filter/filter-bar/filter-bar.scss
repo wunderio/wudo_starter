@@ -1,0 +1,138 @@
+//
+// Filter bar component.
+//
+
+@use "../../../00-base/00-defaults/_02-breakpoints.scss" as breakpoint;
+
+.filter-bar {
+  display: block;
+  margin-bottom: 1.5rem;
+
+  // Without JavaScript there is no drawer: the form stays in the page.
+  &__toggle {
+    display: none;
+  }
+
+  .js-count[hidden] {
+    display: none;
+  }
+
+  &__form form {
+    flex-flow: row wrap;
+    align-items: flex-end;
+    gap: 1rem;
+    max-width: none;
+  }
+
+  .form-item {
+    margin-bottom: 0;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__active {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin-top: 1rem;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid currentcolor;
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: var(--font-size-2xs, 0.875rem);
+    cursor: pointer;
+
+    &:hover {
+      background: color-mix(in srgb, currentcolor 10%, transparent);
+    }
+  }
+
+  &__clear {
+    min-height: 2rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: var(--font-size-2xs, 0.875rem);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &__drawer-summary {
+    margin: 0 0 0.75rem;
+  }
+
+  // In the drawer the filters are stacked and as wide as the panel.
+  .drawer &__form form {
+    flex-flow: column;
+    align-items: stretch;
+  }
+
+  .drawer .form-item {
+    display: flex;
+  }
+
+  .drawer__footer .button {
+    width: 100%;
+  }
+}
+
+// With JavaScript: a drawer on narrow screens, the form in the page on wide
+// ones.
+wudo-filter-bar:defined {
+  .filter-bar__toggle {
+    display: inline-flex;
+  }
+
+  .filter-bar__inline {
+    display: none;
+  }
+
+  @include breakpoint.mobile {
+    .filter-bar__toggle {
+      display: none;
+    }
+
+    .filter-bar__inline {
+      display: block;
+    }
+  }
+
+  // Filters apply as they change, so the buttons are only needed for text
+  // fields, which apply on submit.
+  form:not(:has(input:is([type="text"], [type="search"], [type="number"], [type="date"]))) .form-actions {
+    display: none;
+  }
+}
+
+// The result summary a view prints above its rows.
+.view__summary {
+  margin-bottom: 1rem;
+}

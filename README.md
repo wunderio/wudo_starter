@@ -141,6 +141,67 @@ drush xmlsitemap:rebuild
 drush config:export
 ```
 
+## Adding projects
+
+A portfolio of projects is optional. Add it with one command, on a fresh or a
+running site:
+
+```bash
+ddev add-projects           # or: ddev add-projects --demo, with four examples
+```
+
+It applies the `recipes/projects` recipe, which adds:
+
+- the "Project" content type, with the alias `/projects/<title>`;
+- the "Project categories" and "Project statuses" vocabularies; the statuses
+  come with "Concept", "In progress" and "Completed";
+- the `/projects` list with a "Projects" link in the main menu, sorted by
+  year and filtered by category and status;
+- projects in the XML sitemap, and translatable projects on a multilingual
+  site.
+
+The configuration is exported afterwards, so projects are part of the site
+from then on, including fresh installs.
+
+### Fields or vocabularies
+
+The rule the content type follows, and the one to keep when adapting it:
+
+- a value that **repeats across projects and that visitors pick from** is a
+  vocabulary: category, status. Add one for anything else to filter by, e.g.
+  services, city or material;
+- a value that **belongs to one project** is a field: location, area, year,
+  client. Numbers are number fields, so that the list can be sorted by them.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| Description | text | card text and meta description |
+| Main image | media | card and top of the page |
+| Category | "Project categories" terms | several allowed, filter |
+| Status | "Project statuses" term | filter |
+| Location | text | address or place |
+| Area | whole number | the suffix "m²" is a field setting |
+| Year, End year | whole numbers | shown as "2025–2026", list sorted by year |
+| Client | text | |
+| Body | formatted text | |
+| Gallery | media | lightbox |
+
+### Adapting it
+
+Everything is done in the UI, without touching templates:
+
+- rename, remove or add fields at Structure → Content types → Project. On the
+  project page, every field enabled in "Manage display" becomes a row of the
+  facts list, labelled with the name of the field, in the order set there.
+  Only the main image, body and gallery have a fixed place;
+- to filter by a new vocabulary, add a term reference field and expose it as a
+  filter in the "Projects" view;
+- filters of every view are shown by the `wudo:filter-bar` component: in the
+  page on wide screens, in a drawer on narrow ones, with results updated in
+  place. See `components/03-organisms/filter/README.md` in the theme;
+- the page title block is shown on listed paths only; keep `/projects` and
+  `/projects/*` on that list when changing the aliases.
+
 ## Settings and secrets
 
 `web/sites/default/settings.php` is tracked in Git and contains no credentials.
@@ -182,7 +243,9 @@ the first run downloads Chromium. They cover every page in the XML sitemap:
 
 - smoke checks: status codes, one `h1`, no JavaScript or CSP errors, social
   links;
-- interactions: favorites drawer, favorites via `/api/favorites`, mobile menu;
+- interactions: favorites drawer, favorites via `/api/favorites`, mobile menu,
+  project filters (in place, by address and without JavaScript) when projects
+  are installed;
 - accessibility: axe-core, WCAG 2.2 AA, on desktop and mobile viewports;
 - Lighthouse: accessibility, best practices and SEO must score 100.
 

@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Wudo theme implementation to display a project.
+ *
+ * The main image, the body and the gallery have their own place. Every other
+ * field shown in "Manage display" becomes a row of the facts list, labelled
+ * with the name of the field, so a field added in the UI needs no template
+ * change.
+ *
+ * Available variables, in addition to the ones of node.html.twig:
+ * - facts: Rows of the facts list, each with a label and a value.
+ * - project_years: The year of the project, or "2025–2026" for a range.
+ *
+ * @see wudo_preprocess_node()
+ */
+#}
+{%
+  set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'project',
+]
+%}
+
+{% set items = [] %}
+{% for fact in facts %}
+  {% set value %}{{ fact.value }}{% endset %}
+  {% set items = items|merge([{label: fact.label, value: value}]) %}
+{% endfor %}
+
+<article{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% if content.field_image|render|trim %}
+    <div class="project__image">
+      {{ content.field_image }}
+    </div>
+  {% endif %}
+
+  <div class="project__intro">
+    <div class="project__body">
+      {{ content.field_body }}
+    </div>
+
+    {% if items %}
+      <aside class="project__facts" aria-label="{{ 'Project facts'|t }}">
+        {{ include('wudo:attribute-list', {
+          items: items,
+        }, with_context = false) }}
+      </aside>
+    {% endif %}
+  </div>
+
+  {% if content.field_images|render|trim %}
+    {% embed 'wudo:gallery' %}
+      {% block content %}
+        {{ content.field_images }}
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
+</article>

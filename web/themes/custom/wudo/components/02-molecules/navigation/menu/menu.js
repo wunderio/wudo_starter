@@ -61,7 +61,9 @@
     this.panel.style.visibility = 'visible';
 
     requestAnimationFrame(() => {
-      if (window.focusTrapManager) {
+      // In the mobile drawer a submenu opens in place, like an accordion; the
+      // drawer already keeps focus inside.
+      if (window.focusTrapManager && !this.el.closest('wudo-drawer')) {
         // Include trigger element in the focus trap
         this.currentTrap = window.focusTrapManager.activate(this.panel, {
           additionalElements: [this.openTrigger]

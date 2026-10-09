@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project statuses'
+vid: project_status
+description: 'Stages of a project. Visitors filter the project list by them.'
+weight: 0
+new_revision: false

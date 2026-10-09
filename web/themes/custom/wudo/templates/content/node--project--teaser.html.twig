@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Wudo theme implementation to display a project card.
+ *
+ * Available variables, in addition to the ones of node.html.twig:
+ * - project_years: The year of the project, or "2025–2026" for a range.
+ *
+ * @see wudo_preprocess_node()
+ */
+#}
+{% embed 'wudo:article-card' with {
+  title: label,
+  title_url: url,
+  with_image: node.field_image is defined and not node.field_image.isEmpty(),
+  modifier_class: 'project-card',
+} %}
+
+  {% block image %}
+    {{ content.field_image }}
+  {% endblock %}
+
+  {% block card_meta %}
+    <div class="article-card__meta project-card__meta">
+      {{ content.field_project_category }}
+      {% if project_years %}
+        <span class="project-card__years">{{ project_years }}</span>
+      {% endif %}
+    </div>
+  {% endblock %}
+
+  {% block summary %}
+    {% if content.field_description|render|trim %}
+      <div class="article-card__summary">{{ content.field_description }}</div>
+    {% endif %}
+  {% endblock %}
+
+{% endembed %}

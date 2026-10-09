@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - taxonomy.vocabulary.project_category
     - taxonomy.vocabulary.tags
   module:
     - contextual
@@ -23,9 +24,11 @@ permissions:
   - 'access contextual links'
   - 'access files overview'
   - 'administer url aliases'
+  - 'create terms in project_category'
   - 'create terms in tags'
   - 'create url aliases'
   - 'delete own files'
+  - 'edit terms in project_category'
   - 'edit terms in tags'
   - 'revert all revisions'
   - 'view all revisions'

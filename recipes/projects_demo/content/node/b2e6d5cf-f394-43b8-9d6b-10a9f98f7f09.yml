@@ -1,0 +1,78 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: b2e6d5cf-f394-43b8-9d6b-10a9f98f7f09
+  bundle: project
+  default_langcode: en
+  depends:
+    f281e38c-b520-41c3-aebf-0dd60a5961cd: media
+    583829ca-5b0b-47b8-831c-bfc3520660dd: media
+    19059b7b-728b-41ef-b86d-bd216fd8b8ba: media
+    ee0c53bc-3fa8-495e-8d51-6d9a6c55b744: media
+    0878a3bd-b20c-4c3f-8a97-1ea5d43f15b8: taxonomy_term
+    659cf591-7bb2-45cc-8191-36af3b1fa83b: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Day Care Centre'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /projects/day-care-centre
+      langcode: en
+      pathauto: 0
+  field_body:
+    -
+      value: '<p>The building takes the snail shell as its archetype: rooms unfold along a spiral that leads from the lively entrance hall to the quiet rooms at its centre. The structure is timber throughout, and it replaces a former kindergarten and boiler house on the same plot.</p><p>Workshops for drawing, embroidery and beadwork open onto a sheltered courtyard, giving every visitor a calm place to learn practical skills.</p>'
+      format: full_html
+  field_description:
+    -
+      value: 'A timber day care centre whose plan follows the spiral of a snail shell.'
+  field_image:
+    -
+      entity: f281e38c-b520-41c3-aebf-0dd60a5961cd
+  field_images:
+    -
+      entity: 583829ca-5b0b-47b8-831c-bfc3520660dd
+    -
+      entity: 19059b7b-728b-41ef-b86d-bd216fd8b8ba
+    -
+      entity: ee0c53bc-3fa8-495e-8d51-6d9a6c55b744
+  field_project_area:
+    -
+      value: 370
+  field_project_category:
+    -
+      entity: 0878a3bd-b20c-4c3f-8a97-1ea5d43f15b8
+  field_project_client:
+    -
+      value: 'Saulkrasti Municipality'
+  field_project_location:
+    -
+      value: 'Jūras iela 12, Saulkrasti'
+  field_project_status:
+    -
+      entity: 659cf591-7bb2-45cc-8191-36af3b1fa83b
+  field_project_year:
+    -
+      value: 2025
+  field_project_year_end:
+    -
+      value: 2026

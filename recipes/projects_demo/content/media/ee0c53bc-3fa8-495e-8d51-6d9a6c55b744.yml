@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: ee0c53bc-3fa8-495e-8d51-6d9a6c55b744
+  bundle: image
+  default_langcode: en
+  depends:
+    427574dc-f1da-44cd-8244-2c044ce9b494: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: japan-2.jpeg
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: decorative
+      title: ''
+      width: 1024
+      height: 683
+      entity: 427574dc-f1da-44cd-8244-2c044ce9b494

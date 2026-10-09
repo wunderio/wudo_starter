@@ -1,0 +1,72 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Filter bar
+description: "Filters for a list: a form above the results on wide screens, a drawer on narrow ones, with removable active filters and results updated in place."
+status: stable
+group: Organisms
+
+props:
+  type: object
+  # Not marked as required: Drupal validates the nested embeds of this
+  # template against the same schema, and they have no such prop.
+  properties:
+    id:
+      type: string
+      title: Unique ID
+      description: 'Needed when a page has more than one filter bar. Defaults to "filters".'
+      examples:
+        - project-filters
+    results_id:
+      type: string
+      title: Results ID
+      description: 'ID of the element whose content is replaced after filtering. Defaults to "<id>-results".'
+    title:
+      type: string
+      title: Title
+      description: Label of the drawer and its trigger.
+      examples:
+        - Filters
+
+slots:
+  content:
+    title: Filter form
+    description: 'A GET form, e.g. the exposed form of a view.'
+
+libraryOverrides:
+  dependencies:
+    - core/drupal
+  js:
+    filter-bar.js: { attributes: { type: module } }
+
+# Storybook only; Drupal ignores this.
+thirdPartySettings:
+  sdcStorybook:
+    disabledStories:
+      - basic
+    stories:
+      preview:
+        props:
+          id: example-filters
+        slots:
+          content: >
+            <form action="#" method="get">
+              <div class="form-item">
+                <label for="example-category">Category</label>
+                <select id="example-category" name="category" class="form-select">
+                  <option value="All">- Any -</option>
+                  <option value="1" selected>Public buildings</option>
+                  <option value="2">Residential</option>
+                </select>
+              </div>
+              <div class="form-item">
+                <label for="example-status">Status</label>
+                <select id="example-status" name="status" class="form-select">
+                  <option value="All">- Any -</option>
+                  <option value="1">Concept</option>
+                  <option value="2">Completed</option>
+                </select>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="button button--primary">Apply</button>
+              </div>
+            </form>

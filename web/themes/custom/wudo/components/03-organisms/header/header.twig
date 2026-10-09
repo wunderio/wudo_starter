@@ -32,7 +32,7 @@
     {% set header_content %}
       <div class="site-header__main">
         <div class="page-wrapper">
-          <div class="site-header__main--content" data-mobile-menu>
+          <div class="site-header__main--content">
             {% if branding_output is not empty %}
               <div class="site-header__branding">
                 {{ branding_output|raw }}
@@ -40,8 +40,11 @@
             {% endif %}
 
             {% if nav_output is not empty %}
-              <div class="site-header__menu" data-menu>
-                {{ nav_output|raw }}
+              {# On small screens the drawer below borrows the menu while it is open. #}
+              <div class="site-header__menu" id="site-menu-wrapper">
+                <div class="site-header__menu-content" id="site-menu">
+                  {{ nav_output|raw }}
+                </div>
               </div>
             {% endif %}
 
@@ -51,11 +54,19 @@
               </div>
             {% endif %}
 
-            <div class="site-header__menu-toggle">
-              {{ include('wudo:menu-toggle', {
-                label: 'Open menu',
+            {% if nav_output is not empty %}
+              {{ include('wudo:button', {
+                text: 'Menu'|t,
+                icon: 'menu',
+                icon_only: true,
+                icon_size: 'large',
+                attributes: create_attribute({
+                  'class': ['site-header__menu-button'],
+                  'data-drawer-open': 'mobile-menu-drawer',
+                  'aria-haspopup': 'dialog',
+                }),
               }, with_context = false) }}
-            </div>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -76,3 +87,21 @@
 
   {% endif %}
 </header>
+
+{# Outside the header: a sticky header moves with a transform, which would
+   pin the fixed drawer to the header instead of the viewport. #}
+{% if nav_output is not empty %}
+  {{ include('wudo:drawer', {
+    id: 'mobile-menu-drawer',
+    position: 'right',
+    size: '400px',
+    title: 'Menu'|t,
+    modifier_class: 'drawer--menu',
+    content: '<div id="mobile-menu-slot"></div>',
+    portal: {
+      source: '#site-menu',
+      wrapper: '#site-menu-wrapper',
+      slot: 'mobile-menu-slot',
+    },
+  }, with_context = false) }}
+{% endif %}
