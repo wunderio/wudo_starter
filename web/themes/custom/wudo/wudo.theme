@@ -132,3 +132,58 @@ function wudo_preprocess_links__language_block(&$variables) {
 
   $variables['custom_languages'] = $lang_items;
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for the social links menu.
+ *
+ * Picks the icon of each link from its address, so that editors only have to
+ * paste the URL of the profile.
+ */
+function wudo_preprocess_menu__social(array &$variables): void {
+  $icons = [
+    'bsky.app' => 'bluesky',
+    'facebook.com' => 'facebook',
+    'fb.com' => 'facebook',
+    'github.com' => 'github',
+    'instagram.com' => 'instagram',
+    'linkedin.com' => 'linkedin',
+    'pinterest.com' => 'pinterest',
+    't.me' => 'telegram',
+    'telegram.org' => 'telegram',
+    'threads.com' => 'threads',
+    'threads.net' => 'threads',
+    'tiktok.com' => 'tiktok',
+    'twitter.com' => 'twitter-x',
+    'x.com' => 'twitter-x',
+    'wa.me' => 'whatsapp',
+    'whatsapp.com' => 'whatsapp',
+    'youtu.be' => 'youtube',
+    'youtube.com' => 'youtube',
+  ];
+
+  foreach ($variables['items'] as &$item) {
+    /** @var \Drupal\Core\Url $url */
+    $url = $item['url'];
+    $uri = $url->isExternal() ? $url->getUri() : $url->toString();
+    $host = strtolower((string) parse_url($uri, PHP_URL_HOST));
+
+    $item['icon'] = 'globe';
+    if (str_starts_with($uri, 'mailto:')) {
+      $item['icon'] = 'envelope';
+    }
+    elseif (preg_match('/(rss|feed)(\.xml)?$/', (string) parse_url($uri, PHP_URL_PATH))) {
+      $item['icon'] = 'rss';
+    }
+    elseif (str_contains($host, 'mastodon')) {
+      $item['icon'] = 'mastodon';
+    }
+    else {
+      foreach ($icons as $domain => $icon) {
+        if ($host === $domain || str_ends_with($host, '.' . $domain)) {
+          $item['icon'] = $icon;
+          break;
+        }
+      }
+    }
+  }
+}

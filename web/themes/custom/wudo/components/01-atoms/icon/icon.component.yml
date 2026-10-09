@@ -31,6 +31,22 @@ props:
         - chevron-left
         - chevron-right
         - chevron-double-right
+        - check
+        - bluesky
+        - envelope
+        - facebook
+        - github
+        - instagram
+        - linkedin
+        - mastodon
+        - pinterest
+        - rss
+        - telegram
+        - threads
+        - tiktok
+        - twitter-x
+        - whatsapp
+        - youtube
       examples:
         - download
 

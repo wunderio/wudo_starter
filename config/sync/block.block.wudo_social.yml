@@ -1,0 +1,25 @@
+uuid: 573ecf2e-0a13-452f-b671-99e795608b96
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social
+  module:
+    - system
+  theme:
+    - wudo
+id: wudo_social
+theme: wudo
+region: footer
+weight: 10
+provider: null
+plugin: 'system_menu_block:social'
+settings:
+  id: 'system_menu_block:social'
+  label: 'Follow us'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

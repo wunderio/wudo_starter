@@ -34,3 +34,18 @@ test('the skip link is the first focusable element', async ({ page, browserName,
   await page.keyboard.press('Tab');
   await expect(page.locator('.skip-link')).toBeFocused();
 });
+
+test('social links have an icon and a name', async ({ page }) => {
+  await page.goto('/');
+  const links = page.locator('.social-links__link');
+  test.skip(await links.count() === 0, 'No links in the "Social links" menu.');
+
+  for (const link of await links.all()) {
+    await expect(link.locator('svg')).toBeVisible();
+    await expect(link).toHaveAccessibleName(/.+/);
+  }
+  // Known networks get their own icon instead of the fallback globe.
+  for (const link of await page.locator('.social-links__link[href*="facebook.com"]').all()) {
+    await expect(link).toHaveClass(/social-links__link--facebook/);
+  }
+});

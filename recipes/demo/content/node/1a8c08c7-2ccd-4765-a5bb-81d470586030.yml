@@ -19,9 +19,6 @@ default:
   title:
     -
       value: 'Colors of change'
-  field_description:
-    -
-      value: 'How the shifting colors of the seasons shape Japanese design, from fresh spring greens to the deep reds of autumn.'
   promote:
     -
       value: false
@@ -40,6 +37,9 @@ default:
     -
       value: "<p>Nature’s palette transforms the world around us. Discover warm tones, changing landscapes and simple ways to bring the feeling of autumn into everyday spaces.</p><p>Nature's palette transforms the world around us. Discover warm tones, changing landscapes and simple ways to bring the feeling of autumn into everyday spaces. From deep forest greens and muted ochres to soft rust and golden amber, the colours of the season create a sense of warmth, calm and quiet connection with nature.</p><p>Explore the small details that make autumn special - leaves scattered along a woodland path, soft afternoon light through the trees, and the comforting textures of wool, wood and natural linen. Find inspiration for creating spaces that feel warm and inviting, while embracing the slower rhythm and understated beauty of the season.</p>"
       format: basic_html
+  field_description:
+    -
+      value: 'How the shifting colors of the seasons shape Japanese design, from fresh spring greens to the deep reds of autumn.'
   field_image:
     -
       entity: ee0c53bc-3fa8-495e-8d51-6d9a6c55b744

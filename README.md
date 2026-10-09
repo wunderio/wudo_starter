@@ -90,6 +90,21 @@ ddev drush content:export menu_link_content --dir=../recipes/demo/content
 The `wudo_theme_extension` module makes paragraphs and hand-set URL aliases
 part of the export; paragraphs are written inline in the entity that owns them.
 
+## "Follow us" links
+
+The footer has a "Follow us" block that lists the links of the "Social links"
+menu as icons. Add the profiles at Structure → Menus → Social links
+(`/admin/structure/menu/manage/social`): the link title is the name read by
+screen readers, and the icon is picked from the address, so pasting
+`https://www.instagram.com/yourname` is enough. The block is hidden while the
+menu is empty.
+
+Facebook, Instagram, X, LinkedIn, YouTube, TikTok, Threads, Bluesky, Mastodon,
+WhatsApp, Telegram, Pinterest and GitHub are recognised, as are `mailto:`
+addresses and RSS feeds; anything else gets a globe. To add a network, put its
+icon in the theme's `assets/icons` and its domain in
+`wudo_preprocess_menu__social()` in `wudo.theme`.
+
 ## Adding a language
 
 The starter ships with one language, English. To make the site multilingual,
@@ -165,7 +180,8 @@ ddev e2e                        # browser tests against the installed site
 `ddev e2e` runs the Playwright tests in `tests/e2e` inside the web container;
 the first run downloads Chromium. They cover every page in the XML sitemap:
 
-- smoke checks: status codes, one `h1`, no JavaScript or CSP errors;
+- smoke checks: status codes, one `h1`, no JavaScript or CSP errors, social
+  links;
 - interactions: favorites drawer, favorites via `/api/favorites`, mobile menu;
 - accessibility: axe-core, WCAG 2.2 AA, on desktop and mobile viewports;
 - Lighthouse: accessibility, best practices and SEO must score 100.

@@ -1,0 +1,8 @@
+uuid: 153fa18b-0227-4cbf-9559-30ac992f94e5
+langcode: en
+status: true
+dependencies: {  }
+id: social
+label: 'Social links'
+description: 'Links to social media profiles, shown as icons in the footer.'
+locked: false

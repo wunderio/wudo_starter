@@ -1,26 +1,24 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: dcfa5dd1-9f20-4dce-9fdc-a2716077a911
+  uuid: ad5055a1-3ef1-416e-b05f-763647ec9a85
   bundle: menu_link_content
   default_langcode: en
-  depends:
-    9f7d4698-a703-40a3-827b-45b3df23b3dd: node
 default:
   enabled:
     -
       value: true
   title:
     -
-      value: 'Terms of Service'
+      value: Instagram
   menu_name:
     -
-      value: terms
+      value: social
   link:
     -
-      title: ''
+      uri: 'https://www.instagram.com/'
+      title: null
       options: {  }
-      target_uuid: 9f7d4698-a703-40a3-827b-45b3df23b3dd
   external:
     -
       value: false
@@ -29,7 +27,7 @@ default:
       value: false
   weight:
     -
-      value: 0
+      value: 1
   expanded:
     -
       value: false

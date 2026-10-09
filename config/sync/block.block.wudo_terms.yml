@@ -16,8 +16,8 @@ provider: null
 plugin: 'system_menu_block:terms'
 settings:
   id: 'system_menu_block:terms'
-  label: 'About Us'
-  label_display: visible
+  label: 'About this page'
+  label_display: '0'
   provider: system
   level: 1
   depth: null

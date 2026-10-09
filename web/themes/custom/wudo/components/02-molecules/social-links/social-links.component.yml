@@ -1,0 +1,32 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Social links
+description: "Row of icon links to social media profiles, used for the \"Follow us\" menu."
+status: stable
+group: Molecules
+
+props:
+  type: object
+  required:
+    - items
+  properties:
+    items:
+      type: array
+      title: Links
+      description: "Each link has title, url and icon. The title is read by screen readers."
+      examples:
+        -
+          - title: Facebook
+            url: 'https://www.facebook.com/'
+            icon: facebook
+          - title: Instagram
+            url: 'https://www.instagram.com/'
+            icon: instagram
+          - title: LinkedIn
+            url: 'https://www.linkedin.com/'
+            icon: linkedin
+          - title: YouTube
+            url: 'https://www.youtube.com/'
+            icon: youtube
+          - title: Blog
+            url: 'https://example.com/'

@@ -19,9 +19,6 @@ default:
   title:
     -
       value: Autumn
-  field_description:
-    -
-      value: 'Autumn in Japan: a season of quiet light, warm colors and time to slow down.'
   promote:
     -
       value: false
@@ -158,3 +155,6 @@ default:
                             -
                               value: 'Autumn <span>stories</span>'
                               format: full_html
+  field_description:
+    -
+      value: 'Autumn in Japan: a season of quiet light, warm colors and time to slow down.'

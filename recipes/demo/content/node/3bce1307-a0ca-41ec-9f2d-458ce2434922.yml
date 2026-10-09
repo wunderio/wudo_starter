@@ -21,9 +21,6 @@ default:
   title:
     -
       value: Interior
-  field_description:
-    -
-      value: 'A gallery of calm Japanese interiors shaped by natural light, wood and open space.'
   promote:
     -
       value: false
@@ -42,6 +39,9 @@ default:
     -
       value: '<p>Japanese interior design can achieve an almost absolute minimalism. Japandi introduces soft textures and more enveloping hues, like an invitation to unwind. It is the meeting of Asian contemplation and Nordic intimacy.</p>'
       format: full_html
+  field_description:
+    -
+      value: 'A gallery of calm Japanese interiors shaped by natural light, wood and open space.'
   field_images:
     -
       entity: 583829ca-5b0b-47b8-831c-bfc3520660dd

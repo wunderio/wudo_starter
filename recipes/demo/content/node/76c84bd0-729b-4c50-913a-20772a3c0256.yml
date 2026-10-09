@@ -19,9 +19,6 @@ default:
   title:
     -
       value: 'The Beauty of Ma'
-  field_description:
-    -
-      value: 'Ma is the Japanese idea of meaningful empty space. See how the pause between things gives a room its calm.'
   promote:
     -
       value: false
@@ -40,6 +37,9 @@ default:
     -
       value: '<p><strong>Ma</strong> is not merely empty space or the absence of structure—it is an <strong>intentional pause</strong> that gives meaning to everything surrounding it. Just as silence between notes creates rhythm and harmony in music, <em>ma</em> transforms a chaotic collection of elements into a thoughtful, breathing composition.</p><p>In Western design, blank space (<em>negative space</em> or <em>white space</em>) is often perceived as an unused resource waiting to be filled with content, color, or text. In traditional Japanese aesthetics, however, <em>ma</em> is treated as an active framing element. It is not about filling emptiness, but rather about having the generosity to grant each object the space it needs to truly exist.</p><h3><em>Ma</em> Across Design Disciplines</h3><ul><li class="ck-list-marker-bold" data-list-item-id="e5de7d45363b8998246b18442ee7c9940"><p><strong>Architecture &amp; Interior Design:</strong></p><p>In a traditional Japanese home, <em>ma</em> reveals itself through sliding paper screens (<em>shoji</em>), minimalist furnishings, and open alcoves. A room is never overcrowded—the unburdened floor and soft light filtering through the paper create an atmosphere of calm and singular importance. Moving through these spaces provides a physical and mental transition.</p></li><li class="ck-list-marker-bold" data-list-item-id="e35f43c31c47c6dfac17380a335e3d487"><p><strong>Typography &amp; Graphic Design:</strong></p><p>Great typography cannot function without <em>ma</em>. The spacing between letters (<em>kerning</em>), line height (<em>leading</em>), and generous page margins do not "waste space"; they allow text to be effortlessly readable and aesthetically pleasing. The empty area surrounding a single headline gives it weight, gravity, and authority.</p></li><li class="ck-list-marker-bold" data-list-item-id="e03a0714aabd1b05dab8613e7b68fb0e8"><p><strong>Digital &amp; UI/UX Design:</strong></p><p>In a modern digital landscape overflowing with notifications, banners, and competing calls to action, <em>ma</em> becomes a crucial navigational tool. It establishes visual hierarchy, reduces cognitive load, and guides the eye naturally toward what matters most without forcing the user to process unnecessary noise.</p></li></ul><h3>Why <em>Ma</em> Matters Today</h3><p>Modern culture is driven by constant consumption and saturation. We tend to fill every second of our schedules and every pixel on our screens. The philosophy of <em>ma</em> offers a powerful counterweight, reminding us that:</p><ol><li data-list-item-id="ea77593c3b96ca34623dca5ba4b01463e"><strong>Emptiness creates function:</strong> The true utility of a vessel lies in its emptiness, which allows it to hold water.</li><li data-list-item-id="e96492a0b673b131307cc0f50f1203d38"><strong>Pauses highlight the essential:</strong> When everything demands attention, nothing stands out. Space allows the core subject to become the focal point.</li><li data-list-item-id="eae175839ab75017854a82d70f6eb7323"><strong>Clarity requires breathing room:</strong> <em>Ma</em> offers both visual and mental rest, giving the observer or user a moment to pause, digest, and reflect.</li></ol><p>Design that embraces <em>ma</em> does not shout or compete for attention. Instead, it invites the audience in—and within that quiet interval between elements, true elegance and clarity are born.</p>'
       format: basic_html
+  field_description:
+    -
+      value: 'Ma is the Japanese idea of meaningful empty space. See how the pause between things gives a room its calm.'
   field_image:
     -
       entity: f281e38c-b520-41c3-aebf-0dd60a5961cd

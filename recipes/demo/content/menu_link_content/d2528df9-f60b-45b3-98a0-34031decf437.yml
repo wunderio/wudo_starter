@@ -1,18 +1,18 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: dcfa5dd1-9f20-4dce-9fdc-a2716077a911
+  uuid: d2528df9-f60b-45b3-98a0-34031decf437
   bundle: menu_link_content
   default_langcode: en
   depends:
-    9f7d4698-a703-40a3-827b-45b3df23b3dd: node
+    bbfea4c8-0d8b-41b4-af80-6116475472f7: node
 default:
   enabled:
     -
       value: true
   title:
     -
-      value: 'Terms of Service'
+      value: 'About Us'
   menu_name:
     -
       value: terms
@@ -20,13 +20,13 @@ default:
     -
       title: ''
       options: {  }
-      target_uuid: 9f7d4698-a703-40a3-827b-45b3df23b3dd
+      target_uuid: bbfea4c8-0d8b-41b4-af80-6116475472f7
   external:
     -
       value: false
   rediscover:
     -
-      value: false
+      value: true
   weight:
     -
       value: 0

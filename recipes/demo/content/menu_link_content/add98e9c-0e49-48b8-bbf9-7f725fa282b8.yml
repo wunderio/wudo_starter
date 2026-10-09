@@ -1,26 +1,24 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: dcfa5dd1-9f20-4dce-9fdc-a2716077a911
+  uuid: add98e9c-0e49-48b8-bbf9-7f725fa282b8
   bundle: menu_link_content
   default_langcode: en
-  depends:
-    9f7d4698-a703-40a3-827b-45b3df23b3dd: node
 default:
   enabled:
     -
       value: true
   title:
     -
-      value: 'Terms of Service'
+      value: LinkedIn
   menu_name:
     -
-      value: terms
+      value: social
   link:
     -
-      title: ''
+      uri: 'https://www.linkedin.com/'
+      title: null
       options: {  }
-      target_uuid: 9f7d4698-a703-40a3-827b-45b3df23b3dd
   external:
     -
       value: false
@@ -29,7 +27,7 @@ default:
       value: false
   weight:
     -
-      value: 0
+      value: 2
   expanded:
     -
       value: false

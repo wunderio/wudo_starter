@@ -1,0 +1,137 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: bbfea4c8-0d8b-41b4-af80-6116475472f7
+  bundle: landingpage
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'About Us'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /about-us
+      langcode: en
+      pathauto: 0
+  field_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 700076ea-ef73-43ca-9f22-945d01022f06
+          bundle: section
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          behavior_settings:
+            -
+              value:
+                style_settings:
+                  padding: 1rem
+                  margin_top: '0'
+                  margin_bottom: '0'
+                  layout: grid-1
+                  text: '#000000'
+                  use_background: 0
+                  background: '#ffffff'
+                  background_mask: ''
+                  background_style: ''
+                  full_width_background: 0
+                  border_radius: ''
+          revision_translation_affected:
+            -
+              value: true
+          field_parallax_layers:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 7b1dcd6a-a77f-461d-affe-b36daa8fc602
+                  bundle: parallax_layer
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  behavior_settings:
+                    -
+                      value:
+                        parallax_layer:
+                          position: center
+                          speed: '0.3'
+                  revision_translation_affected:
+                    -
+                      value: true
+          field_section_content:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 874af365-24cc-4840-b394-ef9dc251094c
+                  bundle: hero
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  behavior_settings:
+                    -
+                      value:
+                        hero_style:
+                          layout: grid-1
+                          highlighted_color: '#000000'
+                  revision_translation_affected:
+                    -
+                      value: true
+                  field_tagline:
+                    -
+                      value: 'About Us'
+                      format: full_html
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 2302d02f-31b3-4db9-8521-21672e8016cc
+                  bundle: text
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  behavior_settings:
+                    -
+                      value: {  }
+                  revision_translation_affected:
+                    -
+                      value: true
+                  field_content:
+                    -
+                      value: '<p>This is About Us page. Add content here.</p>'
+                      format: full_html
+  field_description:
+    -
+      value: 'Meta description'

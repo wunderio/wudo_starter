@@ -19,9 +19,6 @@ default:
   title:
     -
       value: 'Materials with a Sense of Place'
-  field_description:
-    -
-      value: 'Wood, paper, stone and clay: how local materials give Japanese design its sense of place.'
   promote:
     -
       value: false
@@ -40,6 +37,9 @@ default:
     -
       value: '<p>Japanese design often begins with an intimate relationship with materials. Wood, paper, stone, clay, bamboo, and linen bring texture and warmth into spaces without demanding attention. The result is a design language that feels tactile, grounded, and deeply connected to nature.</p><p>Rather than altering raw elements to fit a rigid human vision, Japanese craftsmanship honors the natural characteristics of the material itself. The grain of cedar, the coarse grain of unglazed ceramics, and the delicate translucent fibers of <em>washi</em> paper are not treated as imperfections to be polished away, but as unique signatures of time and organic growth.</p><h2>Key Principles of Materiality in Japanese Design</h2><ul><li class="ck-list-marker-bold" data-list-item-id="ea438fc674e6640cd78a52f2e9a2e7f71"><p><strong>Honesty of Material (</strong><em><strong>Sozai</strong></em><strong>):</strong></p><p>Materials are allowed to be what they are. Wood is left unpainted to show its natural grain; clay is formed with subtle irregularities; stone is left rough-hewn to reflect its geological origin. This authenticity creates a sense of honesty, where objects age gracefully over time (<em>sabi</em>), gaining character rather than losing value.</p></li><li class="ck-list-marker-bold" data-list-item-id="eb99325a51e95d0342009d23aeed98a24"><p><strong>Light, Shadow, and Softness:</strong></p><p>Natural materials interact dynamically with light. Translucent <em>washi</em> paper screens (<em>shoji</em>) do not block light; they diffuse it, transforming harsh sunlight into a soft, ambient glow. Straw <em>tatami</em> mats absorb sound and echo the warmth of natural daylight, anchoring the atmosphere in quiet tranquility.</p></li><li class="ck-list-marker-bold" data-list-item-id="e8c29f1fdde4d9de7540638f4dc401e9a"><p><strong>Sensory Engagement:</strong></p><p>Tactility is as essential as visual appearance. The cool firmness of polished stone underfoot, the subtle aroma of natural hinoki cypress wood when exposed to moisture, and the rough surface of a hand-molded tea bowl invite a multi-sensory experience that engages touch, smell, and sight simultaneously.</p></li></ul><h2>The Synthesis: Living in Harmony with Nature</h2><p>By integrating these raw, unadorned materials into everyday environments, Japanese design breaks down the artificial boundary between the outdoors and the indoors. Spaces become reflective sanctuaries where the rhythm of the seasons is subtly felt within the home.</p><p>In a world increasingly dominated by synthetic surfaces and digital screens, this material-first philosophy serves as an invitation to slow down, ground ourselves, and reconnect with the quiet beauty of the physical world.</p>'
       format: basic_html
+  field_description:
+    -
+      value: 'Wood, paper, stone and clay: how local materials give Japanese design its sense of place.'
   field_image:
     -
       entity: 583829ca-5b0b-47b8-831c-bfc3520660dd
