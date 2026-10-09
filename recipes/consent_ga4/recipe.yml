@@ -1,0 +1,60 @@
+name: 'Google Analytics with consent'
+description: 'Google Analytics 4 that is loaded only after the visitor agrees in the Klaro! consent notice.'
+type: 'Site'
+
+recipes:
+  - consent
+
+install:
+  - google_tag
+
+input:
+  measurement_id:
+    data_type: string
+    description: 'The measurement ID of the Google Analytics 4 property, e.g. G-XXXXXXXXXX.'
+    constraints:
+      Regex:
+        pattern: '/^G-[A-Z0-9]+$/'
+        message: 'A measurement ID looks like G-XXXXXXXXXX.'
+    prompt:
+      method: ask
+      arguments:
+        question: 'Google Analytics 4 measurement ID (G-XXXXXXXXXX)'
+    default:
+      source: value
+      value: ''
+
+config:
+  strict: false
+  actions:
+    google_tag.container.ga4:
+      createIfNotExists:
+        label: 'Google Analytics'
+        status: true
+        weight: 0
+        tag_container_ids:
+          - ${measurement_id}
+        # Klaro! keeps the script from loading before consent, so Google's own
+        # consent mode, which loads it and holds back the cookies, is not used.
+        advanced_settings:
+          consent_mode: false
+        dimensions_metrics: {  }
+        conditions: {  }
+        events: {  }
+    google_tag.settings:
+      simpleConfigUpdate:
+        default_google_tag_entity: ga4
+    # Google Analytics is the only third party the Content Security Policy
+    # lets scripts load from and report to.
+    csp.settings:
+      simpleConfigUpdate:
+        enforce.directives.script-src.sources:
+          - 'https://www.googletagmanager.com'
+        enforce.directives.connect-src.sources:
+          - 'https://*.google-analytics.com'
+          - 'https://*.analytics.google.com'
+          - 'https://*.googletagmanager.com'
+        enforce.directives.img-src.sources:
+          - 'data:'
+          - 'https://*.google-analytics.com'
+          - 'https://*.googletagmanager.com'

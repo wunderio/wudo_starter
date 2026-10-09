@@ -30,7 +30,13 @@ test('security headers are sent', async ({ request }) => {
 
 test('the skip link is the first focusable element', async ({ page, browserName, isMobile }) => {
   test.skip(isMobile, 'Keyboard navigation.');
-  await page.goto('/');
+  await page.goto('/', { waitUntil: 'networkidle' });
+  // An unanswered consent notice comes first; answer it.
+  const decline = page.locator('#klaro .cookie-notice .cn-decline');
+  if (await decline.count()) {
+    await decline.click();
+    await page.reload();
+  }
   await page.keyboard.press('Tab');
   await expect(page.locator('.skip-link')).toBeFocused();
 });

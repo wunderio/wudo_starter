@@ -202,6 +202,50 @@ Everything is done in the UI, without touching templates:
 - the page title block is shown on listed paths only; keep `/projects` and
   `/projects/*` on that list when changing the aliases.
 
+## Adding cookie consent
+
+A consent notice is optional; a site that sets no cookies beyond its own and
+embeds nothing does not need one. Add it with one command:
+
+```bash
+ddev add-consent                 # consent notice, YouTube and Vimeo placeholders
+ddev add-consent G-XXXXXXXXXX    # the same, plus Google Analytics 4
+```
+
+It downloads [Klaro!](https://www.drupal.org/project/klaro) (and
+[Google Tag](https://www.drupal.org/project/google_tag) when a measurement ID
+is given), applies `recipes/consent` or `recipes/consent_ga4`, and exports the
+configuration. Commit `composer.json`, `composer.lock` and `config/sync`
+afterwards.
+
+What visitors get:
+
+- a notice with equally prominent "Accept" and "Decline" buttons, and
+  "Customize" to choose per service;
+- a "Cookie settings" link in the footer menu to change the choice later;
+- embedded YouTube and Vimeo videos replaced by a placeholder that loads the
+  video on request.
+
+Nothing is merely hidden: until the visitor agrees, the Google Analytics
+script is in the page as inert `text/plain` and the browser neither runs it
+nor contacts Google, and a video `iframe` has no `src`. The browser tests
+check exactly that: no request to Google before consent or after declining,
+requests after accepting, none again after withdrawing.
+
+Things to do on a real site:
+
+- set the privacy policy page at Configuration → Klaro! → Texts
+  (`/admin/config/user-interface/klaro/texts`); it points to the front page
+  until then;
+- add other third parties as services at Configuration → Klaro!
+  (`/admin/config/user-interface/klaro`), and allow their domains in the
+  Content Security Policy. The recipe allows only what Google Analytics
+  needs;
+- services whose settings contain JavaScript code (Google's "consent mode"
+  services, for example) do not run: the Content Security Policy does not
+  allow evaluating strings as code. Blocking a script until consent, as done
+  here, does not need any.
+
 ## Settings and secrets
 
 `web/sites/default/settings.php` is tracked in Git and contains no credentials.
@@ -246,6 +290,8 @@ the first run downloads Chromium. They cover every page in the XML sitemap:
 - interactions: favorites drawer, favorites via `/api/favorites`, mobile menu,
   project filters (in place, by address and without JavaScript) when projects
   are installed;
+- consent: nothing is loaded from Google before consent, when consent is
+  installed;
 - accessibility: axe-core, WCAG 2.2 AA, on desktop and mobile viewports;
 - Lighthouse: accessibility, best practices and SEO must score 100.
 

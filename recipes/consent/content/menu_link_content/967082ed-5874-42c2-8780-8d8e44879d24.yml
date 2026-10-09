@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: 967082ed-5874-42c2-8780-8d8e44879d24
+  bundle: menu_link_content
+  default_langcode: en
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: 'Cookie settings'
+  menu_name:
+    -
+      value: terms
+  link:
+    -
+      uri: 'internal:#klaro'
+      title: ''
+      options: {  }
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: false
+  weight:
+    -
+      value: 50
+  expanded:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true

@@ -1,0 +1,33 @@
+name: 'Cookie consent'
+description: 'Klaro! consent manager: a consent notice, and embedded YouTube and Vimeo videos that load only after the visitor agrees.'
+type: 'Site'
+
+install:
+  - klaro
+
+config:
+  # Applying the recipe again must not fail on a site that has since been
+  # customised.
+  strict: false
+  # Only the services this site uses; the module ships many more, switched
+  # off, which can be added at Configuration → Klaro! when needed.
+  import:
+    klaro:
+      - klaro.klaro_purpose.cms
+      - klaro.klaro_purpose.analytics
+      - klaro.klaro_purpose.external_content
+      - klaro.klaro_app.cms
+      - klaro.klaro_app.klaro
+      - klaro.klaro_app.youtube
+      - klaro.klaro_app.vimeo
+  actions:
+    klaro.settings:
+      simpleConfigUpdate:
+        # Show the notice; the module default only blocks, without asking.
+        dialog_mode: notice
+        # "Accept" turns every service on, "Decline" every optional one off.
+        library.accept_all: true
+    user.role.anonymous:
+      grantPermission: 'use klaro'
+    user.role.authenticated:
+      grantPermission: 'use klaro'

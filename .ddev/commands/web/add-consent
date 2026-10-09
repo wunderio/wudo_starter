@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+## Description: Add a cookie consent notice (Klaro!), optionally with Google Analytics 4 that loads only after consent
+## Usage: add-consent [measurement-id]
+## Example: "ddev add-consent" or "ddev add-consent G-XXXXXXXXXX"
+
+set -euo pipefail
+
+if [ $# -gt 1 ] || { [ $# -eq 1 ] && [[ ! "$1" =~ ^G-[A-Z0-9]+$ ]]; }; then
+  echo "Usage: ddev add-consent [measurement-id], e.g. ddev add-consent G-XXXXXXXXXX" >&2
+  exit 1
+fi
+
+cd "$DDEV_COMPOSER_ROOT"
+if [ $# -eq 1 ]; then
+  composer require drupal/klaro drupal/google_tag
+else
+  composer require drupal/klaro
+fi
+# Lets Drupal discover the modules that were just downloaded.
+drush cache:rebuild
+if [ $# -eq 1 ]; then
+  drush recipe ../recipes/consent_ga4 --input="consent_ga4.measurement_id=$1"
+else
+  drush recipe ../recipes/consent
+fi
+drush cache:rebuild
+# Consent is part of the site from now on, including fresh installs.
+drush config:export --yes

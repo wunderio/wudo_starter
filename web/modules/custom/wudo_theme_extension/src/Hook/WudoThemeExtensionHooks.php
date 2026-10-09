@@ -45,4 +45,26 @@ class WudoThemeExtensionHooks {
     }
   }
 
+  /**
+   * Implements hook_js_settings_alter().
+   *
+   * Klaro! turns the code of a consent service into a function with
+   * "new Function()", even when a service has no code. The Content Security
+   * Policy does not allow evaluating strings, so the empty ones are removed
+   * and the consent dialog works without 'unsafe-eval'.
+   */
+  #[Hook('js_settings_alter')]
+  public function jsSettingsAlter(array &$settings): void {
+    if (!isset($settings['klaro']['config']['services'])) {
+      return;
+    }
+    foreach ($settings['klaro']['config']['services'] as &$service) {
+      foreach (['onInit', 'onAccept', 'onDecline'] as $callback) {
+        if (isset($service[$callback]) && trim((string) $service[$callback]) === '') {
+          unset($service[$callback]);
+        }
+      }
+    }
+  }
+
 }

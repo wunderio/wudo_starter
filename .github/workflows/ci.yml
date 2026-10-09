@@ -78,6 +78,8 @@ jobs:
           code=$(ddev exec curl -sL -o /dev/null -w '%{http_code}' http://localhost/projects)
           echo "$code /projects"
           [ "$code" = "200" ]
+      - name: Optional cookie consent with Google Analytics installs
+        run: ddev add-consent G-TEST123456
       - name: End-to-end, accessibility and Lighthouse tests
         run: ddev e2e
       - uses: actions/upload-artifact@v4
