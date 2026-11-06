@@ -32,6 +32,7 @@ props:
         - chevron-right
         - chevron-double-right
         - check
+        - copy
         - bluesky
         - envelope
         - facebook

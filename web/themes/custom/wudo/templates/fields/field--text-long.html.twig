@@ -38,8 +38,16 @@
  * @ingroup themeable
  */
 #}
-<div class="text-long">
+{% set text %}
   {% for item in items %}
     {{ item.content }}
   {% endfor %}
+{% endset %}
+<div class="text-long">
+  {{ text }}
+  {# A copy button in the code blocks with the "Copy button" style
+     (pre.copyable), and its script only where there is one. #}
+  {% if 'copyable' in text|render %}
+    {{ include('wudo:code-copy', {}, with_context = false) }}
+  {% endif %}
 </div>

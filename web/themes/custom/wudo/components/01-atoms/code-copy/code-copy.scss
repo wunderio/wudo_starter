@@ -1,0 +1,70 @@
+/**
+ * @file code-copy.scss
+ * The copy button in the corner of a code block.
+ */
+
+.code-block {
+  position: relative;
+
+  // Room for the button, so it never covers the first line.
+  pre {
+    padding-inline-end: 3rem;
+  }
+}
+
+.code-copy {
+  position: absolute;
+  inset-block-start: 0.5rem;
+  inset-inline-end: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.15s, color 0.15s;
+
+  &:hover,
+  &:focus-visible,
+  .code-block:hover & {
+    opacity: 1;
+    color: var(--color-text);
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 2px;
+  }
+
+  // Both icons share the cell; one shows at a time.
+  &__icon {
+    grid-area: 1 / 1;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  // The check icon is drawn small in its box; a little larger it reads as
+  // the same size as the copy icon.
+  &__icon--done {
+    visibility: hidden;
+    transform: scale(1.4);
+  }
+
+  &.is-copied {
+    color: light-dark(var(--color-semantic-success-40), var(--color-semantic-success-20));
+    opacity: 1;
+  }
+
+  &.is-copied &__icon--copy {
+    visibility: hidden;
+  }
+
+  &.is-copied &__icon--done {
+    visibility: visible;
+  }
+}

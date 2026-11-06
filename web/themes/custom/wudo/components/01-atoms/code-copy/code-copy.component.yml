@@ -1,0 +1,10 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+
+name: Code Copy
+description: "A small button that copies the code, in each code block of the text around it with the class copyable (pre.copyable > code). Without JavaScript the blocks stay as they are."
+status: stable
+group: Atoms
+
+props:
+  type: object
+  properties: {}

@@ -44,6 +44,24 @@
     }
   }
 
+  // A code block (CKEditor's "Code Block"); code-copy adds a copy button.
+  pre {
+    margin-block: 1.25em;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-muted);
+    color: var(--color-text);
+    font-family: var(--font-family-mono);
+    font-size: 0.875em;
+    line-height: 1.6;
+    tab-size: 2;
+
+    // A long line scrolls inside the block and never widens what holds it.
+    contain: inline-size;
+  }
+
   code:not(pre code) {
     background: var(--color-neutral-20);
     color: var(--color-neutral-80);

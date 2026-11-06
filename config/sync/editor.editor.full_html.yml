@@ -32,6 +32,7 @@ settings:
       - '|'
       - heading
       - codeBlock
+      - style
       - '|'
       - sourceEditing
   plugins:
@@ -96,6 +97,11 @@ settings:
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Copy button'
+          element: '<pre class="copyable">'
 image_upload:
   status: true
   scheme: public

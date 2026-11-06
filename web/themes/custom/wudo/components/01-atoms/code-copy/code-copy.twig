@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Code Copy component.
+ *
+ * Rendered once beside a text that has code blocks (field--text-long.html.twig).
+ * It holds the button as a template; code-copy.js puts a copy of it in each
+ * code block of that text. The icons come from wudo:icon, as everywhere else.
+ */
+#}
+<template class="code-copy-template">
+  <button type="button" class="code-copy" title="{{ 'Copy code'|t }}" data-copied="{{ 'Copied'|t }}" data-failed="{{ 'Copying failed'|t }}">
+    {{ include('wudo:icon', {
+      symbol: 'copy',
+      modifier_class: 'code-copy__icon code-copy__icon--copy',
+    }, with_context = false) }}
+    {{ include('wudo:icon', {
+      symbol: 'check',
+      modifier_class: 'code-copy__icon code-copy__icon--done',
+    }, with_context = false) }}
+    <span class="visually-hidden">{{ 'Copy code'|t }}</span>
+  </button>
+</template>

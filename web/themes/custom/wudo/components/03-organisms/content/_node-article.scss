@@ -39,6 +39,9 @@
   }
 
   &__body {
+    // A grid item; without this a wide code block or table widens the page.
+    min-width: 0;
+
     p + p {
       margin-top: 1em;
     }
