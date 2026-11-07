@@ -88,14 +88,17 @@ input, button, textarea, select {
   font: inherit;
 }
 
-.media-shadow-style-1 {
+// The shadow is the media's own (MediaStylesBehavior puts the class on the
+// paragraph), so it follows the image, not the paragraph, which in a layout
+// can be taller or wider than the image.
+.media-shadow-style-1 :is(img, video, iframe) {
   box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
 }
 
-.media-shadow-style-2 {
+.media-shadow-style-2 :is(img, video, iframe) {
   box-shadow: 0 8px 24px rgb(0 0 0 / 16%);
 }
 
-.media-shadow-style-3 {
+.media-shadow-style-3 :is(img, video, iframe) {
   box-shadow: 0 16px 40px rgb(0 0 0 / 22%);
 }

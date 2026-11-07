@@ -15,7 +15,7 @@ bundle: map
 label: Place
 description: 'The name of the place, such as the office. It is the title of the map for screen readers.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
