@@ -102,6 +102,12 @@ settings:
         -
           label: 'Copy button'
           element: '<pre class="copyable">'
+        -
+          label: 'CTA button'
+          element: '<a class="cta">'
+        -
+          label: 'Download button'
+          element: '<a class="cta cta--download">'
 image_upload:
   status: true
   scheme: public

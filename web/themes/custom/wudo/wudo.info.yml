@@ -6,6 +6,9 @@ core_version_requirement: ^11
 base theme: false
 logo: site/logo.svg
 
+ckeditor5-stylesheets:
+  - dist/ckeditor.css
+
 libraries:
   - wudo/global
 regions:

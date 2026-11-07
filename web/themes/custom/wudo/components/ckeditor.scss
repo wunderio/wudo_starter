@@ -1,0 +1,8 @@
+// Theme styles CKEditor shows in its editing area (wudo.info.yml,
+// ckeditor5-stylesheets), so the editor sees what the page will show.
+// Scoped to the editing area, as it loads on admin pages.
+@use "sass:meta";
+
+.ck-content {
+  @include meta.load-css("00-base/03-base/cta");
+}

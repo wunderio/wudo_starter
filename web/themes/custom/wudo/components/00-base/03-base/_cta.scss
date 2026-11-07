@@ -1,0 +1,45 @@
+// A large call-to-action link in text. The editor makes it with the
+// "CTA button" style (a.cta), or with "Download button" (a.cta.cta--download),
+// which adds a download icon before the text. The colors are the primary
+// button's (01-atoms/button). The same rules style it in CKEditor
+// (components/ckeditor.scss), where the theme's custom properties are not
+// set, hence the fallbacks.
+a.cta {
+  --cta-bg: var(--color-button-primary-background, #186cd5);
+  --cta-color: var(--color-button-primary-color, #ffffff);
+
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  gap: 0.6rem;
+  max-inline-size: 100%;
+  margin-block: 0.25rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-sm, 5px);
+  background-color: var(--cta-bg);
+  color: var(--cta-color);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--cta-bg), black 15%);
+    color: var(--cta-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--cta-bg);
+    outline-offset: 3px;
+  }
+
+  &--download::before {
+    content: "";
+    flex: none;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    background-color: currentcolor;
+    mask: url("/themes/custom/wudo/assets/icons/download.svg") no-repeat center / contain;
+  }
+}

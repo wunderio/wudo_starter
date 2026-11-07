@@ -18,6 +18,8 @@ export default defineConfig({
       input: {
         style: path.resolve(__dirname, "components/style.scss"),
         print: path.resolve(__dirname, "components/print.scss"),
+        // What CKEditor shows in its editing area.
+        ckeditor: path.resolve(__dirname, "components/ckeditor.scss"),
         // The site's own layer; see site/README.md.
         site: path.resolve(__dirname, "site/site.scss"),
       },
