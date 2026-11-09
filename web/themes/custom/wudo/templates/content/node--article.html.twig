@@ -56,6 +56,8 @@
  *
  * - toc: (full view) the h2 and h3 headings of the body, for small screens.
  * - reading_time: (full view) "3 min read".
+ * - show_favorite: Whether to show the favorite button: only when the
+ *   favorites counter block is published.
  *
  * @see \Drupal\node\Hook\NodeThemeHooks::preprocessNode()
  * @see \Drupal\wudo_theme_extension\Hook\WudoThemeExtensionHooks::preprocessNode()
@@ -76,14 +78,16 @@
     {% if reading_time %}
       <span class="article__reading-time">{{ reading_time }}</span>
     {% endif %}
-    <div class="article__favorite">
-      {{ include('wudo:favorite-button', {
-        content_id: node.id(),
-        label: node.label(),
-        icon_type: 'bookmark',
-        icon_size: 'regular',
-      }, with_context = false) }}
-    </div>
+    {% if show_favorite %}
+      <div class="article__favorite">
+        {{ include('wudo:favorite-button', {
+          content_id: node.id(),
+          label: node.label(),
+          icon_type: 'bookmark',
+          icon_size: 'regular',
+        }, with_context = false) }}
+      </div>
+    {% endif %}
   </div>
 
   {% if image %}

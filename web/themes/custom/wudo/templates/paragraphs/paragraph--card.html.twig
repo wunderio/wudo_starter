@@ -39,7 +39,7 @@
  */
 #}
 {% embed 'wudo:article-card' with {
-  title: content.field_title|default(''),
+  title: paragraph.field_tagline.value|default(''),
   summary: content.field_content|default(''),
   with_image: paragraph.field_image is defined and not paragraph.field_image.isEmpty(),
 } %}

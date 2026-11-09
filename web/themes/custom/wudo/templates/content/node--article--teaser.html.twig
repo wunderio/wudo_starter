@@ -55,6 +55,8 @@
  * - view_mode: View mode; for example, "teaser" or "full".
  * - summary_fallback: The start of the body as plain text, for an article
  *   without a description.
+ * - show_favorite: Whether to show the favorite button: only when the
+ *   favorites counter block is published.
  *
  * @see \Drupal\node\Hook\NodeThemeHooks::preprocessNode()
  * @see wudo_preprocess_node()
@@ -72,6 +74,7 @@
   with_image: node.field_image is defined and not node.field_image.isEmpty(),
   favorite_content_id: node.id(),
   favorite_label: label,
+  show_favorite: show_favorite,
 } %}
 
   {% block image %}
@@ -81,12 +84,14 @@
   {% block card_meta %}
     <div class="article-card__meta">
       <span>{{ card_meta }}</span>
-    {{ include('wudo:favorite-button', {
-      content_id: favorite_content_id,
-      label: favorite_label,
-      icon_type: 'bookmark',
-      icon_size: 'small',
-    }, with_context = false) }}
+    {% if show_favorite %}
+      {{ include('wudo:favorite-button', {
+        content_id: favorite_content_id,
+        label: favorite_label,
+        icon_type: 'bookmark',
+        icon_size: 'small',
+      }, with_context = false) }}
+    {% endif %}
     </div>
   {% endblock card_meta %}
 

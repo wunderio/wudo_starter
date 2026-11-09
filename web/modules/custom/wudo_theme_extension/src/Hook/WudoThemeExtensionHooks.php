@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Drupal\wudo_theme_extension\Hook;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Core\Form\FormStateInterface;
@@ -13,6 +15,7 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\StringTranslation\PluralTranslatableMarkup;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\path_alias\AliasManagerInterface;
 use Drupal\wudo_theme_extension\TableOfContents;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -22,11 +25,20 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class WudoThemeExtensionHooks {
 
+  /**
+   * Per theme, whether the favorites counter is placed, for this request.
+   *
+   * @var array<string, bool>
+   */
+  private array $favoritesPlaced = [];
+
   public function __construct(
     private readonly ConfigFactoryInterface $configFactory,
     private readonly AliasManagerInterface $aliasManager,
     private readonly ThemeSettingsProvider $themeSettings,
     private readonly RequestStack $requestStack,
+    private readonly EntityTypeManagerInterface $entityTypeManager,
+    private readonly ThemeManagerInterface $themeManager,
   ) {}
 
   /**
@@ -122,6 +134,7 @@ class WudoThemeExtensionHooks {
   #[Hook('preprocess_node')]
   public function preprocessNode(array &$variables): void {
     $node = $variables['node'];
+    $variables['show_favorite'] = $variables['elements']['#wudo_favorites'] ?? FALSE;
     if ($variables['view_mode'] !== 'full' || !$node->hasField(TableOfContents::FIELD)) {
       return;
     }
@@ -135,6 +148,42 @@ class WudoThemeExtensionHooks {
       // About 200 words a minute.
       $variables['reading_time'] = new PluralTranslatableMarkup((int) ceil($words / 200), '1 min read', '@count min read');
     }
+  }
+
+  /**
+   * Implements hook_node_view().
+   *
+   * Tells the node templates whether to show the favorite button: only when
+   * the favorites counter, the way to the saved list, is a published block of
+   * the theme. Placing, publishing or removing a block clears the cached
+   * nodes.
+   */
+  #[Hook('node_view')]
+  public function nodeView(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, string $view_mode): void {
+    $build['#wudo_favorites'] = $this->favoritesCounterPlaced();
+    $build['#cache']['tags'][] = 'config:block_list';
+  }
+
+  /**
+   * Whether a published block of the active theme shows the favorites counter.
+   */
+  private function favoritesCounterPlaced(): bool {
+    $theme = $this->themeManager->getActiveTheme()->getName();
+    if (!isset($this->favoritesPlaced[$theme])) {
+      $this->favoritesPlaced[$theme] = FALSE;
+      $blocks = $this->entityTypeManager->getStorage('block')->loadByProperties([
+        'plugin' => 'wudo_favorites',
+        'theme' => $theme,
+        'status' => TRUE,
+      ]);
+      foreach ($blocks as $block) {
+        if (($block->get('settings')['display_mode'] ?? 'both') !== 'drawer') {
+          $this->favoritesPlaced[$theme] = TRUE;
+          break;
+        }
+      }
+    }
+    return $this->favoritesPlaced[$theme];
   }
 
   /**

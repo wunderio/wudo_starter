@@ -15,7 +15,11 @@
   // Local Tokens & Default Values
   // Light or dark with the scheme the card is in.
   --card-bg: var(--color-surface-raised);
-  --card-border: 1px solid light-dark(transparent, var(--color-neutral-70, #616161));
+
+  // In a dark scheme a shadow hardly shows, so a border a step lighter than
+  // the card's own background (--card-bg, which a card can change) sets it
+  // off; in a light scheme the shadow does.
+  --card-border: 1px solid light-dark(transparent, color-mix(in srgb, var(--card-bg), var(--color-text) 20%));
   --card-shadow: 0 4px 12px light-dark(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.4));
   --card-meta-bg: transparent;
   --card-text: var(--color-text);
