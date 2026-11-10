@@ -65,7 +65,8 @@ editors on day one, and readable by search engines and AI assistants.
 **Content types**
 - Landing pages built from paragraphs: hero, sections, cards, media, text,
   maps, parallax layers and views.
-- Articles with readable text, reading time and a table of contents.
+- Articles with readable text, reading time and an optional table of
+  contents.
 - Galleries of images with a lightbox.
 - Projects for a portfolio, with facts and filters (optional).
 
@@ -212,7 +213,7 @@ an article and checks which admin pages open and which answer 403.
 | Type | For | Read more |
 | --- | --- | --- |
 | Landing page | Pages built from paragraphs: hero, section, layout, card, media, text, map (a place with its address and directions), parallax layer and view (a list of content). A section or layout puts its paragraphs in one, two (equal, 2/3 + 1/3 or 1/3 + 2/3) or three columns, and each paragraph can take the whole row, a fraction of its column or the width of a comfortable line of text. A parallax layer can fill its section at every scroll position. The home page is one. | |
-| Article | Writing: a main image and the body, with the date, reading time and a table of contents from its headings. | [Article pages](#article-pages) |
+| Article | Writing: a main image and the body, with the date, reading time and, if the editor wants one, a table of contents from its headings. | [Article pages](#article-pages) |
 | Gallery | A set of images shown in a grid that opens in a lightbox. | |
 | Project | A piece of work for a portfolio: facts, a description, a gallery, and a filtered list of all projects. Optional. | [Adding projects](#adding-projects) |
 
@@ -226,9 +227,12 @@ the summary on the cards in lists.
 - **Header**: the publication date, the reading time (at 200 words a minute)
   and a favorite button, above the main image.
 - **Readable text**: about 75 characters a line.
-- **Table of contents** from the H2 and H3 headings, once there are at least
-  two. The headings get anchor ids, so a section can be linked to:
-  `/article/…#warm-tones`.
+- **Table of contents** from the H2 and H3 headings, for the articles whose
+  editor switches it on (the "Table of contents" setting in the sidebar of
+  the form, off by default) and that have at least two headings. The
+  headings always get anchor ids, so a section can be linked to:
+  `/article/…#warm-tones`. Disabling the "Table of contents" block turns it
+  off on every article.
 - **Responsive**: the contents are in a sidebar on wide screens, marking the
   section being read, and a collapsible list above the article on small
   screens.

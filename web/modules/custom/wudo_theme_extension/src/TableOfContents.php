@@ -27,6 +27,11 @@ final class TableOfContents implements TrustedCallbackInterface {
   public const MINIMUM = 2;
 
   /**
+   * The editor's switch: a page has a table of contents only when it is on.
+   */
+  public const SWITCH = 'field_toc';
+
+  /**
    * {@inheritdoc}
    */
   public static function trustedCallbacks(): array {
@@ -35,8 +40,14 @@ final class TableOfContents implements TrustedCallbackInterface {
 
   /**
    * Returns the headings of a node's body: id, text and level (2 or 3).
+   *
+   * None when the editor has not switched the table of contents on for the
+   * node, or its type has no such switch.
    */
   public static function forNode(NodeInterface $node): array {
+    if (!$node->hasField(self::SWITCH) || !$node->get(self::SWITCH)->value) {
+      return [];
+    }
     if (!$node->hasField(self::FIELD) || $node->get(self::FIELD)->isEmpty()) {
       return [];
     }

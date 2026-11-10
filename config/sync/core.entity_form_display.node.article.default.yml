@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.field_body
     - field.field.node.article.field_description
     - field.field.node.article.field_image
+    - field.field.node.article.field_toc
     - node.type.article
   module:
     - media_library
@@ -44,6 +45,13 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_toc:
+    type: boolean_checkbox
+    weight: 125
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   langcode:
     type: language_select

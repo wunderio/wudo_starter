@@ -32,6 +32,13 @@ class WudoThemeExtensionHooks {
    */
   private array $favoritesPlaced = [];
 
+  /**
+   * Per theme, whether the table of contents is placed, for this request.
+   *
+   * @var array<string, bool>
+   */
+  private array $tocPlaced = [];
+
   public function __construct(
     private readonly ConfigFactoryInterface $configFactory,
     private readonly AliasManagerInterface $aliasManager,
@@ -129,7 +136,10 @@ class WudoThemeExtensionHooks {
    *
    * Gives full pages the headings of their body ("toc", for small screens;
    * the "Table of contents" block shows them in a sidebar) and the minutes it
-   * takes to read the body ("reading_time").
+   * takes to read the body ("reading_time"). The headings come only with a
+   * published "Table of contents" block: switching the block off takes the
+   * contents off small screens as well. The node's cache already varies by
+   * the block list (see nodeView()).
    */
   #[Hook('preprocess_node')]
   public function preprocessNode(array &$variables): void {
@@ -138,7 +148,7 @@ class WudoThemeExtensionHooks {
     if ($variables['view_mode'] !== 'full' || !$node->hasField(TableOfContents::FIELD)) {
       return;
     }
-    $items = TableOfContents::forNode($node);
+    $items = $this->tableOfContentsPlaced() ? TableOfContents::forNode($node) : [];
     if (count($items) >= TableOfContents::MINIMUM) {
       $variables['toc'] = $items;
     }
@@ -184,6 +194,39 @@ class WudoThemeExtensionHooks {
       }
     }
     return $this->favoritesPlaced[$theme];
+  }
+
+  /**
+   * Implements hook_form_BASE_FORM_ID_alter() for node forms.
+   *
+   * Puts the table of contents switch in the sidebar of the form, next to the
+   * other settings of the page, rather than among its content.
+   */
+  #[Hook('form_node_form_alter')]
+  public function formNodeFormAlter(array &$form, FormStateInterface $form_state): void {
+    if (!isset($form[TableOfContents::SWITCH])) {
+      return;
+    }
+    $form['table_of_contents'] = [
+      '#type' => 'details',
+      '#title' => new TranslatableMarkup('Table of contents'),
+      '#group' => 'advanced',
+      '#weight' => 90,
+      '#open' => !empty($form[TableOfContents::SWITCH]['widget']['value']['#default_value']),
+    ];
+    $form[TableOfContents::SWITCH]['#group'] = 'table_of_contents';
+  }
+
+  /**
+   * Whether the active theme has a published "Table of contents" block.
+   */
+  private function tableOfContentsPlaced(): bool {
+    $theme = $this->themeManager->getActiveTheme()->getName();
+    return $this->tocPlaced[$theme] ??= (bool) $this->entityTypeManager->getStorage('block')->loadByProperties([
+      'plugin' => 'wudo_table_of_contents',
+      'theme' => $theme,
+      'status' => TRUE,
+    ]);
   }
 
   /**

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.article.field_body
     - field.field.node.article.field_description
     - field.field.node.article.field_image
+    - field.field.node.article.field_toc
     - node.type.article
   module:
     - user
@@ -32,4 +33,5 @@ content:
 hidden:
   field_body: true
   field_description: true
+  field_toc: true
   langcode: true

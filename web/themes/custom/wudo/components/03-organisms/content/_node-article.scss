@@ -53,8 +53,11 @@
     }
   }
 
-  // The sidebar has the table of contents on wide screens.
-  .page-wrapper--with-sidebar &__toc {
+  // For small screens only: wide screens have the table of contents in the
+  // sidebar, or not at all when its block is left out of the page. Hiding it
+  // only next to a sidebar put it above the text whenever the sidebar was
+  // empty.
+  &__toc {
     @include breakpoint.s {
       display: none;
     }

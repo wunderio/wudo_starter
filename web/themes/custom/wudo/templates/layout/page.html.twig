@@ -86,7 +86,10 @@
         </div>
       </div>
     {% endif %}
-    {% set with_sidebar = page.sidebar_second %}
+    {# A block can be placed and still show nothing, e.g. the table of
+       contents of a page without one; the region is then left out. #}
+    {% set sidebar_second = page.sidebar_second|render|trim %}
+    {% set with_sidebar = sidebar_second is not empty %}
     <div class="page-wrapper{{ with_sidebar ? ' page-wrapper--with-sidebar' }}">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
@@ -100,9 +103,9 @@
         </aside>
       {% endif %}
 
-      {% if page.sidebar_second %}
+      {% if with_sidebar %}
         <aside class="layout-sidebar-second" role="complementary">
-          {{ page.sidebar_second }}
+          {{ sidebar_second }}
         </aside>
       {% endif %}
     </div>

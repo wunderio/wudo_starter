@@ -43,3 +43,6 @@ default:
   field_image:
     -
       entity: 583829ca-5b0b-47b8-831c-bfc3520660dd
+  field_toc:
+    -
+      value: true

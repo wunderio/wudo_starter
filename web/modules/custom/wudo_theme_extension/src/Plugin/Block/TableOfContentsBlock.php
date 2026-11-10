@@ -15,7 +15,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Links to the headings of the page's body.
  *
- * Shows nothing on a page with fewer than two h2 or h3 headings, so the
+ * Shows nothing on a page with fewer than two h2 or h3 headings, or whose
+ * editor has not switched the table of contents on ("field_toc"), so the
  * region it is placed in stays empty there.
  *
  * @Block(
