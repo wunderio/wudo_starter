@@ -21,10 +21,10 @@
     position: relative;
     z-index: 10;
 
+    // The section around it already keeps the content off the edges.
     .has-full-width-background & {
       max-width: var(--page-max-width);
       margin: 0 auto;
-      padding: 0 var(--page-indention);
     }
   }
 }
